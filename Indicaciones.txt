@@ -1,0 +1,9 @@
+Agregar término al diccionario:
+- llamada: 'texto visible',
+- preferible agregarlo en todos los idiomas actuales
+
+Agregar nuevo componente:
+- import { diccionario } from '../../../funciones/diccionario';
+- texto = diccionario['es']; (el idioma luego será gestionado por un servicio).
+
+
