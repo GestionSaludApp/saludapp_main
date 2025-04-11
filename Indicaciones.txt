@@ -6,4 +6,11 @@ Agregar nuevo componente:
 - import { diccionario } from '../../../funciones/diccionario';
 - texto = diccionario['es']; (el idioma luego será gestionado por un servicio).
 
+Generar métodos de navegación:
+- nombrar los métodos del servicio navegacion así: ir + {{ nombreComponente }}
+- el método debe hacer una llamada al router así: this.router.navigate(['/configuracion']);
+- agregar en app.router.ts la ruta así:
+    { path: 'configuracion', component: ConfiguracionComponent },
+
+
 

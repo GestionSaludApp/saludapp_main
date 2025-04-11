@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { diccionario } from '../../../funciones/diccionario';
 
 @Component({
   selector: 'app-pie',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './pie.component.css'
 })
 export class PieComponent {
-
+  texto = diccionario['es'];
 }
