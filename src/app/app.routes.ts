@@ -6,7 +6,7 @@ export const routes: Routes = [
 
     { path: '', redirectTo: 'inicio', pathMatch: 'full' }, //Redirección DEFAULT
 
-    { path: 'inicio', component: InicioComponent },
+    { path: 'irInicio', component: InicioComponent },
 
     { path: 'irAyuda', component: AyudaComponent },
 

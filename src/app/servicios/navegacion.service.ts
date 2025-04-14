@@ -8,6 +8,7 @@ export class NavegacionService {
 
   constructor(private router: Router) {}
 
+  irInicio(){this.router.navigate(['/irInicio']);}
   irAyuda(){this.router.navigate(['/irAyuda']);}
 
   irConfiguracion(){this.router.navigate(['/configuracion']);} //EJEMPLO

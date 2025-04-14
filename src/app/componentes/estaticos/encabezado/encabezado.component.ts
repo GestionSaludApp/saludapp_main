@@ -17,4 +17,10 @@ export class EncabezadoComponent {
   irAyuda(){
     this.navegar.irAyuda();
   }
+
+  irInicio(){
+    this.navegar.irInicio();
+  }
+
+
 }

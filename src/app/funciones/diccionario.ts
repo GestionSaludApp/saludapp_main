@@ -1,21 +1,19 @@
 export const diccionario = {
     es: {
-        mensajeDefault: 'Esta es la ventana correspondiente a: ',
+        mensajeDefault: 'Este es el componente: ',
+        inicio: 'Inicio',
         usuario: 'Usuario',
         ingresar: 'Ingresar',
-        ayuda: 'Ayuda'
+        ayuda: 'Ayuda',
+        error: 'Ups, algo salió mal.'
     },
     en: {
-        mensajeDefault: 'This is the window corresponding to: ',
+      mensajeDefault: 'This is the component: ',
+      inicio: 'Home',
       usuario: 'User',
       ingresar: 'Login',
-      ayuda: 'Help'
-    },
-    fr: {
-        mensajeDefault: 'Il s´agit de la fenêtre correspondant à : ',
-        usuario: 'Utilisateur',
-        ingresar: 'Connexion',
-        ayuda: 'Aide'
+      ayuda: 'Help',
+      error: 'Oops, something went wrong.'
     }
   };
   
