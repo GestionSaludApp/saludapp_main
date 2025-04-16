@@ -8,9 +8,9 @@ Agregar nuevo componente:
 
 Generar métodos de navegación:
 - nombrar los métodos del servicio navegacion así: ir + {{ nombreComponente }}
-- el método debe hacer una llamada al router así: this.router.navigate(['/configuracion']);
+- el método debe hacer una llamada al router así: this.router.navigate(['/NombreComponente']);
 - agregar en app.router.ts la ruta así:
-    { path: 'configuracion', component: ConfiguracionComponent },
+    { path: 'NombreComponente', component: NombreComponenteComponent },
 
 
 

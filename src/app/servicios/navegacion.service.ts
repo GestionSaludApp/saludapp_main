@@ -8,14 +8,16 @@ export class NavegacionService {
 
   constructor(private router: Router) {}
 
-  irInicio(){this.router.navigate(['/irInicio']);}
-  irIngreso(){this.router.navigate(['/irIngreso']);}
+  irInicio(){this.router.navigate(['/inicio']);}
+  irIngreso(){this.router.navigate(['/ingreso']);}
 
-  irRegistro(){this.router.navigate(['/irRegistro']);}
+  irDatos(){this.router.navigate(['/datos']);}
+  irCalendario(){this.router.navigate(['/calendario']);}
 
-  irAyuda(){this.router.navigate(['/irAyuda']);}
-  irError(){this.router.navigate(['/irError']);}
+  irRegistro(){this.router.navigate(['/registro']);}
 
-  irConfiguracion(){this.router.navigate(['/configuracion']);} //EJEMPLO
+  irAyuda(){this.router.navigate(['/ayuda']);}
+  irError(){this.router.navigate(['/error']);}
+
 
 }
