@@ -15,4 +15,8 @@ Generar métodos de navegación:
 
 Para generar llamadas a la API, poner .suscribe() al final del llamado a la función del servicio, sino, no funciona.
 
+APP MOVIL ANDROID
+1) ng build --base-href ./
+2) npx cap copy
+3) npx cap open android
 
