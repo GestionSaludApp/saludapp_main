@@ -44,7 +44,7 @@ export class UsuarioComponent {
       fechaAhora,
     );
     
-    this.baseDeDatos.registrarUsuario(nuevoUsuario);
+    this.baseDeDatos.registrarUsuario(nuevoUsuario).subscribe();
 
   }
 }

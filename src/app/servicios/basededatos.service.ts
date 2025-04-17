@@ -8,12 +8,10 @@ import { Usuario } from '../clases/usuario';
 })
 
 export class BasededatosService {
-  //private apiUrl = 'http://localhost:3000';
   private apiUrl = 'https://saludapp-saludapp.mdbgo.io/';
 
   constructor(private http: HttpClient) {}
 
-  /*
   registrarUsuario(nuevoUsuario: Usuario): Observable<any> {
     console.log('Usuario a registrar:', nuevoUsuario);
 
@@ -24,11 +22,6 @@ export class BasededatosService {
           return throwError(error);
         })
       );
-  }
-  */
-
-  registrarUsuario(nuevoUsuario: Usuario): Observable<any>{
-    return this.http.post(this.apiUrl + 'registrarUsuario', nuevoUsuario);
   }
 
 }

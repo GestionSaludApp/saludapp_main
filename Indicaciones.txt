@@ -13,4 +13,6 @@ Generar métodos de navegación:
     { path: 'NombreComponente', component: NombreComponenteComponent },
 
 
+Para generar llamadas a la API, poner .suscribe() al final del llamado a la función del servicio, sino, no funciona.
+
 
