@@ -1,0 +1,11 @@
+<input [(ngModel)]="emailIngresado" placeholder={{texto.escribirEmail}}/>
+<input [(ngModel)]="passwordIngresado" placeholder={{texto.escribirPassword}}/>
+<select [(ngModel)]="tipoSeleccionado">
+    <ng-container *ngFor="let tipo of tiposDeUsuarioLocal">
+        <option [value]="tipo">{{ tipo }}</option>
+    </ng-container>
+</select>
+
+<button (click)="registrarUsuario()">Guardar</button>
+
+

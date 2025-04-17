@@ -2,16 +2,13 @@ import { Routes } from '@angular/router';
 
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { IngresoComponent } from './componentes/ingreso/ingreso.component';
-import { DatosPersonalesComponent } from './componentes/dinamicos/datos-personales/datos-personales.component';
+import { AyudaComponent } from './componentes/ayuda/ayuda.component';
+import { ErrorComponent } from './componentes/error/error.component';
 
 import { RegistroComponent } from './componentes/registro/registro.component';
 
-import { CalendarioComponent } from './componentes/dinamicos/calendario/calendario.component';
-
-import { AyudaComponent } from './componentes/dinamicos/ayuda/ayuda.component';
-import { ErrorComponent } from './componentes/error/error.component';
-
-
+import { DatosPersonalesComponent } from './componentes/usuario/datos-personales/datos-personales.component';
+import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
 
 
 export const routes: Routes = [

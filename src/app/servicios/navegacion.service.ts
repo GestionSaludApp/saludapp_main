@@ -11,7 +11,7 @@ export class NavegacionService {
   irInicio(){this.router.navigate(['/inicio']);}
   irIngreso(){this.router.navigate(['/ingreso']);}
 
-  irDatos(){this.router.navigate(['/datos']);}
+  irDatosPersonales(){this.router.navigate(['/datosPersonales']);}
   irCalendario(){this.router.navigate(['/calendario']);}
 
   irRegistro(){this.router.navigate(['/registro']);}

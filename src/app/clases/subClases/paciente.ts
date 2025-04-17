@@ -1,4 +1,2 @@
-import { Usuario } from "../usuario";
-
-export class Paciente extends Usuario {
+export class Paciente {
 }

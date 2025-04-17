@@ -14,13 +14,13 @@ export class EncabezadoComponent {
 
   constructor(private navegar: NavegacionService) {}
 
-  irAyuda(){
-    this.navegar.irAyuda();
-  }
-
-  irInicio(){
-    this.navegar.irInicio();
-  }
+  irAyuda(){this.navegar.irAyuda();}
+  irInicio(){this.navegar.irInicio();}
+  irIngreso(){this.navegar.irIngreso();}
+  irDatosPersonales(){this.navegar.irDatosPersonales();}
+  irError(){this.navegar.irError();}
+  irCalendario(){this.navegar.irCalendario();}
+  irRegistro(){this.navegar.irRegistro();}
 
 
 }
