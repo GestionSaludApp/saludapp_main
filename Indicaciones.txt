@@ -20,3 +20,18 @@ APP MOVIL ANDROID
 2) npx cap copy
 3) npx cap open android
 
+
+
+PARA EL FUTURO
+Archivos:
+npm install @capacitor/filesystem
+npx cap sync
+crearFunciones
+
+Convertir a APK (app):
+ng build
+npx cap copy
+npx cap open android (emular)
+
+ICONO (icon.png)
+capacitor-assets generate
