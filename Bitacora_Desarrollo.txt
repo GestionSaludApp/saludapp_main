@@ -1,0 +1,32 @@
+11/04/2025
+Se creo el proyecto en github con cuenta propia
+Se creo el proyecto en angular
+Se crearon las carpetas básicas de organización del codigo
+Se crearon dos servicios esenciales (usuarioActivo y navegacion)
+Se configuro el servicio de navegacion
+Se creo el archivo de diccionario
+Se configuro provisoriamente la pantalla principal de la app
+
+16/04/2025
+Se creo la cuenta y base de datos en mdb go
+Se definieron las tablas de la base de datos
+Se creo la tabla usuarios en la base de datos
+Se creo el proyecto para la api de gestión de la base de datos
+Se configuraron 3 archivos en la api bdd (receptor, control y bdd)
+Se configuro la conexion a la bdd
+Se configuro el servicio de basededatos para acceder a la api desde la aplicacion
+
+17/04/2025
+Se configuro el servicio de navegacion con las ventanas actuales
+Se crearon las clases usuario, paciente, profesional y administrador
+Se creo el archivo conteniendo las listas de datos
+Se creo el archivo para funciones relativas a fechas
+Se creo el componente para registro de nuevos usuarios
+Se conformaron las funciones necesarias para el registro de usuarios en la base de datos
+Se creo la funcionalidad de auditoria
+Se creo una APK alpha para testear funcionabilidad movil
+
+18/04/2025
+Se agregaron verificaciones de email y contraseña para el registro de nuevos usuarios
+
+

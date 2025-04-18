@@ -10,7 +10,7 @@ import { NavegacionService } from '../../../servicios/navegacion.service';
   styleUrl: './encabezado.component.css'
 })
 export class EncabezadoComponent {
-  texto = diccionario['es'];
+  texto = diccionario;
 
   constructor(private navegar: NavegacionService) {}
 

@@ -9,5 +9,5 @@ import { diccionario } from '../../../funciones/diccionario';
   styleUrl: './pie.component.css'
 })
 export class PieComponent {
-  texto = diccionario['es'];
+  texto = diccionario;
 }

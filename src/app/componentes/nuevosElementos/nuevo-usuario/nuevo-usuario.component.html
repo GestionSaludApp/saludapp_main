@@ -1,9 +1,39 @@
-<input [(ngModel)]="emailIngresado" placeholder={{texto.escribirEmail}}/>
-<input [(ngModel)]="passwordIngresado" placeholder={{texto.escribirPassword}}/>
-<select [(ngModel)]="tipoSeleccionado">
-    <ng-container *ngFor="let tipo of tiposDeUsuarioLocal">
-        <option [value]="tipo">{{ tipo }}</option>
-    </ng-container>
-</select>
+<div>
 
-<button (click)="registrarUsuario()">Guardar</button>
+
+    <div>
+        <label for="email">{{texto.email}}: </label>
+        <input name="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" placeholder={{texto.escribirEmail}}/>
+        <p class="advertencia">{{advertenciaEmail}}</p>
+    </div>
+
+
+    <div>
+        <label for="password">{{texto.password}}: </label>
+        <input name="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" placeholder={{texto.escribirPassword}}/>
+        <p class="advertencia">{{advertenciaPassword}}</p>
+    </div>
+
+    <div>
+        <label for="confirmarpassword">{{texto.confirmarpassword}}: </label>
+        <input name="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" placeholder={{texto.escribirPassword}}/>
+        <p class="advertencia">{{advertenciaConfirmacionPassword}}</p>
+    </div>
+
+
+    <div>
+        <label for="rol">{{texto.rol}}: </label>
+        <select name="rol" [(ngModel)]="tipoSeleccionado">
+            <ng-container *ngFor="let tipo of tiposDeUsuarioLocal">
+                <option [value]="tipo">{{ tipo }}</option>
+            </ng-container>
+        </select>
+    </div>
+
+
+    <div>
+        <button (click)="registrarUsuario()">{{texto.guardar}}</button>
+    </div>
+
+
+</div>
