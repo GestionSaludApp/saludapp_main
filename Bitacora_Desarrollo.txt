@@ -29,6 +29,10 @@ Se creo una APK alpha para testear funcionabilidad movil
 18/04/2025
 Se agregaron verificaciones de email y contraseña para el registro de nuevos usuarios
 Se agregó el manejo de errores provenientes del registro de usuarios
+Se implemento el sistema de inicio de sesión para usuarios (sin rol)
+Se crearon las bases de datos para pacientes, profesionales y administradores
+Se implemento la auditoria de cambios
+Se implemento el control de IP en auditoria
 
 
 

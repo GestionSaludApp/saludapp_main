@@ -13,11 +13,32 @@ export class UsuarioActivoService {
 
   constructor() { }
 
-  //CARGAR DATOS DEL USUARIO EN EL SERVICIO
-  setUsuario(usuario: Paciente | Profesional | Administrador): void {
-    this.usuarioSubject.next(usuario);
-    console.log('Nuevo usuario activo: '+usuario);
+// CARGAR DATOS DEL USUARIO EN EL SERVICIO
+setUsuario(respuesta: any): void {
+  console.log(respuesta.tipo);
+  const usuario = respuesta.usuario;  //Selecciona el usuario eliminando mensajes
+
+  let usuarioInstanciado;
+
+  // Dependiendo del tipo de usuario, se instancia la clase correspondiente
+  if (respuesta.tipo === 'paciente') {
+    usuarioInstanciado = new Paciente();
+  } else if (respuesta.tipo === 'profesional') {
+    usuarioInstanciado = new Profesional();
+  } else if (respuesta.tipo === 'administrador') {
+    usuarioInstanciado = new Administrador();
+  } else {
+    console.error('Tipo de usuario no reconocido:', respuesta.tipo);
+    return;
   }
+
+  // Guarda la instancia del usuario en el servicio
+  usuarioInstanciado.cargarDatos(usuario);
+  this.usuarioSubject.next(usuarioInstanciado);
+
+  console.log('Usuario recibido:', usuarioInstanciado);
+  console.log('Usuario activo: ', this.getNombreUsuarioActivo());
+}
 
   //ELIMINAR DATOS DEL USUARIO
   limpiarUsuario(): void {
@@ -32,6 +53,10 @@ export class UsuarioActivoService {
   //TRAER DINAMICAMENTE AL USUARIO (MANTIENE DATOS ACTUALIZADOS)
   getUsuarioObservable() {
     return this.usuarioSubject.asObservable();
+  }
+
+  getNombreUsuarioActivo(){
+    return this.getUsuario()?.nombre || null;
   }
 
 
