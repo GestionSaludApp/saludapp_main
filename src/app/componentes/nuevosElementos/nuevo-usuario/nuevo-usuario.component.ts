@@ -7,15 +7,14 @@ import { BasededatosService } from '../../../servicios/basededatos.service';
 import { Usuario } from '../../../clases/usuario';
 import { fechaAhora } from '../../../funciones/fechas';
 
-
 @Component({
-  selector: 'app-usuario',
+  selector: 'app-nuevo-usuario',
   standalone: true,
   imports: [FormsModule, NgFor],
-  templateUrl: './usuario.component.html',
-  styleUrl: './usuario.component.css'
+  templateUrl: './nuevo-usuario.component.html',
+  styleUrl: './nuevo-usuario.component.css'
 })
-export class UsuarioComponent {
+export class NuevoUsuarioComponent {
   texto = diccionario['es'];
   tiposDeUsuarioLocal = tiposDeUsuario;
 
@@ -47,4 +46,5 @@ export class UsuarioComponent {
     this.baseDeDatos.registrarUsuario(nuevoUsuario).subscribe();
 
   }
+  
 }
