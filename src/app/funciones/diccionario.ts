@@ -18,9 +18,11 @@ const diccionarioCompleto = {
         confirmarpassword: 'Confirmar contraseña',
         rol: 'Rol',
         guardar: 'Guardar',
-        advertenciaEmail: 'El correo electrónico debe tener un formato válido (ej: texto@correo.com)',
+        advertenciaEmail: 'El correo electrónico debe tener un formato válido (ej: texto@correo.com).',
         advertenciaPassword: 'La contraseña debe tener al menos 8 caracteres, incluir al menos una mayúscula, una minúscula, un número y un carácter especial.',
         advertenciaConfirmacionPassword: 'Las contraseñas no coinciden.',
+        registroExitoso: 'Usuario registrado con éxito.',
+        registroFallido: 'No se ha podido registrar a este usuario.',
     },
     en: {
       mensajeDefault: 'This is the component: ',
@@ -41,18 +43,22 @@ const diccionarioCompleto = {
       confirmarpassword: 'Confirm password',
       rol: 'Role',
       guardar: 'Save',
-      advertenciaEmail: 'Email must have a valid format (example: text@email.com)',
+      advertenciaEmail: 'Email must have a valid format (example: text@email.com).',
       advertenciaPassword: 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.',
       advertenciaConfirmacionPassword: 'Passwords must match.',
+      registroExitoso: 'User sucessfully registered.',
+      registroFallido: 'This user could not be registered.',
     }
   };
   
 //Idioma actual
 let idiomaActual: keyof typeof diccionarioCompleto = 'es';
 
+//Funcion para cambiar idioma
 export function cambiarIdioma(nuevoIdioma: keyof typeof diccionarioCompleto) {
   idiomaActual = nuevoIdioma;
 }
 
-//Diccionario actual
-export const diccionario = diccionarioCompleto[idiomaActual];
+export function obtenerDiccionario() {
+  return diccionarioCompleto[idiomaActual];
+}

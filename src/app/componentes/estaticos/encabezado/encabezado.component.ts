@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { diccionario } from '../../../funciones/diccionario';
+import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { NavegacionService } from '../../../servicios/navegacion.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { NavegacionService } from '../../../servicios/navegacion.service';
   styleUrl: './encabezado.component.css'
 })
 export class EncabezadoComponent {
-  texto = diccionario;
+  texto = obtenerDiccionario();
 
   constructor(private navegar: NavegacionService) {}
 

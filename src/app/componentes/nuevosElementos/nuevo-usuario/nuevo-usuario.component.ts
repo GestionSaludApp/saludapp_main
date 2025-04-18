@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { tiposDeUsuario } from '../../../funciones/listas';
-import { diccionario } from '../../../funciones/diccionario';
+import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { Usuario } from '../../../clases/usuario';
 import { fechaAhora } from '../../../funciones/fechas';
+import { NavegacionService } from '../../../servicios/navegacion.service';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -15,7 +16,7 @@ import { fechaAhora } from '../../../funciones/fechas';
   styleUrl: './nuevo-usuario.component.css'
 })
 export class NuevoUsuarioComponent {
-  texto = diccionario;
+  texto = obtenerDiccionario();
   tiposDeUsuarioLocal = tiposDeUsuario;
 
   emailIngresado: string = '';
@@ -29,7 +30,7 @@ export class NuevoUsuarioComponent {
 
   tipoSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
 
-  constructor(private baseDeDatos: BasededatosService) {}
+  constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
   registrarUsuario() {
     if (this.verificarDatosIngresados() === true) {
@@ -42,7 +43,17 @@ export class NuevoUsuarioComponent {
         fechaAhora,
       );
     
-      this.baseDeDatos.registrarUsuario(nuevoUsuario).subscribe();
+      this.baseDeDatos.registrarUsuario(nuevoUsuario).subscribe({
+        next: () => {
+          alert(this.texto.registroExitoso);
+          this.limpiarCampos();
+          this.navegar.irInicio();
+        },
+        error: () => {
+          alert(this.texto.registroFallido);
+          this.limpiarCampos();
+        }
+      });
     }
   }
 
@@ -85,6 +96,19 @@ export class NuevoUsuarioComponent {
     this.advertenciaConfirmacionPassword = textoAdvertenciaConfirmacion;
     return verificado;
 
+  }
+
+  limpiarCampos(){
+    this.emailIngresado = '';
+    this.advertenciaEmail = '';
+  
+    this.passwordIngresado = '';
+    this.advertenciaPassword = '';
+  
+    this.passwordConfirmacionIngresado = '';
+    this.advertenciaConfirmacionPassword = '';
+  
+    this.tipoSeleccionado = 'paciente';
   }
 
 }
