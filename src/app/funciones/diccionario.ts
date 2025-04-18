@@ -22,7 +22,8 @@ const diccionarioCompleto = {
         advertenciaPassword: 'La contraseña debe tener al menos 8 caracteres, incluir al menos una mayúscula, una minúscula, un número y un carácter especial.',
         advertenciaConfirmacionPassword: 'Las contraseñas no coinciden.',
         registroExitoso: 'Usuario registrado con éxito.',
-        registroFallido: 'No se ha podido registrar a este usuario.',
+        registroFallido: 'No se pudo completar el registro. Intente nuevamente o verifique los datos.',
+        ingresoFallido: 'No se pudo completar el ingreso. Intente nuevamente o verifique los datos.',
     },
     en: {
       mensajeDefault: 'This is the component: ',
@@ -47,7 +48,8 @@ const diccionarioCompleto = {
       advertenciaPassword: 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.',
       advertenciaConfirmacionPassword: 'Passwords must match.',
       registroExitoso: 'User sucessfully registered.',
-      registroFallido: 'This user could not be registered.',
+      registroFallido: 'Registration could not be completed. Please try again or verify your details.',
+      ingresoFallido: 'Login could not be completed. Please try again or verify your details.',
     }
   };
   

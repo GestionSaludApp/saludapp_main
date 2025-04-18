@@ -1,1 +1,24 @@
-<p>ingreso works!</p>
+<div>
+
+    (aun no implementado)
+    
+    <div>
+        <label for="email">{{texto.email}}: </label>
+        <input name="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" placeholder={{texto.escribirEmail}}/>
+        <p class="advertencia">{{advertenciaEmail}}</p>
+    </div>
+
+
+    <div>
+        <label for="password">{{texto.password}}: </label>
+        <input name="password" [(ngModel)]="passwordIngresado" placeholder={{texto.escribirPassword}}/>
+    </div>
+
+    <div>
+        <button (click)="ingresar()">
+            <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+        {{ texto.ingreso }}
+    </div>
+
+</div>

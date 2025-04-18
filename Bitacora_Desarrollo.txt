@@ -28,5 +28,7 @@ Se creo una APK alpha para testear funcionabilidad movil
 
 18/04/2025
 Se agregaron verificaciones de email y contraseña para el registro de nuevos usuarios
+Se agregó el manejo de errores provenientes del registro de usuarios
+
 
 
