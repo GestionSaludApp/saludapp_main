@@ -15,3 +15,24 @@ export function convertirADate(fechaHoraStr: string): Date {
     return new Date(anio, mes - 1, dia, horas, minutos);
 }
 
+export function calcularEdad(fechaNacimientoStr: string): number {
+    const nacimiento = convertirADate(fechaNacimientoStr);
+    const ahora = new Date();
+
+    let edad = ahora.getFullYear() - nacimiento.getFullYear();
+
+    const mesActual = ahora.getMonth();
+    const diaActual = ahora.getDate();
+    const mesNacimiento = nacimiento.getMonth();
+    const diaNacimiento = nacimiento.getDate();
+
+    //Si aún no cumplió años, restamos 1
+    if (
+        mesActual < mesNacimiento ||
+        (mesActual === mesNacimiento && diaActual < diaNacimiento)
+    ) {
+        edad--;
+    }
+
+    return edad;
+}

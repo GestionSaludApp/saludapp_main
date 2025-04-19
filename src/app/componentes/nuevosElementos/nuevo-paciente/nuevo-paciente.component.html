@@ -1,1 +1,25 @@
-<p>nuevo-paciente works!</p>
+<div>
+
+
+    <div>
+        <label for="nombre">{{texto.nombre}}: </label>
+        <input id="nombre" [(ngModel)]="nombreIngresado" (ngModelChange)="verificarDatos()" [placeholder]="texto.escribaSu + ' ' + texto.nombre"/>
+    </div>
+
+
+    <div>
+        <label for="apellido">{{texto.apellido}}: </label>
+        <input id="apellido" [(ngModel)]="apellidoIngresado" (ngModelChange)="verificarDatos()" [placeholder]="texto.escribaSu + ' ' + texto.apellido"/>
+    </div>
+
+    <div>
+        <label for="dni">{{texto.dni}}: </label>
+        <input id="dni" [(ngModel)]="dniIngresado" (ngModelChange)="verificarDatos()" [placeholder]="texto.escribaSu + ' ' + texto.dni"/>
+    </div>
+
+    <div>
+        <label for="fechaNacimiento">{{texto.fechaNacimiento}}: </label>
+        <input id="fechaNacimiento" [(ngModel)]="fechaNacimientoIngresada" (ngModelChange)="verificarDatos()" [placeholder]="texto.escribaSu + ' ' + texto.fechaNacimiento"/>
+    </div>
+
+</div>

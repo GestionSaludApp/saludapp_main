@@ -2,16 +2,19 @@ import { Component } from '@angular/core';
 import { tiposDeUsuario } from '../../../funciones/listas';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { Usuario } from '../../../clases/usuario';
 import { fechaAhora } from '../../../funciones/fechas';
 import { NavegacionService } from '../../../servicios/navegacion.service';
+import { NuevoPacienteComponent } from "../nuevo-paciente/nuevo-paciente.component";
+import { NuevoProfesionalComponent } from "../nuevo-profesional/nuevo-profesional.component";
+import { NuevoAdministradorComponent } from "../nuevo-administrador/nuevo-administrador.component";
 
 @Component({
   selector: 'app-nuevo-usuario',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, NuevoPacienteComponent, NuevoProfesionalComponent, NuevoAdministradorComponent, NgIf],
   templateUrl: './nuevo-usuario.component.html',
   styleUrl: './nuevo-usuario.component.css'
 })

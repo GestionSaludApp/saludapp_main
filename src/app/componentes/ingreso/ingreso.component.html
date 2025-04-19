@@ -1,17 +1,17 @@
 <div>
 
-    (aun no implementado)
+    <br>
     
     <div>
         <label for="email">{{texto.email}}: </label>
-        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" placeholder={{texto.escribirEmail}}/>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="texto.escribaSu + ' ' + texto.email"/>
         <p class="advertencia">{{advertenciaEmail}}</p>
     </div>
 
 
     <div>
         <label for="password">{{texto.password}}: </label>
-        <input id="password" [(ngModel)]="passwordIngresado" placeholder={{texto.escribirPassword}}/>
+        <input id="password" [(ngModel)]="passwordIngresado" [placeholder]="texto.escribaSu + ' ' + texto.password"/>
     </div>
 
     <div>

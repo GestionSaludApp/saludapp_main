@@ -3,20 +3,20 @@
 
     <div>
         <label for="email">{{texto.email}}: </label>
-        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" placeholder={{texto.escribirEmail}}/>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="texto.escribaSu + ' ' + texto.email"/>
         <p class="advertencia">{{advertenciaEmail}}</p>
     </div>
 
 
     <div>
         <label for="password">{{texto.password}}: </label>
-        <input id="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" placeholder={{texto.escribirPassword}}/>
+        <input id="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" [placeholder]="texto.escribaSu + ' ' + texto.password"/>
         <p class="advertencia">{{advertenciaPassword}}</p>
     </div>
 
     <div>
         <label for="confirmarpassword">{{texto.confirmarpassword}}: </label>
-        <input id="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" placeholder={{texto.escribirPassword}}/>
+        <input id="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" [placeholder]="texto.escribaSu + ' ' + texto.password"/>
         <p class="advertencia">{{advertenciaConfirmacionPassword}}</p>
     </div>
 
@@ -31,6 +31,12 @@
     </div>
 
     <div>
+        <app-nuevo-paciente *ngIf="tipoSeleccionado === 'paciente'"></app-nuevo-paciente>
+        <app-nuevo-profesional *ngIf="tipoSeleccionado === 'profesional'"></app-nuevo-profesional>
+        <app-nuevo-administrador *ngIf="tipoSeleccionado === 'administrador'"></app-nuevo-administrador>
+    </div>
+
+    <div>
         <button (click)="registrarUsuario()">
             <i class="fa-solid fa-floppy-disk"></i>
         </button>
@@ -38,3 +44,4 @@
     </div>
 
 </div>
+
