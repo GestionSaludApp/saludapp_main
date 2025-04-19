@@ -7,6 +7,18 @@ export const fechaAhora = new Date().toLocaleString('es-AR', {
     hour12: false
 });
 
+export function formatearFechaSinHora(fechaISO: string): string {
+    const fecha = new Date(fechaISO + 'T00:00');
+    return fecha.toLocaleString('es-AR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  }
+
 export function convertirADate(fechaHoraStr: string): Date {
     const [fecha, hora] = fechaHoraStr.split(',').map(s => s.trim());
     const [dia, mes, anio] = fecha.split('/').map(Number);

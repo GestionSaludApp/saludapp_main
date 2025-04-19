@@ -31,9 +31,9 @@
     </div>
 
     <div>
-        <app-nuevo-paciente *ngIf="tipoSeleccionado === 'paciente'"></app-nuevo-paciente>
-        <app-nuevo-profesional *ngIf="tipoSeleccionado === 'profesional'"></app-nuevo-profesional>
-        <app-nuevo-administrador *ngIf="tipoSeleccionado === 'administrador'"></app-nuevo-administrador>
+        <app-nuevo-paciente *ngIf="tipoSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+        <app-nuevo-profesional *ngIf="tipoSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+        <app-nuevo-administrador *ngIf="tipoSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
     </div>
 
     <div>

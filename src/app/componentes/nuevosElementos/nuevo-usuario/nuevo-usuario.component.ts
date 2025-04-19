@@ -32,11 +32,17 @@ export class NuevoUsuarioComponent {
   advertenciaConfirmacionPassword: string = '';
 
   tipoSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
+  datosUsuario: any = {};
+  camposPorTipo: Record<string, string[]> = {
+    paciente: ['nombre', 'apellido', 'dni', 'fechaNacimiento'],
+    profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'especialidad'],
+    administrador: ['nombre', 'apellido', 'dni', 'fechaNacimiento']
+  };
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
   registrarUsuario() {
-    if (this.verificarDatosIngresados() === true) {
+    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.tipoSeleccionado, this.datosUsuario)) {
       let nuevoUsuario = new Usuario();
       nuevoUsuario.cargarDatos(
         this.emailIngresado,
@@ -45,8 +51,8 @@ export class NuevoUsuarioComponent {
         fechaAhora,
         fechaAhora,
       );
-    
-      this.baseDeDatos.registrarUsuario(nuevoUsuario).subscribe({
+
+      this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
         next: () => {
           alert(this.texto.registroExitoso);
           this.limpiarCampos();
@@ -63,6 +69,11 @@ export class NuevoUsuarioComponent {
   verificarDatosIngresados(): boolean {
     if (this.verificarEmail() && this.verificarPassword()) {return true}
     return false
+  }
+
+  verificarDatosUsuarioEmitidos(tipo: string, datos: any): boolean {
+    const camposRequeridos = this.camposPorTipo[tipo] || [];
+    return camposRequeridos.every(campo => datos[campo]?.toString().trim());
   }
 
   verificarEmail(): boolean {
@@ -101,6 +112,10 @@ export class NuevoUsuarioComponent {
 
   }
 
+  guardarDatosUsuario(datos: any) {
+    this.datosUsuario = datos;
+  }
+
   limpiarCampos(){
     this.emailIngresado = '';
     this.advertenciaEmail = '';
@@ -112,6 +127,7 @@ export class NuevoUsuarioComponent {
     this.advertenciaConfirmacionPassword = '';
   
     this.tipoSeleccionado = 'paciente';
+    this.datosUsuario = {};
   }
 
 }

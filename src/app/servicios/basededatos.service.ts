@@ -16,16 +16,22 @@ export class BasededatosService {
 
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
-  registrarUsuario(nuevoUsuario: Usuario): Observable<any> {
+  registrarUsuario(nuevoUsuario: Usuario, datosUsuario: Paciente|Profesional|Administrador): Observable<any> {
     console.log('Usuario a registrar:', nuevoUsuario);
 
-    return this.http.post(this.apiUrl + '/registrarUsuario', nuevoUsuario)
+    const body = {
+      nuevoUsuario,
+      datosUsuario
+    };
+
+    return this.http.post(this.apiUrl + '/registrarUsuario', body)
       .pipe(
         catchError(error => {
           console.error('Error al registrar usuario:', error);
           return throwError(error);
         })
       );
+
   }
 
   ingresarUsuario(email: string, password: string): Observable<Paciente | Profesional | Administrador> {
