@@ -1,3 +1,5 @@
+export const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
 export const fechaAhora = new Date().toLocaleString('es-AR', {
     day: '2-digit',
     month: '2-digit',
@@ -47,4 +49,12 @@ export function calcularEdad(fechaNacimientoStr: string): number {
     }
 
     return edad;
+}
+
+export function leerMinutos(minutos: number): string {
+    const horas = Math.floor(minutos / 60);
+    const mins = minutos % 60;
+    const hh = horas.toString().padStart(2, '0');
+    const mm = mins.toString().padStart(2, '0');
+    return hh + ':' + mm;
 }

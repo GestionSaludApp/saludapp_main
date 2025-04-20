@@ -10,6 +10,8 @@ const diccionarioCompleto = {
         ayuda: 'Ayuda',
         error: 'Ups, algo salió mal.',
         escribaSu: 'Escriba su',
+        nuevo: 'Nuevo',
+        eliminar: 'Eliminar',
         selecccionarTipo: 'Seleccioná el tipo de usuario',
         faltaInformacion: 'Faltan datos necesarios',
         email: 'Email',
@@ -30,6 +32,11 @@ const diccionarioCompleto = {
         registroExitoso: 'Usuario registrado con éxito.',
         registroFallido: 'No se pudo completar el registro. Intente nuevamente o verifique los datos.',
         ingresoFallido: 'No se pudo completar el ingreso. Intente nuevamente o verifique los datos.',
+        disponibilidad: 'Cronograma',
+        seccional: 'Localización',
+        dia: 'Día',
+        horaInicio: 'Entrada',
+        horaFin: 'Salida',
     },
     en: {
       mensajeDefault: 'This is the component: ',
@@ -42,6 +49,8 @@ const diccionarioCompleto = {
       ayuda: 'Help',
       error: 'Oops, something went wrong.',
       escribaSu: 'Write your',
+      nuevo: 'New',
+      eliminar: 'Delete',
       selecccionarTipo: 'Select the type of user',
       faltaInformacion: 'Needed data is missing',
       email: 'Email',
@@ -62,6 +71,11 @@ const diccionarioCompleto = {
       registroExitoso: 'User sucessfully registered.',
       registroFallido: 'Registration could not be completed. Please try again or verify your details.',
       ingresoFallido: 'Login could not be completed. Please try again or verify your details.',
+      disponibilidad: 'Schedule',
+      seccional: 'Location',
+      dia: 'Day',
+      horaInicio: 'Start',
+      horaFin: 'Finish',
     }
   };
   

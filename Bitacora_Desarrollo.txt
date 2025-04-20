@@ -34,5 +34,8 @@ Se crearon las bases de datos para pacientes, profesionales y administradores
 Se implemento la auditoria de cambios
 Se implemento el control de IP en auditoria
 Se implemento el registro de datos básicos de roles de usuario (nombre, apellido, dni, fechaNacimiento)
-Se implemento una lista de especialidades de ejemplo (sin traducción)
-Se detecto la necesidad de generar un espacio para almacenar la especialidad de los profesionales registrados, sus días de atención y horarios
+Se crearon las tablas para especialidades, seccionales y disponibilidad de profesionales
+
+20/04/2025
+Se creo la clase para asignar cronogramas a profesionales
+Se implemento el sistema para registrar cronogramas en profesionales

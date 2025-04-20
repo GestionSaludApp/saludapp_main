@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
-import { formatearFechaSinHora } from '../../../funciones/fechas';
-import { especialidades } from '../../../funciones/listas';
+import { dias, formatearFechaSinHora, leerMinutos } from '../../../funciones/fechas';
+import { especialidades, seccionales } from '../../../funciones/listas';
 import { NgFor } from '@angular/common';
+import { Disponibilidad } from '../../../clases/disponibilidad';
 
 @Component({
   selector: 'app-nuevo-profesional',
@@ -14,7 +15,9 @@ import { NgFor } from '@angular/common';
 })
 export class NuevoProfesionalComponent {
   texto = obtenerDiccionario();
-  especialidadesLocal = especialidades;
+  listaEspecialidadesLocal = especialidades;
+  listaSeccionalesLocal = seccionales;
+  listaDiasLocal = dias;
   
   nombreIngresado: string = '';
   apellidoIngresado: string = '';
@@ -23,7 +26,8 @@ export class NuevoProfesionalComponent {
   advertenciaDNI: string = '';
   fechaNacimientoIngresada: string = '';
 
-  especialidadSeleccionada: string = '';
+  especialidadSeleccionada: number = 0;
+  disponibilidadesCreadas: Disponibilidad[] = [];
 
   @Output() datosGenerados = new EventEmitter<any>();
   
@@ -55,11 +59,33 @@ export class NuevoProfesionalComponent {
         apellido: this.apellidoIngresado.trim(),
         dni: this.dniIngresado.trim(),
         fechaNacimiento: fechaFormateada,
-        especialidad: this.especialidadSeleccionada
+        especialidad: this.especialidadSeleccionada,
+        disponibilidad: this.disponibilidadesCreadas
       });
     } else {
       this.datosGenerados.emit({})
     }
   }
+
+  agregarDisponibilidad() {
+    const nuevaDisponibilidad = new Disponibilidad();
+    this.disponibilidadesCreadas.push(nuevaDisponibilidad);
+  }
+
+  eliminarDisponibilidad(index: number) {
+    this.disponibilidadesCreadas.splice(index, 1);
+  }
+
+  actualizarHora(event: Event, disp: Disponibilidad, momento: string) {
+    const input = event.target as HTMLInputElement;
+    const valor = input.value;
+    if (!valor) return;
+  
+    const [horas, minutos] = valor.split(':').map(Number);
+    if (momento === 'inicio') {
+      disp.horaInicio = horas * 60 + minutos;
+    } else {disp.horaFin = horas * 60 + minutos;}
+  }
+  leerMinutosLocal(input: number): string {return leerMinutos(input);}
 
 }

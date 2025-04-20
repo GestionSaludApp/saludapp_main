@@ -26,8 +26,55 @@
     <div>
         <label for="especialidad">{{ texto.especialidad }}: </label>
         <select id="especialidad" [(ngModel)]="especialidadSeleccionada" (ngModelChange)="emitirDatos()">
-          <option *ngFor="let esp of especialidadesLocal" [value]="esp">{{ esp }}</option>
+          <option *ngFor="let esp of listaEspecialidadesLocal; let i = index" [value]="i">{{ esp }}</option>
         </select>
     </div>
+
+    <!-- DISPONIBILIDADES -->
+    <div>
+        <label for="disponibilidad">{{ texto.disponibilidad }}: </label>
+
+        <div *ngFor="let disp of disponibilidadesCreadas; let i = index">
+
+            <div>
+                <label for="seccional">{{ texto.seccional }}: </label>
+                <select id="seccional" [(ngModel)]="disp.seccional" (ngModelChange)="emitirDatos()">
+                  <option *ngFor="let sec of listaSeccionalesLocal; let i = index" [value]="i">{{ sec }}</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dia">{{ texto.dia }}: </label>
+                <select id="dia" [(ngModel)]="disp.dia" (ngModelChange)="emitirDatos()">
+                  <option *ngFor="let dia of listaDiasLocal; let i = index" [value]="i">{{ dia }}</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="horaInicio">{{ texto.horaInicio }}: </label>
+                <input
+                    id="horaInicio"
+                    type="time"
+                    [value]="leerMinutosLocal(disp.horaInicio)"
+                    (change)="actualizarHora($event, disp, 'inicio')"
+                />
+            </div>
+
+            <div>
+                <label for="horaFin">{{ texto.horaFin }}: </label>
+                <input
+                    id="horaFin"
+                    type="time"
+                    [value]="leerMinutosLocal(disp.horaFin)"
+                    (change)="actualizarHora($event, disp, 'fin')"
+                />
+            </div>
+
+            <button (click)="eliminarDisponibilidad(i)">{{texto.eliminar}}</button>
+        </div>
+
+        <button (click)="agregarDisponibilidad()">{{texto.nuevo}} {{texto.dia}}</button>
+    </div>
+    <!--FIN DISPONIBILIDADES -->
 
 </div>
