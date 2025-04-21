@@ -71,7 +71,6 @@ export class NuevoProfesionalComponent {
     const nuevaDisponibilidad = new Disponibilidad();
     this.disponibilidadesCreadas.push(nuevaDisponibilidad);
   }
-
   eliminarDisponibilidad(index: number) {
     this.disponibilidadesCreadas.splice(index, 1);
   }

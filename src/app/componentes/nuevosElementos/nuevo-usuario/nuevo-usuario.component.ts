@@ -35,7 +35,7 @@ export class NuevoUsuarioComponent {
   datosUsuario: any = {};
   camposPorTipo: Record<string, string[]> = {
     paciente: ['nombre', 'apellido', 'dni', 'fechaNacimiento'],
-    profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'especialidad'],
+    profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'especialidad', 'disponibilidad'],
     administrador: ['nombre', 'apellido', 'dni', 'fechaNacimiento']
   };
 
