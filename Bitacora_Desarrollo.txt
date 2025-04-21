@@ -35,7 +35,10 @@ Se implemento la auditoria de cambios
 Se implemento el control de IP en auditoria
 Se implemento el registro de datos básicos de roles de usuario (nombre, apellido, dni, fechaNacimiento)
 Se crearon las tablas para especialidades, seccionales y disponibilidad de profesionales
+Se creo una APK alpha para testear funcionabilidad movil
 
 20/04/2025
 Se creo la clase para asignar cronogramas a profesionales
-Se implemento el sistema para registrar cronogramas en profesionales
+Se implementó el sistema para registrar cronogramas en profesionales
+Se implementó el registro completo de profesionales en la base de datos
+Se creo una APK alpha para testear funcionabilidad movil

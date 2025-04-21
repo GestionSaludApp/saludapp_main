@@ -1,1 +1,21 @@
-<p>datos-personales works!</p>
+<div *ngIf="usuarioActivo">
+  
+    <p>{{texto.nombre}}: {{ usuarioActivo.nombre }}</p>
+    <p>{{texto.apellido}}: {{ usuarioActivo.apellido }}</p>
+    <p>{{texto.dni}}: {{ usuarioActivo.dni }}</p>
+    <p>{{texto.fechaNacimiento}}: {{ usuarioActivo.fechaNacimiento.slice(0,-7) }}</p>
+
+
+    <!-- HAY QUE REVISAR ESTA SECCION PARA QUE NO SE MUESTRE PARA PACIENTES O ADMINISTRADORES-->
+    <p>{{texto.especialidad}}: {{ this.mostrarDatos('especialidad') }}</p>
+    <p>{{texto.disponibilidad}}:</p>
+        <div *ngFor="let disp of mostrarDatos('disponibilidad')">
+            {{disp.seccional}}
+            {{disp.dia}}
+            {{disp.horaInicio}}
+            {{disp.horaFin}}
+        </div>
+
+
+  </div>
+
