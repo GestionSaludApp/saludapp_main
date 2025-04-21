@@ -42,7 +42,6 @@ export class NuevoProfesionalComponent {
       textoAdvertenciaNombres = this.texto.advertenciaNombres;
       verificado = false;
     }
-  
     if (!soloNumerosRegex.test(this.dniIngresado)) {
       textoAdvertenciaDNI = this.texto.advertenciaDNI;
       verificado = false;
