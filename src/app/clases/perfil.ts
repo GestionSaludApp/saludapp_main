@@ -84,7 +84,7 @@ export class Profesional extends Perfil<Profesional>{
       let horasTotal = 0;
 
       for (let disp of this.disponibilidad) {
-        if (disp.dia === dia) {
+        if (disp.diaSemana === dia) {
           let tiempoDisp = disp.horaFin - disp.horaInicio;
           horasTotal = horasTotal + tiempoDisp;
         }

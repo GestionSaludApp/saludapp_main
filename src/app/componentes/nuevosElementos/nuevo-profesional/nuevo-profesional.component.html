@@ -38,14 +38,14 @@
 
             <div>
                 <label for="seccional">{{ texto.seccional }}: </label>
-                <select id="seccional" [(ngModel)]="disp.seccional" (ngModelChange)="emitirDatos()">
+                <select id="seccional" [(ngModel)]="disp.idSeccional" (ngModelChange)="emitirDatos()">
                   <option *ngFor="let sec of listaSeccionalesLocal; let i = index" [value]="i">{{ sec }}</option>
                 </select>
             </div>
 
             <div>
                 <label for="dia">{{ texto.dia }}: </label>
-                <select id="dia" [(ngModel)]="disp.dia" (ngModelChange)="emitirDatos()">
+                <select id="dia" [(ngModel)]="disp.diaSemana" (ngModelChange)="emitirDatos()">
                   <option *ngFor="let dia of listaDiasLocal; let i = index" [value]="i">{{ dia }}</option>
                 </select>
             </div>

@@ -1,25 +1,37 @@
-import { leerMinutos } from "../funciones/fechas";
+import { dias, leerMinutos } from "../funciones/fechas";
+import { seccionales } from "../funciones/listas";
 
 export class Disponibilidad {
     idDisponibilidad: number;
-    seccional: number;
-    dia: number;
+    idSeccional: number;
+    diaSemana: number;
     horaInicio: number;
     horaFin: number;
 
     constructor(){
         this.idDisponibilidad = 0;
-        this.seccional = 0;
-        this.dia = 0;
+        this.idSeccional = 0;
+        this.diaSemana = 0;
         this.horaInicio = 0;
         this.horaFin = 0;
     }
-
-    getHorarioInicio(): string {return leerMinutos(this.horaInicio);}
-    getHorarioFin(): string {return leerMinutos(this.horaFin);}
     
+    cargarDatosBloque(datos: Partial<Disponibilidad>) {
+        Object.assign(this, datos);
+    }
 
-
+    seccional():string{
+        return seccionales[this.idSeccional];
+    }
+    dia():string{
+        return dias[this.diaSemana];
+    }
+    horarioInicio():string{
+        return leerMinutos(this.horaInicio);
+    }
+    horarioFin():string{
+        return leerMinutos(this.horaFin);
+    }
 }
 
 

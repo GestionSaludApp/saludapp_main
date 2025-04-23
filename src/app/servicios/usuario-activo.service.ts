@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Usuario } from '../clases/usuario';
 import { Administrador, Paciente, Profesional } from '../clases/perfil';
+import { Disponibilidad } from '../clases/disponibilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,6 @@ export class UsuarioActivoService {
   setUsuario(datosUsuario: any, datosPerfilActivo: any): void {
     const usuario = datosUsuario;
     const perfilActivo = datosPerfilActivo;
-
-    console.log(usuario);
-    console.log(perfilActivo);
 
     let usuarioInstanciado = new Usuario();
 
@@ -37,6 +35,15 @@ export class UsuarioActivoService {
     // Guarda la instancia del usuario en el servicio
     usuarioInstanciado.cargarDatosBloque(usuario);
     usuarioInstanciado.perfilActivo.cargarDatosBloque(perfilActivo);
+    if (usuarioInstanciado.perfilActivo instanceof Profesional) {
+      usuarioInstanciado.perfilActivo.disponibilidad = [];
+      for (let disp of perfilActivo.disponibilidad) {
+        let horario = new Disponibilidad();
+        horario.cargarDatosBloque(disp);
+        usuarioInstanciado.perfilActivo.disponibilidad.push(horario);
+      }
+    }
+
     this.usuarioSubject.next(usuarioInstanciado);
 
   }

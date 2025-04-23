@@ -46,3 +46,6 @@ Se creo una APK alpha para testear funcionabilidad movil
 21/04/2025
 Se creo la tabla en la BDD para almacenar perfiles
 Se actualizo la lógica de registro e inicio de sesión para considerar perfiles
+
+22/04/2025
+Se reestructuraron los roles como herencia de la clase perfil
