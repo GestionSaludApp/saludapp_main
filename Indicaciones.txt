@@ -12,15 +12,15 @@ Generar métodos de navegación:
 - agregar en app.router.ts la ruta así:
     { path: 'NombreComponente', component: NombreComponenteComponent },
 
-
 Para generar llamadas a la API, poner .suscribe() al final del llamado a la función del servicio, sino, no funciona.
+
+git config user.name "GestionSaludApp"
+git config user.email "gestionSaludApp@gmail.com"
 
 APP MOVIL ANDROID
 1) ng build --base-href ./
 2) npx cap copy
 3) npx cap open android
-
-
 
 PARA EL FUTURO
 Archivos:

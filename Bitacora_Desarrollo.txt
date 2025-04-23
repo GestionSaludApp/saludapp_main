@@ -49,3 +49,7 @@ Se actualizo la lógica de registro e inicio de sesión para considerar perfiles
 
 22/04/2025
 Se reestructuraron los roles como herencia de la clase perfil
+
+23/04/2025
+Se modularizó la funcion de registro de nuevos usuarios en bdd
+Se agrego la actualización de ultimo ingreso al ingresar
