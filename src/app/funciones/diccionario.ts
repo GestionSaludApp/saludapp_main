@@ -37,6 +37,7 @@ const diccionarioCompleto = {
         dia: 'Día',
         horaInicio: 'Entrada',
         horaFin: 'Salida',
+        perfil: 'Perfil',
     },
     en: {
       mensajeDefault: 'This is the component: ',
@@ -76,6 +77,7 @@ const diccionarioCompleto = {
       dia: 'Day',
       horaInicio: 'Start',
       horaFin: 'Finish',
+      perfil: 'Profile',
     }
   };
   

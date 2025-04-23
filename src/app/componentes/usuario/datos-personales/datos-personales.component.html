@@ -1,20 +1,21 @@
-<div *ngIf="usuarioActivo">
+<div *ngIf="perfilActivo">
   
-    <p>{{texto.nombre}}: {{ usuarioActivo.nombre }}</p>
-    <p>{{texto.apellido}}: {{ usuarioActivo.apellido }}</p>
-    <p>{{texto.dni}}: {{ usuarioActivo.dni }}</p>
-    <p>{{texto.fechaNacimiento}}: {{ usuarioActivo.fechaNacimiento.slice(0,-7) }}</p>
+    <p>{{texto.nombre}}: {{ perfilActivo.nombre }}</p>
+    <p>{{texto.apellido}}: {{ perfilActivo.apellido }}</p>
+    <p>{{texto.dni}}: {{ perfilActivo.dni }}</p>
+    <p>{{texto.fechaNacimiento}}: {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
 
+    <p>{{texto.perfil}}: {{ perfilActivo.getTipo() }}</p>
 
     <!-- HAY QUE REVISAR ESTA SECCION PARA QUE NO SE MUESTRE PARA PACIENTES O ADMINISTRADORES-->
-    <p>{{texto.especialidad}}: {{ this.mostrarDatos('especialidad') }}</p>
-    <p>{{texto.disponibilidad}}:</p>
-        <div *ngFor="let disp of mostrarDatos('disponibilidad')">
-            {{disp.seccional}}
-            {{disp.dia}}
-            {{disp.horaInicio}}
-            {{disp.horaFin}}
+    <p>{{texto.especialidad}}: {{ perfilActivo.especialidad }}</p>
+    <p>{{texto.disponibilidad}}:
+      <ng-container *ngFor="let horario of perfilActivo.cronograma">
+        <div>
+          {{horario.horaInicio}}
         </div>
+      </ng-container>
+    </p>
 
 
   </div>

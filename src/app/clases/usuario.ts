@@ -1,4 +1,6 @@
 //class usuario tiene sólo los datos comunes a todos los usuarios, excepto por invitado.
+import { Administrador, Paciente, Perfil, Profesional } from "./perfil";
+
 
 export class Usuario {
   email: string;
@@ -6,6 +8,8 @@ export class Usuario {
   tipo: string;
   fechaCreacion: string;
   ultimoIngreso: string;
+  perfilActivo: Paciente | Profesional | Administrador | null | undefined;
+  perfiles: Perfil[]; //id de la tabla de usuariosRol subrogados; en perfiles[0] figura el propio.
 
   //El constructor inicializa todo vacio para facilitar la gestion en el resto de los componentes.
   constructor(){
@@ -15,6 +19,9 @@ export class Usuario {
 
     this.fechaCreacion = '';
     this.ultimoIngreso = '';
+
+    this.perfilActivo = null;
+    this.perfiles = [];
   }
 
   //Cargar datos recibe los datos reales del usuario.
@@ -24,6 +31,7 @@ export class Usuario {
     tipo: string,
     fechaCreacion: string,
     ultimoIngreso: string,
+    perfiles: Perfil[],
   ){
     this.email = email;
     this.password = password;
@@ -31,6 +39,17 @@ export class Usuario {
 
     this.fechaCreacion = fechaCreacion;
     this.ultimoIngreso = ultimoIngreso;
+
+    this.perfiles = perfiles;
+  }
+
+  cargarDatosBloque(datos: Partial<Usuario>) {
+    Object.assign(this, datos);
+  }
+
+  //Cargar un perfil
+  set nuevoPerfilActivo(perfilActivo: Paciente | Profesional | Administrador){
+    this.perfilActivo = perfilActivo;
   }
 
 }

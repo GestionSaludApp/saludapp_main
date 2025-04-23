@@ -58,7 +58,7 @@ export class NuevoProfesionalComponent {
         apellido: this.apellidoIngresado.trim(),
         dni: this.dniIngresado.trim(),
         fechaNacimiento: fechaFormateada,
-        especialidad: this.especialidadSeleccionada,
+        idEspecialidad: this.especialidadSeleccionada,
         disponibilidad: this.disponibilidadesCreadas
       });
     } else {

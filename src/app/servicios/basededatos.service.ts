@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Usuario } from '../clases/usuario';
-import { Paciente } from '../clases/subClases/paciente';
-import { Profesional } from '../clases/subClases/profesional';
-import { Administrador } from '../clases/subClases/administrador';
 import { UsuarioActivoService } from './usuario-activo.service';
+import { Perfil } from '../clases/perfil';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +14,13 @@ export class BasededatosService {
 
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
-  registrarUsuario(nuevoUsuario: Usuario, datosUsuario: Paciente|Profesional|Administrador): Observable<any> {
+  registrarUsuario(nuevoUsuario: Usuario, datosPerfil: Perfil): Observable<any> {
     console.log('Usuario a registrar:', nuevoUsuario); //DEBUG
-    console.log('Datos de usuario:', datosUsuario); //DEBUG
+    console.log('Datos de usuario:', datosPerfil); //DEBUG
 
     const body = {
       nuevoUsuario,
-      datosUsuario
+      datosPerfil: datosPerfil
     };
 
     return this.http.post(this.apiUrl + '/registrarUsuario', body)
@@ -35,12 +33,12 @@ export class BasededatosService {
 
   }
 
-  ingresarUsuario(email: string, password: string): Observable<Paciente | Profesional | Administrador> {
+  ingresarUsuario(email: string, password: string): Observable<Usuario> {
     const body = { email, password };
 
-    return this.http.post<Paciente | Profesional | Administrador>(this.apiUrl + '/ingresarUsuario', body).pipe(
-      tap(usuario => {
-        this.usuarioActivo.setUsuario(usuario);
+    return this.http.post<any>(this.apiUrl + '/ingresarUsuario', body).pipe(
+      tap(datos => {
+        this.usuarioActivo.setUsuario(datos.usuario, datos.perfilActivo);
       }),
       catchError(error => {
         console.error('Error al ingresar usuario:', error);

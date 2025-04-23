@@ -35,7 +35,7 @@ export class NuevoUsuarioComponent {
   datosUsuario: any = {};
   camposPorTipo: Record<string, string[]> = {
     paciente: ['nombre', 'apellido', 'dni', 'fechaNacimiento'],
-    profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'especialidad', 'disponibilidad'],
+    profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'idEspecialidad', 'disponibilidad'],
     administrador: ['nombre', 'apellido', 'dni', 'fechaNacimiento']
   };
 
@@ -50,6 +50,7 @@ export class NuevoUsuarioComponent {
         this.tipoSeleccionado,
         fechaAhora,
         fechaAhora,
+        [], //SIN PERFIL SUBROGADO DURANTE CREACION - LUEGO DEL REGISTRO SE AÑADE EL PROPIO
       );
 
       this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
