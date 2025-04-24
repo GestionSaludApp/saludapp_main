@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { tiposDeUsuario } from '../../../funciones/listas';
+import { rolesUsuario, categoriasUsuario } from '../../../funciones/listas';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
@@ -20,7 +20,7 @@ import { NuevoAdministradorComponent } from "../nuevo-administrador/nuevo-admini
 })
 export class NuevoUsuarioComponent {
   texto = obtenerDiccionario();
-  tiposDeUsuarioLocal = tiposDeUsuario;
+  rolesUsuarioLocal = rolesUsuario;
 
   emailIngresado: string = '';
   advertenciaEmail: string = '';
@@ -31,9 +31,9 @@ export class NuevoUsuarioComponent {
   passwordConfirmacionIngresado: string = '';
   advertenciaConfirmacionPassword: string = '';
 
-  tipoSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
+  rolSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
   datosUsuario: any = {};
-  camposPorTipo: Record<string, string[]> = {
+  camposPorRol: Record<string, string[]> = {
     paciente: ['nombre', 'apellido', 'dni', 'fechaNacimiento'],
     profesional: ['nombre', 'apellido', 'dni', 'fechaNacimiento', 'idEspecialidad', 'disponibilidad'],
     administrador: ['nombre', 'apellido', 'dni', 'fechaNacimiento']
@@ -42,16 +42,17 @@ export class NuevoUsuarioComponent {
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
   registrarUsuario() {
-    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.tipoSeleccionado, this.datosUsuario)) {
+    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {
       let nuevoUsuario = new Usuario();
-      nuevoUsuario.cargarDatos(
-        this.emailIngresado,
-        this.passwordIngresado,
-        this.tipoSeleccionado,
-        fechaAhora,
-        fechaAhora,
-        [], //SIN PERFIL SUBROGADO DURANTE CREACION - LUEGO DEL REGISTRO SE AÑADE EL PROPIO
-      );
+        nuevoUsuario.email = this.emailIngresado,
+        nuevoUsuario.password = this.passwordIngresado,
+        nuevoUsuario.fechaCreacion = fechaAhora,
+        nuevoUsuario.ultimoIngreso = fechaAhora,
+      //SIN PERFILES DURANTE CREACION - LUEGO DEL REGISTRO SE AÑADE EL PROPIO;
+
+      this.datosUsuario.rol = this.rolSeleccionado;
+      this.datosUsuario.categoria = categoriasUsuario[0];
+      this.datosUsuario.alias = this.datosUsuario.nombre + ' (' + categoriasUsuario[0] + ')';
 
       this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
         next: () => {
@@ -72,8 +73,8 @@ export class NuevoUsuarioComponent {
     return false
   }
 
-  verificarDatosUsuarioEmitidos(tipo: string, datos: any): boolean {
-    const camposRequeridos = this.camposPorTipo[tipo] || [];
+  verificarDatosUsuarioEmitidos(rol: string, datos: any): boolean {
+    const camposRequeridos = this.camposPorRol[rol] || [];
     return camposRequeridos.every(campo => datos[campo]?.toString().trim());
   }
 
@@ -127,7 +128,7 @@ export class NuevoUsuarioComponent {
     this.passwordConfirmacionIngresado = '';
     this.advertenciaConfirmacionPassword = '';
   
-    this.tipoSeleccionado = 'paciente';
+    this.rolSeleccionado = 'paciente';
     this.datosUsuario = {};
   }
 

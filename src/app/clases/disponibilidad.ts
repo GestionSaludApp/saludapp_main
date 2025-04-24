@@ -16,7 +16,7 @@ export class Disponibilidad {
         this.horaFin = 0;
     }
     
-    cargarDatosBloque(datos: Partial<Disponibilidad>) {
+    cargarDatos(datos: Partial<Disponibilidad>) {
         Object.assign(this, datos);
     }
 

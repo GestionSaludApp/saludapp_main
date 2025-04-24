@@ -2,22 +2,25 @@ import { especialidades } from "../funciones/listas";
 import { Disponibilidad } from "./disponibilidad";
 
 export class Perfil<T = Perfil<any>> {
-    idPerfiles: number;
+    //desde tabla usuarioPerfiles
+    idPerfil: number;
     idUsuario: number;
-    rol: string;
-    idRol: number;
     alias: string;
 
+    //desde tabla usuariosRol [común a todos]
     nombre: string;
     apellido: string;
     dni: string;
     fechaNacimiento: string;
   
+    //desde usuariosRol [específicos]
+    get rol(): string {return this.constructor.name}
+    get especialidad(): string | null {return null;}
+    get cronograma(): Disponibilidad[] | null {return null;}
+
     constructor(){
-        this.idPerfiles = 0;
+        this.idPerfil = 0;
         this.idUsuario = 0;
-        this.rol = '';
-        this.idRol = 0;
         this.alias = '';
 
         this.nombre = '';
@@ -26,22 +29,14 @@ export class Perfil<T = Perfil<any>> {
         this.fechaNacimiento = '';
     }
 
-    cargarDatosBloque(datos: Partial<T>) {
+    cargarDatos(datos: Partial<T>) {
       Object.assign(this, datos);
     }
 
-    getTipo(): string {
+    getRol(): string {
       return this.constructor.name;
     }
 
-    get especialidad(): string | null {
-      return null;
-    }
-
-    get cronograma(): Disponibilidad[] | null {
-      return null;
-    }
-    
   }
 
 export class Paciente extends Perfil<Paciente>{

@@ -18,28 +18,31 @@ export class UsuarioActivoService {
     const usuario = datosUsuario;
     const perfilActivo = datosPerfilActivo;
 
+    console.log('usuario: ',usuario);
+    console.log('perfil: ',perfilActivo);
+
     let usuarioInstanciado = new Usuario();
 
-    // Dependiendo del tipo de usuario, se instancia la clase correspondiente
-    if (usuario.tipo === 'paciente') {
+    // Dependiendo del rol de usuario, se instancia la clase correspondiente
+    if (usuario.rol === 'paciente') {
       usuarioInstanciado.perfilActivo = new Paciente();
-    } else if (usuario.tipo === 'profesional') {
+    } else if (usuario.rol === 'profesional') {
       usuarioInstanciado.perfilActivo = new Profesional();
-    } else if (usuario.tipo === 'administrador') {
+    } else if (usuario.rol === 'administrador') {
       usuarioInstanciado.perfilActivo = new Administrador();
     } else {
-      console.error('Tipo de usuario no reconocido:', usuario.tipo);
+      console.error('Rol de usuario no reconocido:', usuario.rol);
       return;
     }
 
     // Guarda la instancia del usuario en el servicio
-    usuarioInstanciado.cargarDatosBloque(usuario);
-    usuarioInstanciado.perfilActivo.cargarDatosBloque(perfilActivo);
+    usuarioInstanciado.cargarDatos(usuario);
+    usuarioInstanciado.perfilActivo.cargarDatos(perfilActivo);
     if (usuarioInstanciado.perfilActivo instanceof Profesional) {
       usuarioInstanciado.perfilActivo.disponibilidad = [];
       for (let disp of perfilActivo.disponibilidad) {
         let horario = new Disponibilidad();
-        horario.cargarDatosBloque(disp);
+        horario.cargarDatos(disp);
         usuarioInstanciado.perfilActivo.disponibilidad.push(horario);
       }
     }

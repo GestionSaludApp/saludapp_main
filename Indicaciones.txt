@@ -14,9 +14,6 @@ Generar métodos de navegación:
 
 Para generar llamadas a la API, poner .suscribe() al final del llamado a la función del servicio, sino, no funciona.
 
-git config user.name "GestionSaludApp"
-git config user.email "gestionSaludApp@gmail.com"
-
 APP MOVIL ANDROID
 1) ng build --base-href ./
 2) npx cap copy

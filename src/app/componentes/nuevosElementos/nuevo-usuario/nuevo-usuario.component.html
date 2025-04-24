@@ -23,17 +23,17 @@
 
     <div>
         <label for="rol">{{texto.rol}}: </label>
-        <select id="rol" [(ngModel)]="tipoSeleccionado">
-            <ng-container *ngFor="let tipo of tiposDeUsuarioLocal">
-                <option [value]="tipo">{{ tipo }}</option>
+        <select id="rol" [(ngModel)]="rolSeleccionado">
+            <ng-container *ngFor="let rol of rolesUsuarioLocal">
+                <option [value]="rol">{{ rol }}</option>
             </ng-container>
         </select>
     </div>
 
     <div>
-        <app-nuevo-paciente *ngIf="tipoSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
-        <app-nuevo-profesional *ngIf="tipoSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
-        <app-nuevo-administrador *ngIf="tipoSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
+        <app-nuevo-paciente *ngIf="rolSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+        <app-nuevo-profesional *ngIf="rolSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+        <app-nuevo-administrador *ngIf="rolSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
     </div>
 
     <div>

@@ -1,13 +1,13 @@
 <div *ngIf="perfilActivo">
   
-  {{perfilActivo.alias}}
+  A: {{ perfilActivo.alias }}
 
     <p>{{texto.nombre}}: {{ perfilActivo.nombre }}</p>
     <p>{{texto.apellido}}: {{ perfilActivo.apellido }}</p>
     <p>{{texto.dni}}: {{ perfilActivo.dni }}</p>
     <p>{{texto.fechaNacimiento}}: {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
 
-    <p>{{texto.perfil}}: {{ perfilActivo.getTipo() }}</p>
+    <p>{{texto.perfil}}: {{ perfilActivo.getRol() }}</p>
 
     <!-- HAY QUE REVISAR ESTA SECCION PARA QUE NO SE MUESTRE PARA PACIENTES O ADMINISTRADORES-->
     <p>{{texto.especialidad}}: {{ perfilActivo.especialidad }}</p>
@@ -18,5 +18,5 @@
       </div>
 
 
-  </div>
+</div>
 

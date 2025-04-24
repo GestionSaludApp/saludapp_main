@@ -15,8 +15,8 @@ export class BasededatosService {
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
   registrarUsuario(nuevoUsuario: Usuario, datosPerfil: Perfil): Observable<any> {
-    console.log('Usuario a registrar:', nuevoUsuario); //DEBUG
-    console.log('Datos de usuario:', datosPerfil); //DEBUG
+    //console.log('Usuario a registrar:', nuevoUsuario); //DEBUG
+    //console.log('Datos de usuario:', datosPerfil); //DEBUG
 
     const body = {
       nuevoUsuario,
