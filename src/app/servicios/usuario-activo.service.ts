@@ -24,14 +24,14 @@ export class UsuarioActivoService {
     let usuarioInstanciado = new Usuario();
 
     // Dependiendo del rol de usuario, se instancia la clase correspondiente
-    if (usuario.rol === 'paciente') {
+    if (perfilActivo.rol === 'paciente') {
       usuarioInstanciado.perfilActivo = new Paciente();
-    } else if (usuario.rol === 'profesional') {
+    } else if (perfilActivo.rol === 'profesional') {
       usuarioInstanciado.perfilActivo = new Profesional();
-    } else if (usuario.rol === 'administrador') {
+    } else if (perfilActivo.rol === 'administrador') {
       usuarioInstanciado.perfilActivo = new Administrador();
     } else {
-      console.error('Rol de usuario no reconocido:', usuario.rol);
+      console.error('Rol de usuario no reconocido:', perfilActivo.rol);
       return;
     }
 

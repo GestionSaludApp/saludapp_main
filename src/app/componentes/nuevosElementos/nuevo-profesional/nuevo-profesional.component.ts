@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { dias, formatearFechaSinHora, leerMinutos } from '../../../funciones/fechas';
-import { especialidades, seccionales } from '../../../funciones/listas';
+import { categoriasUsuario, especialidades, seccionales } from '../../../funciones/listas';
 import { NgFor } from '@angular/common';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 
@@ -54,6 +54,10 @@ export class NuevoProfesionalComponent {
 
     if (verificado) {
       this.datosGenerados.emit({
+        rol: 'profesional',
+        categoria: categoriasUsuario[0],
+        alias: this.nombreIngresado.trim() + ' (' + categoriasUsuario[0] + ')',
+
         nombre: this.nombreIngresado.trim(),
         apellido: this.apellidoIngresado.trim(),
         dni: this.dniIngresado.trim(),

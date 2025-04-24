@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { rolesUsuario, categoriasUsuario } from '../../../funciones/listas';
+import { rolesUsuario } from '../../../funciones/listas';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
@@ -49,10 +49,6 @@ export class NuevoUsuarioComponent {
         nuevoUsuario.fechaCreacion = fechaAhora,
         nuevoUsuario.ultimoIngreso = fechaAhora,
       //SIN PERFILES DURANTE CREACION - LUEGO DEL REGISTRO SE AÑADE EL PROPIO;
-
-      this.datosUsuario.rol = this.rolSeleccionado;
-      this.datosUsuario.categoria = categoriasUsuario[0];
-      this.datosUsuario.alias = this.datosUsuario.nombre + ' (' + categoriasUsuario[0] + ')';
 
       this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
         next: () => {

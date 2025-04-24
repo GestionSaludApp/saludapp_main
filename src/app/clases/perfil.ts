@@ -5,7 +5,9 @@ export class Perfil<T = Perfil<any>> {
     //desde tabla usuarioPerfiles
     idPerfil: number;
     idUsuario: number;
+    categoria: string;
     alias: string;
+    rol: 'paciente' | 'profesional' | 'administrador' | null | undefined = null;
 
     //desde tabla usuariosRol [común a todos]
     nombre: string;
@@ -14,13 +16,13 @@ export class Perfil<T = Perfil<any>> {
     fechaNacimiento: string;
   
     //desde usuariosRol [específicos]
-    get rol(): string {return this.constructor.name}
     get especialidad(): string | null {return null;}
     get cronograma(): Disponibilidad[] | null {return null;}
 
     constructor(){
         this.idPerfil = 0;
         this.idUsuario = 0;
+        this.categoria = '';
         this.alias = '';
 
         this.nombre = '';
@@ -33,16 +35,13 @@ export class Perfil<T = Perfil<any>> {
       Object.assign(this, datos);
     }
 
-    getRol(): string {
-      return this.constructor.name;
-    }
-
-  }
+}
 
 export class Paciente extends Perfil<Paciente>{
 
   constructor(){
     super();
+    this.rol = 'paciente';
   }
 
 }
@@ -54,6 +53,7 @@ export class Profesional extends Perfil<Profesional>{
     //El constructor inicializa todo vacio para facilitar la gestion en el resto de los componentes.
     constructor(){
       super();
+      this.rol = 'profesional';
       this.idEspecialidad = 0;
       this.disponibilidad = [];
     }
@@ -94,6 +94,7 @@ export class Administrador extends Perfil<Administrador>{
   
   constructor(){
     super();
+    this.rol = 'administrador';
   }
 
 }
