@@ -79,6 +79,7 @@ const diccionarioCompleto = {
       horaInicio: 'Start',
       horaFin: 'Finish',
       perfil: 'Profile',
+      turno: 'Reservation',
     }
   };
   

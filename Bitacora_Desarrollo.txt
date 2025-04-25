@@ -58,3 +58,5 @@ Se agrego la actualización de ultimo ingreso al ingresar
 Se actualizó la API para ingreso de perfiles
 Se implementó el componente para ver los datos del perfil
 Se creó la clase turno y el componente para visualizar los disponibles
+Se implementó la recuperación de disponibilidades desde la bdd
+
