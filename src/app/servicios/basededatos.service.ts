@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { Usuario } from '../clases/usuario';
 import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
+import { Disponibilidad } from '../clases/disponibilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,17 @@ export class BasededatosService {
       })
     );
   }
-
-
+  
+  buscarDisponibilidades(filtros: any): Observable<Disponibilidad[]> {
+    return this.http.post<any[]>(this.apiUrl + '/buscarDisponibilidades', filtros).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const disponibilidad = new Disponibilidad();
+          disponibilidad.cargarDatos(datos);
+          return disponibilidad;
+        });
+      })
+    );
+  }
 
 }

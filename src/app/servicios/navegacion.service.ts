@@ -19,5 +19,6 @@ export class NavegacionService {
   irAyuda(){this.router.navigate(['/ayuda']);}
   irError(){this.router.navigate(['/error']);}
 
+  irTurnosDisponibles(){this.router.navigate(['/turnosDisponibles'])}
 
 }

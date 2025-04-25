@@ -24,6 +24,10 @@
     <div>
         <button name="botonCalendario" (click)="irCalendario()">{{texto.calendario}}</button>
     </div>
+
+    <div>
+        <button name="botonTurnosDisponibles" (click)="irTurnosDisponibles()">{{texto.nuevo + ' ' + texto.ingresoFallido }}</button>
+    </div>
 </div>
 
 <div *ngIf="!perfilActivo">

@@ -38,6 +38,7 @@ const diccionarioCompleto = {
         horaInicio: 'Entrada',
         horaFin: 'Salida',
         perfil: 'Perfil',
+        turno: 'Turno',
     },
     en: {
       mensajeDefault: 'This is the component: ',

@@ -1,1 +1,37 @@
-<p>ver-turnos-disponibles works!</p>
+<h2>Turnos disponibles</h2>
+
+<div>
+
+<label>Día de la semana:
+    <select [(ngModel)]="filtroDia" (change)="filtrar()">
+        <option [ngValue]="null">-- Todos --</option>
+        <option *ngFor="let dia of diasLocal; let i = index" [ngValue]="i">{{ dia }}</option>
+    </select>
+</label>
+
+<label>Seccional:
+    <select [(ngModel)]="filtroSeccional" (change)="filtrar()">
+      <option [ngValue]="null">-- Todas --</option>
+      <option *ngFor="let seccional of seccionalesLocal; let i = index" [ngValue]="i">{{ seccional }}</option>
+    </select>
+  </label>
+
+  <label>Especialidad:
+    <select [(ngModel)]="filtroEspecialidad" (change)="filtrar()">
+      <option [ngValue]="null">-- Todas --</option>
+      <option *ngFor="let especialidad of especialidadesLocal; let i = index" [ngValue]="i">{{ especialidad }}</option>
+    </select>
+  </label>
+
+</div>
+
+<hr>
+
+<h3>Disponibilidades encontradas</h3>
+<ul>
+  <li *ngFor="let d of disponibilidadesActivas">
+    Seccional {{ d.seccional() }} | Día: {{ d.dia() }}<br>
+    Horario: {{ d.horarioInicio() }} a {{ d.horarioFin() }}
+  </li>
+</ul>
+

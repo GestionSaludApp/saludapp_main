@@ -9,6 +9,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { DatosPersonalesComponent } from './componentes/usuario/datos-personales/datos-personales.component';
 import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
+import { VerTurnosDisponiblesComponent } from './componentes/turnos/ver-turnos-disponibles/ver-turnos-disponibles.component';
+
 
 
 export const routes: Routes = [
@@ -24,6 +26,8 @@ export const routes: Routes = [
 
     { path: 'ayuda', component: AyudaComponent },
     { path: 'error', component: ErrorComponent },
+
+    { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
     
 
 

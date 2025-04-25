@@ -40,6 +40,7 @@ export class EncabezadoComponent implements OnInit{
   irError(){this.navegar.irError();}
   irCalendario(){this.navegar.irCalendario();}
   irRegistro(){this.navegar.irRegistro();}
+  irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
 
 
 }
