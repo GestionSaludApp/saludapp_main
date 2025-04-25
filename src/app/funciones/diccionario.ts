@@ -1,6 +1,6 @@
 const diccionarioCompleto = {
     es: {
-        mensajeDefault: 'Este es el componente: ',
+        NmensajeDefault: 'Este es el componente: ',
         inicio: 'Inicio',
         usuario: 'Usuario',
         ingreso: 'Ingresar',
