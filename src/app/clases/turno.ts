@@ -3,6 +3,7 @@ import { seccionales } from "../funciones/listas";
 
 export class Turno {
     idTurno: number;
+    idProfesional: number;
     idSeccional: number;
     diaSemana: number;
     horaInicio: number;
@@ -10,6 +11,7 @@ export class Turno {
 
     constructor(){
         this.idTurno = 0;
+        this.idProfesional = 0;
         this.idSeccional = 0;
         this.diaSemana = 0;
         this.horaInicio = 0;

@@ -5,6 +5,7 @@ import { Usuario } from '../clases/usuario';
 import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
+import { Turno } from '../clases/turno';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,18 @@ export class BasededatosService {
           const disponibilidad = new Disponibilidad();
           disponibilidad.cargarDatos(datos);
           return disponibilidad;
+        });
+      })
+    );
+  }
+
+  buscarTurnos(filtros: any): Observable<Turno[]> {
+    return this.http.post<any[]>(this.apiUrl + '/buscarTurnos', filtros).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const turno = new Turno();
+          turno.cargarDatos(datos);
+          return turno;
         });
       })
     );
