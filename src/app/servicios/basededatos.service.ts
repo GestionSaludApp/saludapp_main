@@ -73,6 +73,18 @@ export class BasededatosService {
     );
   }
 
+  buscarTurnosActivos(filtros: any): Observable<Turno[]> {
+    return this.http.post<any[]>(this.apiUrl + '/buscarTurnosActivos', filtros).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const turno = new Turno();
+          turno.cargarDatos(datos);
+          return turno;
+        });
+      })
+    );
+  }
+
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
       map(respuesta => {

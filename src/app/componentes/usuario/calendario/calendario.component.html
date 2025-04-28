@@ -1,1 +1,8 @@
-<p>calendario works!</p>
+<p>{{texto.turnos}}</p>
+
+<div *ngFor="let turno of turnosActivos">
+    {{turno.especialidad()}}
+    {{turno.seccional()}}
+    {{turno.diaSemana}}
+    {{turno.horaInicio}}
+</div>
