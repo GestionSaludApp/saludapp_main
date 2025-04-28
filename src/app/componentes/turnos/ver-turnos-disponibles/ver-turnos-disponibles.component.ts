@@ -7,6 +7,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { dias } from '../../../funciones/fechas';
 import { especialidades, seccionales } from '../../../funciones/listas';
 import { FormsModule } from '@angular/forms';
+import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 
 @Component({
   selector: 'app-ver-turnos-disponibles',
@@ -30,7 +31,7 @@ export class VerTurnosDisponiblesComponent{
   filtroSeccional: number | null = null;
   filtroEspecialidad: number | null = null;
 
-  constructor(private baseDeDatos: BasededatosService) {}
+  constructor(private baseDeDatos: BasededatosService, private usuarioActual: UsuarioActivoService) {}
   
   filtrar() {
     const filtros: any = {};
@@ -55,6 +56,22 @@ export class VerTurnosDisponiblesComponent{
       },
       error: (error) => {
         console.error('Error al cargar turnos:', error);
+      }
+    });
+  }
+
+  solicitarTurno(turno: Turno) {
+    let idPerfil = this.usuarioActual.perfil?.idPerfil;
+    if (idPerfil) {
+      turno.idPaciente = idPerfil;
+    } else {return}
+    
+    this.baseDeDatos.solicitarTurno(turno).subscribe({
+      next: (nuevoTurno) => {
+        console.log('Turno solicitado: ', nuevoTurno);
+      },
+      error: (error) => {
+        console.error('Error al solicitar turno:', error.message);
       }
     });
   }

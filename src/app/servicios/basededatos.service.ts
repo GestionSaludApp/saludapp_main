@@ -73,4 +73,19 @@ export class BasededatosService {
     );
   }
 
+  solicitarTurno(turno: Turno): Observable<Turno> {
+    return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
+      map(respuesta => {
+        if (respuesta.valido && respuesta.turno) {
+          const nuevoTurno = new Turno();
+          nuevoTurno.cargarDatos(respuesta.turno);
+          return nuevoTurno;
+        } else {
+          throw new Error(respuesta.mensaje || 'Error al solicitar turno');
+        }
+      })
+    );
+  }
+
+
 }
