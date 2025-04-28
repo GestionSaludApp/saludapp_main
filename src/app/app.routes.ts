@@ -10,6 +10,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { DatosPersonalesComponent } from './componentes/usuario/datos-personales/datos-personales.component';
 import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
 import { VerTurnosDisponiblesComponent } from './componentes/turnos/ver-turnos-disponibles/ver-turnos-disponibles.component';
+import { BotsComponent } from './funciones/bots/bots.component';
 
 
 
@@ -28,6 +29,8 @@ export const routes: Routes = [
     { path: 'error', component: ErrorComponent },
 
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
+
+    { path: 'bots', component: BotsComponent },
     
 
 
