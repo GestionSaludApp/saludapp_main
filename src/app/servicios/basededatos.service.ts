@@ -5,6 +5,7 @@ import { Usuario } from '../clases/usuario';
 import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
+import { Turno } from '../clases/turno';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,32 @@ export class BasededatosService {
       })
     );
   }
+
+  buscarTurnos(filtros: any): Observable<Turno[]> {
+    return this.http.post<any[]>(this.apiUrl + '/buscarTurnos', filtros).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const turno = new Turno();
+          turno.cargarDatos(datos);
+          return turno;
+        });
+      })
+    );
+  }
+
+  solicitarTurno(turno: Turno): Observable<Turno> {
+    return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
+      map(respuesta => {
+        if (respuesta.valido && respuesta.turno) {
+          const nuevoTurno = new Turno();
+          nuevoTurno.cargarDatos(respuesta.turno);
+          return nuevoTurno;
+        } else {
+          throw new Error(respuesta.mensaje || 'Error al solicitar turno');
+        }
+      })
+    );
+  }
+
 
 }

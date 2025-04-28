@@ -3,15 +3,16 @@ import { Turno } from '../../../clases/turno';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 import { BasededatosService } from '../../../servicios/basededatos.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { dias } from '../../../funciones/fechas';
 import { especialidades, seccionales } from '../../../funciones/listas';
 import { FormsModule } from '@angular/forms';
+import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 
 @Component({
   selector: 'app-ver-turnos-disponibles',
   standalone: true,
-  imports: [NgFor, FormsModule],
+  imports: [NgFor, FormsModule, NgIf],
   templateUrl: './ver-turnos-disponibles.component.html',
   styleUrl: './ver-turnos-disponibles.component.css'
 })
@@ -23,13 +24,14 @@ export class VerTurnosDisponiblesComponent{
   
   disponibilidadesActivas: Disponibilidad[] = [];
   turnosDisponibles: Turno[] = [];
+  duracion: number = 20;
 
   filtroActivo: boolean = false;
   filtroDia: number | null = null;
   filtroSeccional: number | null = null;
   filtroEspecialidad: number | null = null;
 
-  constructor(private baseDeDatos: BasededatosService) {}
+  constructor(private baseDeDatos: BasededatosService, private usuarioActual: UsuarioActivoService) {}
   
   filtrar() {
     const filtros: any = {};
@@ -37,22 +39,39 @@ export class VerTurnosDisponiblesComponent{
     if (this.filtroDia !== null) {
       filtros.diaSemana = this.filtroDia;
     }
-  
+
     if (this.filtroSeccional !== null) {
       filtros.idSeccional = this.filtroSeccional;
     }
-  
+    
     if (this.filtroEspecialidad !== null) {
       filtros.idEspecialidad = this.filtroEspecialidad;
     }
-  
-    this.baseDeDatos.buscarDisponibilidades(filtros).subscribe({
-      next: (disponibilidades: Disponibilidad[]) => {
-        this.disponibilidadesActivas = disponibilidades;
-        console.log('Disponibilidades activas:', this.disponibilidadesActivas);
+    
+    this.baseDeDatos.buscarTurnos(filtros).subscribe({
+      next: (turnos: Turno[]) => {
+        this.turnosDisponibles = turnos;
+
+        console.log('Turnos disponibles:', this.turnosDisponibles);
       },
       error: (error) => {
-        console.error('Error al cargar disponibilidades:', error);
+        console.error('Error al cargar turnos:', error);
+      }
+    });
+  }
+
+  solicitarTurno(turno: Turno) {
+    let idPerfil = this.usuarioActual.perfil?.idPerfil;
+    if (idPerfil) {
+      turno.idPaciente = idPerfil;
+    } else {return}
+    
+    this.baseDeDatos.solicitarTurno(turno).subscribe({
+      next: (nuevoTurno) => {
+        console.log('Turno solicitado: ', nuevoTurno);
+      },
+      error: (error) => {
+        console.error('Error al solicitar turno:', error.message);
       }
     });
   }

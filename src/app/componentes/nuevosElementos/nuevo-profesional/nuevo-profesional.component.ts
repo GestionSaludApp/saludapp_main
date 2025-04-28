@@ -50,6 +50,10 @@ export class NuevoProfesionalComponent {
     this.advertenciaNombres = textoAdvertenciaNombres;
     this.advertenciaDNI = textoAdvertenciaDNI;
     
+    for (let disp of this.disponibilidadesCreadas) {
+      if (disp.idEspecialidad != this.especialidadSeleccionada) {verificado = false}
+    } //Verifica que no se haya modificado la seleccion de especialidad entre creación de horarios
+
     const fechaFormateada = formatearFechaSinHora(this.fechaNacimientoIngresada);
 
     if (verificado) {
@@ -72,6 +76,7 @@ export class NuevoProfesionalComponent {
 
   agregarDisponibilidad() {
     const nuevaDisponibilidad = new Disponibilidad();
+    nuevaDisponibilidad.idEspecialidad = this.especialidadSeleccionada;
     this.disponibilidadesCreadas.push(nuevaDisponibilidad);
   }
   eliminarDisponibilidad(index: number) {

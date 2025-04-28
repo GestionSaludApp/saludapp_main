@@ -25,13 +25,12 @@
 
 </div>
 
-<hr>
-
-<h3>Disponibilidades encontradas</h3>
-<ul>
-  <li *ngFor="let d of disponibilidadesActivas">
-    Seccional {{ d.seccional() }} | Día: {{ d.dia() }}<br>
-    Horario: {{ d.horarioInicio() }} a {{ d.horarioFin() }}
+<h3>Turnos disponibles</h3>
+<ul *ngIf="turnosDisponibles.length > 0">
+  <li *ngFor="let t of turnosDisponibles">
+    <button (click)="solicitarTurno(t)">Solicitar</button>
+    {{t.especialidad()}} en {{ t.seccional() }}
+    {{ t.dia() }} {{ t.horarioInicio() }}
   </li>
 </ul>
 
