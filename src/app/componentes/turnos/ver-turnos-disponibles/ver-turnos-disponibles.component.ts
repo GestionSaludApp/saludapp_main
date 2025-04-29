@@ -51,8 +51,6 @@ export class VerTurnosDisponiblesComponent{
     this.baseDeDatos.buscarTurnos(filtros).subscribe({
       next: (turnos: Turno[]) => {
         this.turnosDisponibles = turnos;
-
-        console.log('Turnos disponibles:', this.turnosDisponibles);
       },
       error: (error) => {
         console.error('Error al cargar turnos:', error);
@@ -67,9 +65,6 @@ export class VerTurnosDisponiblesComponent{
     } else {return}
     
     this.baseDeDatos.solicitarTurno(turno).subscribe({
-      next: (nuevoTurno) => {
-        console.log('Turno solicitado: ', nuevoTurno);
-      },
       error: (error) => {
         console.error('Error al solicitar turno:', error.message);
       }
