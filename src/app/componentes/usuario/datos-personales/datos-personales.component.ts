@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
-import { CommonModule, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { especialidades } from '../../../funciones/listas';
 import { dias } from '../../../funciones/fechas';
 import { Perfil } from '../../../clases/perfil';
+import { FormsModule } from '@angular/forms';
+import { NuevoPerfilComponent } from "../../nuevosElementos/nuevo-perfil/nuevo-perfil.component";
 
 @Component({
   selector: 'app-datos-personales',
   standalone: true,
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, NgFor, FormsModule, NuevoPerfilComponent],
   templateUrl: './datos-personales.component.html',
   styleUrl: './datos-personales.component.css'
 })

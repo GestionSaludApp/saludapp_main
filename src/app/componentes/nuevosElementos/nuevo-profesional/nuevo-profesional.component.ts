@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { dias, formatearFechaSinHora, leerMinutos } from '../../../funciones/fechas';
-import { categoriasUsuario, especialidades, seccionales } from '../../../funciones/listas';
+import { categoriasPerfil, especialidades, seccionales } from '../../../funciones/listas';
 import { NgFor } from '@angular/common';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 
@@ -14,6 +14,7 @@ import { Disponibilidad } from '../../../clases/disponibilidad';
   styleUrl: './nuevo-profesional.component.css'
 })
 export class NuevoProfesionalComponent {
+  @Input() categoria: string = categoriasPerfil[0];
   texto = obtenerDiccionario();
   listaEspecialidadesLocal = especialidades;
   listaSeccionalesLocal = seccionales;
@@ -59,8 +60,8 @@ export class NuevoProfesionalComponent {
     if (verificado) {
       this.datosGenerados.emit({
         rol: 'profesional',
-        categoria: categoriasUsuario[0],
-        alias: this.nombreIngresado.trim() + ' (' + categoriasUsuario[0] + ')',
+        categoria: this.categoria,
+        alias: this.nombreIngresado.trim() + ' (' + this.categoria + ')',
 
         nombre: this.nombreIngresado.trim(),
         apellido: this.apellidoIngresado.trim(),

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { formatearFechaSinHora } from '../../../funciones/fechas';
-import { categoriasUsuario } from '../../../funciones/listas';
+import { categoriasPerfil } from '../../../funciones/listas';
 
 @Component({
   selector: 'app-nuevo-administrador',
@@ -12,6 +12,7 @@ import { categoriasUsuario } from '../../../funciones/listas';
   styleUrl: './nuevo-administrador.component.css'
 })
 export class NuevoAdministradorComponent {
+  @Input() categoria: string = categoriasPerfil[0];
   texto = obtenerDiccionario();
   
   nombreIngresado: string = '';
@@ -48,8 +49,8 @@ export class NuevoAdministradorComponent {
     if (verificado) {
       this.datosGenerados.emit({
         rol: 'administrador',
-        categoria: categoriasUsuario[0],
-        alias: this.nombreIngresado.trim() + ' (' + categoriasUsuario[0] + ')',
+        categoria: this.categoria,
+        alias: this.nombreIngresado.trim() + ' (' + this.categoria + ')',
 
         nombre: this.nombreIngresado.trim(),
         apellido: this.apellidoIngresado.trim(),

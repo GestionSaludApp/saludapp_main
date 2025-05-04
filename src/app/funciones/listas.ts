@@ -1,5 +1,5 @@
 export const rolesUsuario = ['paciente', 'profesional', 'administrador'];
-export const categoriasUsuario = ['principal', 'alternativo', 'subrogado'];
+export const categoriasPerfil = ['principal', 'alternativo', 'subrogado'];
 
 export const especialidades = [
   'Sin definir',

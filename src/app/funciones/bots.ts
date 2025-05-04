@@ -2,7 +2,7 @@ import { Perfil } from "../clases/perfil";
 import { Usuario } from "../clases/usuario";
 import { BasededatosService } from "../servicios/basededatos.service";
 import { fechaAhora } from "./fechas";
-import { categoriasUsuario } from "./listas";
+import { categoriasPerfil } from "./listas";
 
 /*
 DELETE FROM auditoria;
@@ -28,8 +28,8 @@ export function generarProfesionales(minimo: number, maximo: number, baseDeDatos
     let idEspecialidad = generarNumero(1, 12);
     const datosPerfil = {
       rol: 'profesional' as 'profesional',
-      categoria: categoriasUsuario[0],
-      alias: 'Profesional aleatorio (' + categoriasUsuario[0] + ')',
+      categoria: categoriasPerfil[0],
+      alias: 'Profesional aleatorio (' + categoriasPerfil[0] + ')',
 
       nombre: obtenerAleatorio(nombres),
       apellido: obtenerAleatorio(apellidos),

@@ -1,0 +1,32 @@
+<!-- MUESTRA OPCIONES PARA CREAR UN NUEVO PERFIL -->
+<div>
+
+    <!-- Seleccionar tipo de perfil -->
+    <div>
+      <label for="nuevo-perfil">Crear nuevo perfil</label>
+      <select id="nuevo-perfil" [(ngModel)]="perfilNuevoSeleccionado">
+        <option [ngValue]="null">-- tipo de perfil --</option>
+        <option *ngFor="let perfil of posiblesPerfiles" [ngValue]="perfil">
+          {{ perfil }}
+        </option>
+      </select>
+      
+      <!-- Seleccionar la categoría del nuevo perfil -->
+      <div *ngIf="perfilNuevoSeleccionado">
+        <label for="nueva-categoria">Concepto de perfil</label>
+        <select id="nueva-categoria" [(ngModel)]="categoriaNuevoPerfil">
+          <option [ngValue]="null">-- categoria de perfil --</option>
+          <option *ngFor="let categoria of categoriasPerfilLocal" [ngValue]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Completar datos del nuevo perfil -->
+      <app-nuevo-paciente *ngIf="perfilNuevoSeleccionado === 'paciente'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+      <app-nuevo-profesional *ngIf="perfilNuevoSeleccionado === 'profesional'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+      <app-nuevo-administrador *ngIf="perfilNuevoSeleccionado === 'administrador'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
+
+    </div>
+    
+  </div>
