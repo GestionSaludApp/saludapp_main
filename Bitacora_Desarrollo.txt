@@ -64,3 +64,7 @@ Se implementó la recuperación de disponibilidades desde la bdd
 Se agregó la idProfesional a disponibilidades y turnos
 Se implementó la creación de turnos desde la bdd
 Se implementó la visualización de turnos en el navegador
+
+28/04/2025
+Se implemento un sistema de generación de cuentas para futuras pruebas
+

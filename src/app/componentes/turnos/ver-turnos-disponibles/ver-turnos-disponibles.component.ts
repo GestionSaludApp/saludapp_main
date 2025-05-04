@@ -65,9 +65,6 @@ export class VerTurnosDisponiblesComponent{
     } else {return}
     
     this.baseDeDatos.solicitarTurno(turno).subscribe({
-      next: (nuevoTurno) => {
-        console.log('Turno solicitado: ', nuevoTurno);
-      },
       error: (error) => {
         console.error('Error al solicitar turno:', error.message);
       }

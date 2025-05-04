@@ -21,6 +21,4 @@ export class NavegacionService {
 
   irTurnosDisponibles(){this.router.navigate(['/turnosDisponibles'])}
 
-  irBots(){this.router.navigate(['/bots']);}
-
 }

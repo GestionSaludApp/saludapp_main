@@ -39,54 +39,11 @@ const diccionarioCompleto = {
         horaFin: 'Salida',
         perfil: 'Perfil',
         turno: 'Turno',
-    },
-    en: {
-      mensajeDefault: 'This is the component: ',
-      inicio: 'Home',
-      usuario: 'User',
-      ingreso: 'Login',
-      registro: 'Register',
-      datosPersonales: 'Personal data',
-      calendario: 'Calendar',
-      ayuda: 'Help',
-      error: 'Oops, something went wrong.',
-      escribaSu: 'Write your',
-      nuevo: 'New',
-      eliminar: 'Delete',
-      selecccionarRol: 'Select the role of this profile',
-      faltaInformacion: 'Needed data is missing',
-      email: 'Email',
-      password: 'Password',
-      confirmarpassword: 'Confirm password',
-      rol: 'Role',
-      guardar: 'Save',
-      advertenciaEmail: 'Email must have a valid format (example: text@email.com).',
-      advertenciaPassword: 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.',
-      advertenciaConfirmacionPassword: 'Passwords must match.',
-      nombre: 'Name',
-      apellido: 'Last name',
-      dni: 'ID number',
-      especialidad: 'Specialty',
-      advertenciaNombres: 'Invalid name: It most only contain letters and spaces.',
-      advertenciaDNI: 'Invalid ID: It most only contain numbers.',
-      fechaNacimiento: 'Date of birth',
-      registroExitoso: 'User sucessfully registered.',
-      registroFallido: 'Registration could not be completed. Please try again or verify your details.',
-      ingresoFallido: 'Login could not be completed. Please try again or verify your details.',
-      disponibilidad: 'Schedule',
-      seccional: 'Location',
-      dia: 'Day',
-      horaInicio: 'Start',
-      horaFin: 'Finish',
-      perfil: 'Profile',
-      turno: 'Reservation',
     }
   };
-  
-//Idioma actual
+
 let idiomaActual: keyof typeof diccionarioCompleto = 'es';
 
-//Funcion para cambiar idioma
 export function cambiarIdioma(nuevoIdioma: keyof typeof diccionarioCompleto) {
   idiomaActual = nuevoIdioma;
 }

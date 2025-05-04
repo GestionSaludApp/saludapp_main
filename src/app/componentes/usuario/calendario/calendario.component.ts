@@ -33,8 +33,6 @@ export class CalendarioComponent implements OnInit{
       this.baseDeDatos.buscarTurnosActivos(filtros).subscribe({
         next: (turnos: Turno[]) => {
           this.turnosActivos = turnos;
-  
-          console.log('Turnos reservados:', this.turnosActivos);
         },
         error: (error) => {
           console.error('Error al cargar turnos:', error);

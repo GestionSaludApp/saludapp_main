@@ -42,7 +42,5 @@ export class EncabezadoComponent implements OnInit{
   irRegistro(){this.navegar.irRegistro();}
   irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
 
-  irBots(){this.navegar.irBots();}
-
 
 }

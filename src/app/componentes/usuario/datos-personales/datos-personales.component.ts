@@ -28,7 +28,6 @@ export class DatosPersonalesComponent implements OnInit{
     this.perfilSubscripcion = this.usuarioActual.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
     });
-    console.log('datos personales: ',this.perfilActivo);
   }
 
   ngOnDestroy(): void {

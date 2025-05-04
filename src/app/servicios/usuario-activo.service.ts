@@ -18,9 +18,6 @@ export class UsuarioActivoService {
     const usuario = datosUsuario;
     const perfilActivo = datosPerfilActivo;
 
-    console.log('usuario: ',usuario);
-    console.log('perfil: ',perfilActivo);
-
     let usuarioInstanciado = new Usuario();
 
     // Dependiendo del rol de usuario, se instancia la clase correspondiente
