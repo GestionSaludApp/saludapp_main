@@ -6,7 +6,7 @@ import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { Turno } from '../clases/turno';
-import { Especialidad } from '../funciones/listas';
+import { cargarEspecialidades, Especialidad } from '../funciones/listas';
 
 @Injectable({
   providedIn: 'root'
@@ -131,8 +131,16 @@ export class BasededatosService {
     );
   }
 
-  buscarEspecialidades(): Observable<Especialidad[]> {
-    return this.http.get<Especialidad[]>(`${this.apiUrl}/buscarEspecialidades`);
+  buscarEspecialidades(callback: () => void) {
+    this.http.post<Especialidad[]>(this.apiUrl +'/buscarEspecialidades','').subscribe({
+      next: (listaEspecialidades) => {
+        cargarEspecialidades(listaEspecialidades);
+        callback();
+      },
+      error: (err) => {
+        console.error('Error al cargar especialidades', err);
+      }
+    });
   }
 
 }

@@ -1,27 +1,21 @@
 export const rolesUsuario = ['paciente', 'profesional', 'administrador'];
 export const categoriasPerfil = ['principal', 'alternativo', 'subrogado'];
 
+export var especialidades: string[] = [];
+
 export interface Especialidad {
   idEspecialidad: number;
   nombre: string;
   duracion: number;
 }
 
-export const especialidades = [
-  'Sin definir',
-  'Cardiología',
-  'Clínica Médica',
-  'Dermatología',
-  'Endocrinología',
-  'Ginecología',
-  'Neurología',
-  'Oftalmología',
-  'Oncología',
-  'Otorrinolaringología',
-  'Pediatría',
-  'Psiquiatría',
-  'Traumatología'
-];
+//EJECUTAR AL INICIAR LA APP?
+export function cargarEspecialidades(listaEspecialidades: Especialidad[]) {
+  especialidades = [];
+  for (let especialidad of listaEspecialidades) {
+    especialidades.push(especialidad.nombre);
+  }
+}
 
 export const seccionales = [
   'Sin definir',
