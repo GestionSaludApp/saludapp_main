@@ -1,6 +1,12 @@
 export const rolesUsuario = ['paciente', 'profesional', 'administrador'];
 export const categoriasPerfil = ['principal', 'alternativo', 'subrogado'];
 
+export interface Especialidad {
+  idEspecialidad: number;
+  nombre: string;
+  duracion: number;
+}
+
 export const especialidades = [
   'Sin definir',
   'Cardiología',
