@@ -5,6 +5,10 @@ import { NuevoPacienteComponent } from "../nuevo-paciente/nuevo-paciente.compone
 import { NuevoProfesionalComponent } from "../nuevo-profesional/nuevo-profesional.component";
 import { NuevoAdministradorComponent } from "../nuevo-administrador/nuevo-administrador.component";
 import { NgFor, NgIf } from '@angular/common';
+import { BasededatosService } from '../../../servicios/basededatos.service';
+import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
+import { obtenerDiccionario } from '../../../funciones/diccionario';
+import { NavegacionService } from '../../../servicios/navegacion.service';
 
 @Component({
   selector: 'app-nuevo-perfil',
@@ -15,15 +19,41 @@ import { NgFor, NgIf } from '@angular/common';
 })
 
 export class NuevoPerfilComponent {
+  texto = obtenerDiccionario();
+
   datosPerfil: any = {};
   categoriasPerfilLocal = categoriasPerfil;
-  categoriaNuevoPerfil: string = '';
+  categoriaNuevoPerfil: string = 'categoría';
   posiblesPerfiles: string[] = ['paciente', 'profesional', 'administrador'];
   perfilNuevoSeleccionado: string | null = null;
+  mostrarFormularioNuevoPerfil: boolean = false;
 
-  guardarDatosUsuario(datos: any) {
-    this.datosPerfil = datos;
-    console.log(this.datosPerfil);
+  constructor(private baseDeDatos: BasededatosService, private usuarioActivo: UsuarioActivoService, private navegar: NavegacionService) {}
+
+  guardarDatosUsuario(datos: any) {this.datosPerfil = datos;}
+
+  guardarNuevoPerfil(){
+    this.baseDeDatos.registrarPerfilAdicional(this.usuarioActivo.idUsuario, this.datosPerfil).subscribe({
+      next: () => {
+        alert(this.texto.registroExitoso);
+        this.limpiarFormulario();
+        this.navegar.irDatosPersonales();
+      },
+      error: () => {
+        alert(this.texto.registroFallido);
+        this.limpiarFormulario();
+      }
+    });
+  }
+
+  reiniciarFormulario() {
+    this.mostrarFormularioNuevoPerfil = false;
+    setTimeout(() => this.mostrarFormularioNuevoPerfil = true, 10);
+  }
+
+  limpiarFormulario(){
+    this.perfilNuevoSeleccionado = null;
+    this.mostrarFormularioNuevoPerfil = false;
   }
 
 }

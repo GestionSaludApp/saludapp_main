@@ -66,5 +66,8 @@ Se implementó la creación de turnos desde la bdd
 Se implementó la visualización de turnos en el navegador
 
 28/04/2025
-Se implemento un sistema de generación de cuentas para futuras pruebas
+Se implementó un sistema de generación de cuentas para futuras pruebas
+
+04/05/2025
+Se implementó la creación de nuevos perfiles
 

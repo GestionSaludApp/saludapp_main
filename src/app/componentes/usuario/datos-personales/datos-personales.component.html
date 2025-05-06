@@ -1,3 +1,14 @@
+<div>
+  <label for="perfil">Cambiar perfil</label>
+  <select id="perfil" [(ngModel)]="perfilSeleccionado">
+    <option [ngValue]="null">Seleccionar perfil</option>
+    <option *ngFor="let perfil of perfilesUsuario" [ngValue]="perfil">
+      {{ perfil.alias }}
+    </option>
+  </select>
+  <button (click)="cambiarPerfil()">Activar cambio</button>
+</div>
+
 <div *ngIf="perfilActivo">
 
   <!-- MUESTRA DATOS DE PERFIL -->

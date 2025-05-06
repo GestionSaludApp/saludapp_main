@@ -23,6 +23,8 @@ export class DatosPersonalesComponent implements OnInit{
 
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
+  perfilesUsuario: Perfil[] = [];
+  perfilSeleccionado: Perfil = new Perfil();
   
   constructor(private usuarioActual: UsuarioActivoService) {}
 
@@ -30,12 +32,18 @@ export class DatosPersonalesComponent implements OnInit{
     this.perfilSubscripcion = this.usuarioActual.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
     });
+    this.perfilesUsuario = this.usuarioActual.obtenerPerfiles();
   }
 
   ngOnDestroy(): void {
     if (this.perfilSubscripcion) {
       this.perfilSubscripcion.unsubscribe();
     }
+  }
+
+  cambiarPerfil(){
+    console.log(this.perfilSeleccionado);
+    this.usuarioActual.setPerfil(this.perfilSeleccionado);
   }
 
 }

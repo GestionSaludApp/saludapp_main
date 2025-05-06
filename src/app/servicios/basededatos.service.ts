@@ -46,6 +46,39 @@ export class BasededatosService {
       })
     );
   }
+
+  ingresarPerfil(idUsuario: number, idPerfil: number): Observable<Perfil> {
+    const body = { idUsuario, idPerfil };
+
+    return this.http.post<any>(this.apiUrl + '/ingresarPerfil', body).pipe(
+      tap(datos => {
+        this.usuarioActivo.setPerfil(datos.perfilActivo);
+      }),
+      catchError(error => {
+        console.error('Error al buscar perfil:', error);
+        return throwError(() => error);
+      })
+    );
+  }
+
+  registrarPerfilAdicional(idUsuario: number, nuevoPerfil: Perfil): Observable<any> {
+
+    const body = {
+      idUsuario: idUsuario,
+      nuevoPerfil: nuevoPerfil
+    };
+
+    console.log(body);
+
+    return this.http.post(this.apiUrl + '/registrarPerfilAdicional', body)
+      .pipe(
+        catchError(error => {
+          console.error('Error al registrar el nuevo perfil:', error);
+          return throwError(error);
+        })
+      );
+
+  }
   
   buscarDisponibilidades(filtros: any): Observable<Disponibilidad[]> {
     return this.http.post<any[]>(this.apiUrl + '/buscarDisponibilidades', filtros).pipe(
