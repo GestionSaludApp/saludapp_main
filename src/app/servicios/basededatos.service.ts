@@ -6,7 +6,8 @@ import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { Turno } from '../clases/turno';
-import { cargarEspecialidades, Especialidad } from '../funciones/listas';
+import { cargarEspecialidades } from '../funciones/listas';
+import { Especialidad } from '../clases/interfaces';
 
 @Injectable({
   providedIn: 'root'

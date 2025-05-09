@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { especialidades } from '../../../funciones/listas';
 import { NgFor } from '@angular/common';
+import { Especialidad } from '../../../clases/interfaces';
 
 @Component({
   selector: 'app-especialidades',
@@ -11,7 +12,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './especialidades.component.css'
 })
 export class EspecialidadesComponent implements OnInit{
-  especialidadesLocal: string[] = [];
+  especialidadesLocal: Especialidad[] = [];
 
   constructor(private baseDeDatos: BasededatosService){}
 

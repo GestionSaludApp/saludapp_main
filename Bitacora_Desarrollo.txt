@@ -70,4 +70,5 @@ Se implementó un sistema de generación de cuentas para futuras pruebas
 
 04/05/2025
 Se implementó la creación de nuevos perfiles
+Se implementó la lsita de especialidades en bdd
 
