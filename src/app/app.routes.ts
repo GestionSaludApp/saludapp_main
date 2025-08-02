@@ -11,6 +11,8 @@ import { DatosPersonalesComponent } from './componentes/usuario/datos-personales
 import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
 import { VerTurnosDisponiblesComponent } from './componentes/turnos/ver-turnos-disponibles/ver-turnos-disponibles.component';
 
+import { EspecialidadesComponent } from './componentes/gestionElementos/especialidades/especialidades.component';
+
 
 
 export const routes: Routes = [
@@ -23,6 +25,8 @@ export const routes: Routes = [
 
     { path: 'registro', component: RegistroComponent },
     { path: 'ingreso', component: IngresoComponent },
+
+    { path: 'especialidades', component: EspecialidadesComponent },
 
     { path: 'ayuda', component: AyudaComponent },
     { path: 'error', component: ErrorComponent },

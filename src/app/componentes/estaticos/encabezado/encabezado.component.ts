@@ -39,6 +39,7 @@ export class EncabezadoComponent implements OnInit{
   irCalendario(){this.navegar.irCalendario();}
   irRegistro(){this.navegar.irRegistro();}
   irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
+  irEspecialidades(){this.navegar.irEspecialidades();}
 
 
 }
