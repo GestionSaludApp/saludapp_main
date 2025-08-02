@@ -1,19 +1,19 @@
 <div>
 
     <div>
-        <label for="nombre">{{texto.nombre}}: </label>
+        <label for="nombre">Nombre: </label>
         <input id="nombre" [(ngModel)]="nombreIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.nombre"/>
     </div>
 
 
     <div>
-        <label for="apellido">{{texto.apellido}}: </label>
+        <label for="apellido">Apellido: </label>
         <input id="apellido" [(ngModel)]="apellidoIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.apellido"/>
         <p class="advertencia">{{advertenciaNombres}}</p>
     </div>
 
     <div>
-        <label for="dni">{{texto.dni}}: </label>
+        <label for="dni">DNI: </label>
         <input id="dni" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="dniIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.dni"/>
         <p class="advertencia">{{advertenciaDNI}}</p>
     </div>
@@ -70,10 +70,10 @@
                 />
             </div>
 
-            <button (click)="eliminarDisponibilidad(i)">{{texto.eliminar}}</button>
+            <button (click)="eliminarDisponibilidad(i)">Eliminar</button>
         </div>
 
-        <button (click)="agregarDisponibilidad()">{{texto.nuevo}} {{texto.dia}}</button>
+        <button (click)="agregarDisponibilidad()">Nuevo Día</button>
     </div>
     <!--FIN DISPONIBILIDADES -->
 

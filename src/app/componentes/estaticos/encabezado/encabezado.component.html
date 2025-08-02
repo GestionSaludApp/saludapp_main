@@ -4,25 +4,25 @@
 
 <div>
     <div >
-        <button name="botonInicio" (click)="irInicio()">{{texto.inicio}}</button>
+        <button name="botonInicio" (click)="irInicio()">Inicio</button>
     </div>
     
     <div >
-        <button name="botonAyuda" (click)="irAyuda()">{{texto.ayuda}}</button>
+        <button name="botonAyuda" (click)="irAyuda()">Ayuda</button>
     </div>
 
     <div>
-        <button name="botonError" (click)="irError()">{{texto.error}}</button>
+        <button name="botonError" (click)="irError()">Ups, algo salió mal.</button>
     </div>
 </div>
 
 <div *ngIf="perfilActivo">
     <div>
-        <button name="botonDatosPersonales" (click)="irDatosPersonales()">{{texto.datosPersonales}}</button>
+        <button name="botonDatosPersonales" (click)="irDatosPersonales()">Datos personales</button>
     </div>
     
     <div>
-        <button name="botonCalendario" (click)="irCalendario()">{{texto.calendario}}</button>
+        <button name="botonCalendario" (click)="irCalendario()">Calendario</button>
     </div>
 
     <div>
@@ -32,10 +32,10 @@
 
 <div *ngIf="!perfilActivo">
     <div>
-        <button name="botonRegistro" (click)="irRegistro()">{{texto.registro}}</button>
+        <button name="botonRegistro" (click)="irRegistro()">Registro</button>
     </div>
 
     <div>
-        <button name="botonIngreso" (click)="irIngreso()">{{texto.ingreso}}</button>
+        <button name="botonIngreso" (click)="irIngreso()">Ingreso</button>
     </div>
 </div>

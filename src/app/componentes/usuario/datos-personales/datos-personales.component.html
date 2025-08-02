@@ -13,14 +13,14 @@
 
   <!-- MUESTRA DATOS DE PERFIL -->
   <div>
-    {{texto.perfil}}: {{ perfilActivo.alias }}
+    Perfil: {{ perfilActivo.alias }}
 
-      <p>{{texto.nombre}}: {{ perfilActivo.nombre }}</p>
-      <p>{{texto.apellido}}: {{ perfilActivo.apellido }}</p>
-      <p>{{texto.dni}}: {{ perfilActivo.dni }}</p>
+      <p>Nombre: {{ perfilActivo.nombre }}</p>
+      <p>Apellido: {{ perfilActivo.apellido }}</p>
+      <p>DNI: {{ perfilActivo.dni }}</p>
       <p>{{texto.fechaNacimiento}}: {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
 
-      <p>{{texto.rol}}: {{ perfilActivo.rol }}</p>
+      <p>Rol: {{ perfilActivo.rol }}</p>
 
       <div *ngIf="perfilActivo.rol === 'profesional'">
         <p>{{texto.especialidad}}: {{ perfilActivo.especialidad }}</p>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { NavegacionService } from '../../../servicios/navegacion.service';
 import { Subscription } from 'rxjs';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
@@ -14,7 +13,6 @@ import { Perfil } from '../../../clases/perfil';
   styleUrl: './encabezado.component.css'
 })
 export class EncabezadoComponent implements OnInit{
-  texto = obtenerDiccionario();
   
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
