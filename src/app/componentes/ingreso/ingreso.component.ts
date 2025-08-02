@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { obtenerDiccionario } from '../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
@@ -13,7 +12,6 @@ import { generarProfesionales } from '../../funciones/bots';
   styleUrl: './ingreso.component.css'
 })
 export class IngresoComponent {
-  texto = obtenerDiccionario();
 
   emailIngresado: string = '';
   advertenciaEmail: string = '';
@@ -27,7 +25,7 @@ export class IngresoComponent {
     let verificado = true;
 
     if (this.emailIngresado.trim() === '' || !emailRegex.test(this.emailIngresado)) {
-      textoAdvertencia = this.texto.advertenciaEmail;
+      textoAdvertencia = 'El correo electrónico debe tener un formato válido (ej: texto@correo.com).';
       verificado = false;
     }
 
@@ -48,7 +46,7 @@ export class IngresoComponent {
           this.navegar.irInicio();
         },
         error: () => {
-          alert(this.texto.ingresoFallido);
+          alert('No se pudo completar el ingreso. Intente nuevamente o verifique los datos.');
           this.limpiarCampos();
         }
       });

@@ -1,6 +1,5 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { Turno } from '../../../clases/turno';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
@@ -13,7 +12,6 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
   styleUrl: './calendario.component.css'
 })
 export class CalendarioComponent implements OnInit{
-  texto = obtenerDiccionario();
 
   turnosActivos: Turno[] = [];
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { rolesUsuario } from '../../funciones/listas';
-import { obtenerDiccionario } from '../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../servicios/basededatos.service';
@@ -19,7 +18,6 @@ import { NuevoAdministradorComponent } from "../nuevosElementos/nuevo-administra
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
-  texto = obtenerDiccionario();
   rolesUsuarioLocal = rolesUsuario;
 
   emailIngresado: string = '';
@@ -52,12 +50,12 @@ export class RegistroComponent {
 
       this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
         next: () => {
-          alert(this.texto.registroExitoso);
+          alert('Usuario registrado con éxito.');
           this.limpiarCampos();
           this.navegar.irInicio();
         },
         error: () => {
-          alert(this.texto.registroFallido);
+          alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
           this.limpiarCampos();
         }
       });
@@ -80,7 +78,7 @@ export class RegistroComponent {
     let verificado = true;
 
     if (this.emailIngresado.trim() === '' || !emailRegex.test(this.emailIngresado)) {
-      textoAdvertencia = this.texto.advertenciaEmail;
+      textoAdvertencia = 'El correo electrónico debe tener un formato válido (ej: texto@correo.com).';
       verificado = false;
     }
 
@@ -95,12 +93,12 @@ export class RegistroComponent {
     let verificado = true;
 
     if (!passwordRegex.test(this.passwordIngresado)) {
-      textoAdvertencia = this.texto.advertenciaPassword;
+      textoAdvertencia = 'La contraseña debe tener al menos 8 caracteres, incluir al menos una mayúscula, una minúscula, un número y un carácter especial.';
       verificado = false;
     }
 
     if(this.passwordIngresado != this.passwordConfirmacionIngresado) {
-      textoAdvertenciaConfirmacion = this.texto.advertenciaConfirmacionPassword;
+      textoAdvertenciaConfirmacion = 'Las contraseñas no coinciden.';
       verificado = false;
     }
 

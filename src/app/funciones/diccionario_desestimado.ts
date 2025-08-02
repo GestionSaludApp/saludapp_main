@@ -30,7 +30,7 @@ const diccionarioCompleto = {
         advertenciaDNI: 'DNI inválido: debe contener solo números.',
         fechaNacimiento: 'Fecha de nacimiento',
         registroExitoso: 'Usuario registrado con éxito.',
-        registroFallido: 'No se pudo completar el registro. Intente nuevamente o verifique los datos.',
+        registroFallido: 'No se pudo completar el registro. Verifique los datos e intente nuevamente.',
         ingresoFallido: 'No se pudo completar el ingreso. Intente nuevamente o verifique los datos.',
         disponibilidad: 'Cronograma',
         seccional: 'Localización',

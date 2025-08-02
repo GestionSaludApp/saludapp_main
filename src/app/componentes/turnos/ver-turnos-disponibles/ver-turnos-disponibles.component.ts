@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Turno } from '../../../clases/turno';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { NgFor, NgIf } from '@angular/common';
@@ -17,7 +16,6 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
   styleUrl: './ver-turnos-disponibles.component.css'
 })
 export class VerTurnosDisponiblesComponent{
-  texto = obtenerDiccionario();
   diasLocal = dias;
   seccionalesLocal = seccionales;
   especialidadesLocal = especialidades;

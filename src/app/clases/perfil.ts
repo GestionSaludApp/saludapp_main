@@ -59,7 +59,7 @@ export class Profesional extends Perfil<Profesional>{
     }
 
     override get especialidad(): string | null {
-      return especialidades[this.idEspecialidad];
+      return especialidades[this.idEspecialidad].nombre;
     }
     override get cronograma(): Disponibilidad[] | null {
       return this.disponibilidad;

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { NgFor, NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { especialidades } from '../../../funciones/listas';
 import { dias } from '../../../funciones/fechas';
 import { Perfil } from '../../../clases/perfil';
@@ -17,7 +16,6 @@ import { NuevoPerfilComponent } from "../../nuevosElementos/nuevo-perfil/nuevo-p
   styleUrl: './datos-personales.component.css'
 })
 export class DatosPersonalesComponent implements OnInit{
-  texto = obtenerDiccionario();
   especialidades = especialidades;
   dias = dias;
 

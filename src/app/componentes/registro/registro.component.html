@@ -3,20 +3,20 @@
 
     <div>
         <label for="email">Email: </label>
-        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="texto.escribaSu + ' ' + texto.email"/>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="'Escriba su email'"/>
         <p class="advertencia">{{advertenciaEmail}}</p>
     </div>
 
 
     <div>
         <label for="password">Contraseña: </label>
-        <input id="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" [placeholder]="texto.escribaSu + ' ' + texto.password"/>
+        <input id="password" [(ngModel)]="passwordIngresado" (ngModelChange)="verificarPassword()" [placeholder]="'Escriba su contraseña'"/>
         <p class="advertencia">{{advertenciaPassword}}</p>
     </div>
 
     <div>
         <label for="confirmarpassword">Confirmar contraseña: </label>
-        <input id="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" [placeholder]="texto.escribaSu + ' ' + texto.password"/>
+        <input id="confirmarpassword" [(ngModel)]="passwordConfirmacionIngresado" (ngModelChange)="verificarPassword()" [placeholder]="'Repita su contraseña'"/>
         <p class="advertencia">{{advertenciaConfirmacionPassword}}</p>
     </div>
 
@@ -40,7 +40,7 @@
         <button (click)="registrarUsuario()">
             <i class="fa-solid fa-floppy-disk"></i>
         </button>
-        {{ texto.guardar }}
+        Guardar
     </div>
 
 </div>

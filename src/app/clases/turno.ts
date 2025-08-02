@@ -29,7 +29,7 @@ export class Turno {
         return seccionales[this.idSeccional];
     }
     especialidad(): string {
-        return especialidades[this.idEspecialidad];
+        return especialidades[this.idEspecialidad].nombre;
     }
     dia():string{
         return dias[this.diaSemana];
