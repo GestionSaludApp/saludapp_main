@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { FormsModule } from '@angular/forms';
 import { dias, formatearFechaSinHora, leerMinutos } from '../../../funciones/fechas';
 import { categoriasPerfil, especialidades, seccionales } from '../../../funciones/listas';
@@ -15,7 +14,6 @@ import { Disponibilidad } from '../../../clases/disponibilidad';
 })
 export class NuevoProfesionalComponent {
   @Input() categoria: string = categoriasPerfil[0];
-  texto = obtenerDiccionario();
   listaEspecialidadesLocal = especialidades;
   listaSeccionalesLocal = seccionales;
   listaDiasLocal = dias;
@@ -40,11 +38,11 @@ export class NuevoProfesionalComponent {
     let verificado: boolean = true;
   
     if (!soloLetrasRegex.test(this.nombreIngresado) || !soloLetrasRegex.test(this.apellidoIngresado)) {
-      textoAdvertenciaNombres = this.texto.advertenciaNombres;
+      textoAdvertenciaNombres = 'Nombre inválido: solo debe contener letras y espacios.';
       verificado = false;
     }
     if (!soloNumerosRegex.test(this.dniIngresado)) {
-      textoAdvertenciaDNI = this.texto.advertenciaDNI;
+      textoAdvertenciaDNI = 'DNI inválido: debe contener solo números.';
       verificado = false;
     }
 

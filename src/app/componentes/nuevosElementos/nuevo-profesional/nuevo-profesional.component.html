@@ -1,30 +1,30 @@
-<div>
+<div class="VentanaNivel1">
 
     <div>
         <label for="nombre">Nombre: </label>
-        <input id="nombre" [(ngModel)]="nombreIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.nombre"/>
+        <input id="nombre" [(ngModel)]="nombreIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su nombre'"/>
     </div>
 
 
     <div>
         <label for="apellido">Apellido: </label>
-        <input id="apellido" [(ngModel)]="apellidoIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.apellido"/>
+        <input id="apellido" [(ngModel)]="apellidoIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su apellido'"/>
         <p class="advertencia">{{advertenciaNombres}}</p>
     </div>
 
     <div>
         <label for="dni">DNI: </label>
-        <input id="dni" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="dniIngresado" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.dni"/>
+        <input id="dni" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="dniIngresado" (ngModelChange)="emitirDatos()" [placeholder]="'Escriba su DNI'"/>
         <p class="advertencia">{{advertenciaDNI}}</p>
     </div>
 
     <div>
-        <label for="fechaNacimiento">{{texto.fechaNacimiento}}: </label>
-        <input id="fechaNacimiento" type="date" [(ngModel)]="fechaNacimientoIngresada" (ngModelChange)="emitirDatos()" [placeholder]="texto.escribaSu + ' ' + texto.fechaNacimiento"/>
+        <label for="fechaNacimiento">Fecha de nacimiento: </label>
+        <input id="fechaNacimiento" type="date" [(ngModel)]="fechaNacimientoIngresada" (ngModelChange)="emitirDatos()" [placeholder]="'Selecione su fecha de nacimiento'"/>
     </div>
 
     <div>
-        <label for="especialidad">{{ texto.especialidad }}: </label>
+        <label for="especialidad">Especialidad: </label>
         <select id="especialidad" [(ngModel)]="especialidadSeleccionada" (ngModelChange)="emitirDatos()">
           <option *ngFor="let esp of listaEspecialidadesLocal; let i = index" [value]="i">{{ esp }}</option>
         </select>
@@ -32,26 +32,26 @@
 
     <!-- DISPONIBILIDADES -->
     <div>
-        <label for="disponibilidad">{{ texto.disponibilidad }}: </label>
+        <label for="disponibilidad">Disponibilidad horaria: </label>
 
         <div *ngFor="let disp of disponibilidadesCreadas; let i = index">
 
             <div>
-                <label for="seccional">{{ texto.seccional }}: </label>
+                <label for="seccional">Seccional: </label>
                 <select id="seccional" [(ngModel)]="disp.idSeccional" (ngModelChange)="emitirDatos()">
                   <option *ngFor="let sec of listaSeccionalesLocal; let i = index" [value]="i">{{ sec }}</option>
                 </select>
             </div>
 
             <div>
-                <label for="dia">{{ texto.dia }}: </label>
+                <label for="dia">Día: </label>
                 <select id="dia" [(ngModel)]="disp.diaSemana" (ngModelChange)="emitirDatos()">
                   <option *ngFor="let dia of listaDiasLocal; let i = index" [value]="i">{{ dia }}</option>
                 </select>
             </div>
 
             <div>
-                <label for="horaInicio">{{ texto.horaInicio }}: </label>
+                <label for="horaInicio">Hora de inicio: </label>
                 <input
                     id="horaInicio"
                     type="time"
@@ -61,7 +61,7 @@
             </div>
 
             <div>
-                <label for="horaFin">{{ texto.horaFin }}: </label>
+                <label for="horaFin">Hora de inicio: </label>
                 <input
                     id="horaFin"
                     type="time"

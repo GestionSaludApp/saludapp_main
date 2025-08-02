@@ -1,6 +1,6 @@
-<h2>Turnos disponibles</h2>
+<div class="VentanaNivel0">
 
-<div>
+<h2>Buscar turnos disponibles</h2>
 
 <label>Día de la semana:
     <select [(ngModel)]="filtroDia" (change)="filtrar()">
@@ -25,12 +25,13 @@
 
 </div>
 
-<h3>Turnos disponibles</h3>
-<ul *ngIf="turnosDisponibles.length > 0">
-  <li *ngFor="let t of turnosDisponibles">
-    <button (click)="solicitarTurno(t)">Solicitar</button>
-    {{t.especialidad()}} en {{ t.seccional() }}
-    {{ t.dia() }} {{ t.horarioInicio() }}
-  </li>
-</ul>
-
+<div class="VentanaNivel1">
+  <h3>Turnos disponibles</h3>
+  <ul *ngIf="turnosDisponibles.length > 0">
+    <li *ngFor="let t of turnosDisponibles">
+      <button (click)="solicitarTurno(t)">Solicitar</button>
+      {{t.especialidad()}} en {{ t.seccional() }}
+      {{ t.dia() }} {{ t.horarioInicio() }}
+    </li>
+  </ul>
+</div>

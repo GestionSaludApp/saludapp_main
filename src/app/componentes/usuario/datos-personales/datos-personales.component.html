@@ -1,40 +1,42 @@
-<div>
-  <label for="perfil">Cambiar perfil</label>
-  <select id="perfil" [(ngModel)]="perfilSeleccionado">
-    <option [ngValue]="null">Seleccionar perfil</option>
-    <option *ngFor="let perfil of perfilesUsuario" [ngValue]="perfil">
-      {{ perfil.alias }}
-    </option>
-  </select>
-  <button (click)="cambiarPerfil()">Activar cambio</button>
-</div>
+<div class="VentanaNivel0">
 
-<div *ngIf="perfilActivo">
+  <div class="VentanaNivel1">
+    <label for="perfil">Cambiar perfil</label>
+    <select id="perfil" [(ngModel)]="perfilSeleccionado">
+      <option [ngValue]="null">Seleccionar perfil</option>
+      <option *ngFor="let perfil of perfilesUsuario" [ngValue]="perfil">
+        {{ perfil.alias }}
+      </option>
+    </select>
+    <button (click)="cambiarPerfil()">Activar cambio</button>
+  </div>
 
-  <!-- MUESTRA DATOS DE PERFIL -->
-  <div>
-    Perfil: {{ perfilActivo.alias }}
+  <div *ngIf="perfilActivo" class="VentanaNivel1">
 
-      <p>Nombre: {{ perfilActivo.nombre }}</p>
-      <p>Apellido: {{ perfilActivo.apellido }}</p>
-      <p>DNI: {{ perfilActivo.dni }}</p>
-      <p>Fecha de nacimiento: {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
+    <!-- MUESTRA DATOS DE PERFIL -->
+    <div>
+      Perfil: {{ perfilActivo.alias }}
 
-      <p>Rol: {{ perfilActivo.rol }}</p>
+        <p>Nombre: {{ perfilActivo.nombre }}</p>
+        <p>Apellido: {{ perfilActivo.apellido }}</p>
+        <p>DNI: {{ perfilActivo.dni }}</p>
+        <p>Fecha de nacimiento: {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
 
-      <div *ngIf="perfilActivo.rol === 'profesional'">
-        <p>Especialidad: {{ perfilActivo.especialidad }}</p>
-        Disponibilidad horaria:
-          <div *ngFor="let horario of perfilActivo.cronograma">
-              {{ horario.seccional() }} {{ horario.dia() }} de 
-              {{ horario.horarioInicio() }} a {{ horario.horarioFin() }}
-          </div>
-      </div>
+        <p>Rol: {{ perfilActivo.rol }}</p>
+
+        <div *ngIf="perfilActivo.rol === 'profesional'">
+          <p>Especialidad: {{ perfilActivo.especialidad }}</p>
+          Disponibilidad horaria:
+            <div *ngFor="let horario of perfilActivo.cronograma">
+                {{ horario.seccional() }} {{ horario.dia() }} de 
+                {{ horario.horarioInicio() }} a {{ horario.horarioFin() }}
+            </div>
+        </div>
+    </div>
+
   </div>
 
   <!-- PERMITE CREAR NUEVOS PERFILES -->
-  <br>
   <app-nuevo-perfil></app-nuevo-perfil>
 
 </div>
-

@@ -7,7 +7,6 @@ import { NuevoAdministradorComponent } from "../nuevo-administrador/nuevo-admini
 import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
-import { obtenerDiccionario } from '../../../funciones/diccionario';
 import { NavegacionService } from '../../../servicios/navegacion.service';
 
 @Component({
@@ -19,7 +18,6 @@ import { NavegacionService } from '../../../servicios/navegacion.service';
 })
 
 export class NuevoPerfilComponent {
-  texto = obtenerDiccionario();
 
   datosPerfil: any = {};
   categoriasPerfilLocal = categoriasPerfil;
@@ -35,12 +33,12 @@ export class NuevoPerfilComponent {
   guardarNuevoPerfil(){
     this.baseDeDatos.registrarPerfilAdicional(this.usuarioActivo.idUsuario, this.datosPerfil).subscribe({
       next: () => {
-        alert(this.texto.registroExitoso);
+        alert('Usuario registrado con éxito.');
         this.limpiarFormulario();
         this.navegar.irDatosPersonales();
       },
       error: () => {
-        alert(this.texto.registroFallido);
+        alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
         this.limpiarFormulario();
       }
     });
