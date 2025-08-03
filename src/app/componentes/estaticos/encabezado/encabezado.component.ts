@@ -34,11 +34,8 @@ export class EncabezadoComponent implements OnInit{
   irAyuda(){this.navegar.irAyuda();}
   irInicio(){this.navegar.irInicio();}
   irIngreso(){this.navegar.irIngreso();}
-  irDatosPersonales(){this.navegar.irDatosPersonales();}
   irError(){this.navegar.irError();}
-  irCalendario(){this.navegar.irCalendario();}
   irRegistro(){this.navegar.irRegistro();}
-  irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
   irEspecialidades(){this.navegar.irEspecialidades();}
 
 

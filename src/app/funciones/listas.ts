@@ -1,4 +1,5 @@
-import { Especialidad, Seccional } from "../clases/interfaces";
+import { Especialidad } from "../clases/especialidad";
+import { Seccional } from "../clases/seccional";
 
 export const rolesUsuario = ['paciente', 'profesional', 'administrador'];
 export const categoriasPerfil = ['principal', 'alternativo', 'subrogado'];

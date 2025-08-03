@@ -1,1 +1,13 @@
-<p>inicio works!</p>
+<div *ngIf="perfilActivo">
+    <div>
+        <button name="botonDatosPersonales" (click)="irDatosPersonales()">Datos personales</button>
+    </div>
+    
+    <div>
+        <button name="botonCalendario" (click)="irCalendario()">Calendario</button>
+    </div>
+
+    <div *ngIf="perfilActivo.rol==='paciente'">
+        <button name="botonTurnosDisponibles" (click)="irTurnosDisponibles()">Nuevo turno</button>
+    </div>
+</div>

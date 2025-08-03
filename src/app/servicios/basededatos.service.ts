@@ -7,7 +7,7 @@ import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { Turno } from '../clases/turno';
 import { cargarEspecialidades } from '../funciones/listas';
-import { Especialidad } from '../clases/interfaces';
+import { Especialidad } from '../clases/especialidad';
 
 @Injectable({
   providedIn: 'root'

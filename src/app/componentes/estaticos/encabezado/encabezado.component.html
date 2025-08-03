@@ -16,20 +16,6 @@
     </div>
 </div>
 
-<div *ngIf="perfilActivo">
-    <div>
-        <button name="botonDatosPersonales" (click)="irDatosPersonales()">Datos personales</button>
-    </div>
-    
-    <div>
-        <button name="botonCalendario" (click)="irCalendario()">Calendario</button>
-    </div>
-
-    <div>
-        <button name="botonTurnosDisponibles" (click)="irTurnosDisponibles()">Nuevo turno</button>
-    </div>
-</div>
-
 <div *ngIf="!perfilActivo">
     <div>
         <button name="botonRegistro" (click)="irRegistro()">Registro</button>
