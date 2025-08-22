@@ -10,6 +10,7 @@ import { Disponibilidad } from '../clases/disponibilidad';
 export class UsuarioActivoService {
   
   private usuarioSubject = new BehaviorSubject<Usuario | null>(null);
+  private perfilSubject = new BehaviorSubject<Perfil | null>(null);
 
   constructor() { }
 

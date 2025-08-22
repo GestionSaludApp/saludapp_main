@@ -133,14 +133,14 @@ export class BasededatosService {
   }
 
   buscarEspecialidades(callback: () => void) {
-    this.http.post<Especialidad[]>(this.apiUrl +'/buscarEspecialidades','').subscribe({
-      next: (listaEspecialidades) => {
-        cargarEspecialidades(listaEspecialidades);
-        callback();
-      },
-      error: (err) => {
-        console.error('Error al cargar especialidades', err);
-      }
+  this.http.post<Especialidad[]>(this.apiUrl +'/buscarEspecialidades','').subscribe({
+    next: (listaEspecialidades) => {
+      cargarEspecialidades(listaEspecialidades);
+      callback();
+    },
+    error: (err) => {
+      console.error('Error al cargar especialidades', err);
+    }
     });
   }
 

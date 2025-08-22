@@ -43,6 +43,50 @@ export class EspecialidadesComponent implements OnInit{
     this.mostrarPanelNueva = !this.mostrarPanelNueva;
   }
 
+  exportarCSV() {
+  const csvContent = this.generarCSV(this.especialidadesLocal);
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  
+  const url = URL.createObjectURL(blob);
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'especialidades_disponibles.csv');
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+  generarCSV(especialidades: Especialidad[]): string {
+    const headers = 'Especialidad; Duracion\n';
+    const rows = especialidades.map(especialidad => {
+      return `${this.eliminarTildes(especialidad.nombre)}; ${especialidad.duracion} minutos`;
+    });
+
+    return headers + rows.join('\n');
+  }
+
+  eliminarTildes(palabra: string): string {
+    let nuevaPalabra = '';
+
+    for (let letra of palabra) {
+        if (letra === 'á') {
+            nuevaPalabra += 'a';
+        } else if (letra === 'é') {
+            nuevaPalabra += 'e';
+        } else if (letra === 'í') {
+            nuevaPalabra += 'i';
+        } else if (letra === 'ó') {
+            nuevaPalabra += 'o';
+        } else if (letra === 'ú') {
+            nuevaPalabra += 'u';
+        } else {
+            nuevaPalabra += letra;
+        }
+    }
+    return nuevaPalabra;
+  }
+
   proxy(){}
 
 }
