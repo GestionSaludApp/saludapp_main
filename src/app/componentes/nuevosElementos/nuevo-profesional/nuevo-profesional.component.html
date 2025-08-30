@@ -26,7 +26,7 @@
     <div>
         <label for="especialidad">Especialidad: </label>
         <select id="especialidad" [(ngModel)]="especialidadSeleccionada" (ngModelChange)="emitirDatos()">
-          <option *ngFor="let esp of listaEspecialidadesLocal; let i = index" [value]="i">{{ esp }}</option>
+          <option *ngFor="let esp of listaEspecialidadesLocal; let i = index" [value]="i">{{ esp.nombre }}</option>
         </select>
     </div>
 
