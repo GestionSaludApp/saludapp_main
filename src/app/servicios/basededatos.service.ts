@@ -18,25 +18,6 @@ export class BasededatosService {
 
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
-  /*
-  registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil): Observable<any> {
-
-    const body = {
-      nuevoUsuario,
-      nuevoPerfil: nuevoPerfil
-    };
-
-    return this.http.post(this.apiUrl + '/registrarUsuario', body)
-      .pipe(
-        catchError(error => {
-          console.error('Error al registrar usuario:', error);
-          return throwError(error);
-        })
-      );
-
-  }
-  */
-
   registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil, imagen: File | null): Observable<any> {
     console.log("llego a base de datos");
     const formData = new FormData();

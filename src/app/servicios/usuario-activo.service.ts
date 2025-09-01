@@ -36,6 +36,7 @@ export class UsuarioActivoService {
     // Guarda la instancia del usuario en el servicio
     usuarioInstanciado.cargarDatos(usuario);
     usuarioInstanciado.perfilActivo.cargarDatos(perfilActivo);
+
     if (usuarioInstanciado.perfilActivo instanceof Profesional) {
       usuarioInstanciado.perfilActivo.disponibilidad = [];
       for (let disp of perfilActivo.disponibilidad) {
