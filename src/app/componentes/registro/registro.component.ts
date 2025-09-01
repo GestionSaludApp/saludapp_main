@@ -30,6 +30,8 @@ export class RegistroComponent {
   advertenciaConfirmacionPassword: string = '';
 
   rolSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
+  imagenSeleccionada: File | null = null;
+
   datosUsuario: any = {};
   camposPorRol: Record<string, string[]> = {
     paciente: ['nombre', 'apellido', 'dni', 'fechaNacimiento'],
@@ -39,6 +41,7 @@ export class RegistroComponent {
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
+  /*
   registrarUsuario() {
     if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {
       let nuevoUsuario = new Usuario();
@@ -59,6 +62,37 @@ export class RegistroComponent {
           this.limpiarCampos();
         }
       });
+    }
+  }
+  */
+
+  registrarUsuario() {
+    console.log("llego a registro de usuario");
+    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {
+      let nuevoUsuario = new Usuario();
+      nuevoUsuario.email = this.emailIngresado;
+      nuevoUsuario.password = this.passwordIngresado;
+      nuevoUsuario.fechaCreacion = fechaAhora;
+      nuevoUsuario.ultimoIngreso = fechaAhora;
+
+      this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario, this.imagenSeleccionada)
+        .subscribe({
+          next: () => {
+            alert('Usuario registrado con éxito.');
+            this.limpiarCampos();
+            this.navegar.irInicio();
+          },
+          error: () => {
+            alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
+            this.limpiarCampos();
+          }
+        });
+    }
+  }
+
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.imagenSeleccionada = event.target.files[0];
     }
   }
 

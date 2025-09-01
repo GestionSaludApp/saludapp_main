@@ -18,6 +18,7 @@ export class BasededatosService {
 
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
+  /*
   registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil): Observable<any> {
 
     const body = {
@@ -33,6 +34,28 @@ export class BasededatosService {
         })
       );
 
+  }
+  */
+
+  registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil, imagen: File | null): Observable<any> {
+    console.log("llego a base de datos");
+    const formData = new FormData();
+
+    // Convertimos los objetos en string para enviarlos como JSON dentro de formData
+    formData.append('nuevoUsuario', JSON.stringify(nuevoUsuario));
+    formData.append('nuevoPerfil', JSON.stringify(nuevoPerfil));
+
+    if (imagen) {
+      formData.append('imagen', imagen);
+    }
+
+    return this.http.post(this.apiUrl + '/registrarUsuario', formData)
+      .pipe(
+        catchError(error => {
+          console.error('Error al registrar usuario:', error);
+          return throwError(error);
+        })
+      );
   }
 
   ingresarUsuario(email: string, password: string): Observable<Usuario> {

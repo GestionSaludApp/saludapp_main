@@ -42,7 +42,7 @@ export function generarProfesionales(minimo: number, maximo: number, baseDeDatos
     let nuevoPerfil = new Perfil();
     nuevoPerfil.cargarDatos(datosPerfil);
 
-    baseDeDatos.registrarUsuario(nuevoUsuario, nuevoPerfil).subscribe({
+    baseDeDatos.registrarUsuario(nuevoUsuario, nuevoPerfil, null).subscribe({
       error: (err) => console.error(`Error registrando profesional ${numero}: `, err)
     });
   }

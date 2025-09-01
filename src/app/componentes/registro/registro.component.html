@@ -31,6 +31,10 @@
     </div>
 
     <div>
+        <input id="imagen" type="file" (change)="onFileSelected($event)" accept="image/*">
+    </div>
+
+    <div>
         <app-nuevo-paciente *ngIf="rolSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
         <app-nuevo-profesional *ngIf="rolSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
         <app-nuevo-administrador *ngIf="rolSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
