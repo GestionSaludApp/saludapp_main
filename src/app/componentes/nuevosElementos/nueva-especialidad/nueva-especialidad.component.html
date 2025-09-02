@@ -1,17 +1,38 @@
-<div class="VentanaNivel1">
+<div class="container">
+  <h2>Nueva Especialidad</h2>
 
-    <div>
-        <label for="nombre">Nombre: </label>
-        <input id="nombre" [(ngModel)]="nombreIngresado" [placeholder]="'Escriba el nombre de la especialidad'"/>
+  <form #formEspecialidad="ngForm" (ngSubmit)="guardarEspecialidad()">
+    
+    <!-- Campo Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        class="form-control"
+        [(ngModel)]="especialidad.nombre"
+        required
+      />
     </div>
 
-    <div>
-        <label for="duracion">Duración: </label>
-        <input id="duracion" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="duracionIngresada" [placeholder]="'Escriba la duración esperada del turno'"/>
+    <!-- Campo Duración -->
+    <div class="form-group">
+      <label for="duracion">Duración (minutos):</label>
+      <input
+        type="number"
+        id="duracion"
+        name="duracion"
+        class="form-control"
+        [(ngModel)]="especialidad.duracion"
+        required
+        min="1"
+      />
     </div>
 
-    <div>
-        <button onCLick="crearEspecialidad()">Confirmar</button>
-    </div>
-
+    <!-- Botón -->
+    <button type="submit" class="btn btn-primary" [disabled]="formEspecialidad.invalid">
+      Guardar
+    </button>
+  </form>
 </div>

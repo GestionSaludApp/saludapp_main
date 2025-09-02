@@ -7,15 +7,15 @@
         <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol==='administrador'">
             {{especialidad.duracion}} minutos
-            <button name="botonTurnosDisponibles" (click)="proxy()">Editar especialidad</button>
-            <button name="botonTurnosDisponibles" (click)="proxy()">Eliminar especialidad</button>
+            <button name="botonEditarEspecialidad" (click)="proxy()">Editar especialidad</button>
+            <button name="botonEliminarEspecialidad" (click)="proxy()">Eliminar especialidad</button>
         </div>
     </ng-container>
     </div>
 
     <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol==='administrador'">
-            <button name="botonTurnosDisponibles" (click)="mostrarPanelNuevaEspecialidad()">Agregar especialidad</button>
+            <button name="botonAgregarEspecialidad" (click)="mostrarPanelNuevaEspecialidad()">Agregar especialidad</button>
             <div *ngIf="mostrarPanelNueva">
                 <app-nueva-especialidad></app-nueva-especialidad>
             </div>

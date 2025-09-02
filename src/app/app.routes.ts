@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { IngresoComponent } from './componentes/ingreso/ingreso.component';
-import { AyudaComponent } from './componentes/ayuda/ayuda.component';
-import { ErrorComponent } from './componentes/error/error.component';
+import { AyudaComponent } from './componentes/estaticos/ayuda/ayuda.component';
+import { ErrorComponent } from './componentes/estaticos/error/error.component';
 
 import { RegistroComponent } from './componentes/registro/registro.component';
 

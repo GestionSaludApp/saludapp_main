@@ -26,7 +26,7 @@ export class Turno {
     }
 
     seccional():string{
-        return seccionales[this.idSeccional];
+        return seccionales[this.idSeccional].nombre;
     }
     especialidad(): string {
         return especialidades[this.idEspecialidad].nombre;

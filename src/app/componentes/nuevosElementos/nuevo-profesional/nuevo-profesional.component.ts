@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { dias, formatearFechaSinHora, leerMinutos } from '../../../funciones/fechas';
 import { categoriasPerfil, especialidades, seccionales } from '../../../funciones/listas';
 import { NgFor } from '@angular/common';
 import { Disponibilidad } from '../../../clases/disponibilidad';
+import { BasededatosService } from '../../../servicios/basededatos.service';
+import { Especialidad } from '../../../clases/especialidad';
+import { Seccional } from '../../../clases/seccional';
 
 @Component({
   selector: 'app-nuevo-profesional',
@@ -12,10 +15,10 @@ import { Disponibilidad } from '../../../clases/disponibilidad';
   templateUrl: './nuevo-profesional.component.html',
   styleUrl: './nuevo-profesional.component.css'
 })
-export class NuevoProfesionalComponent {
+export class NuevoProfesionalComponent implements OnInit{
   @Input() categoria: string = categoriasPerfil[0];
-  listaEspecialidadesLocal = especialidades;
-  listaSeccionalesLocal = seccionales;
+  listaEspecialidadesLocal: Especialidad[] = [];
+  listaSeccionalesLocal: Seccional[] = [];
   listaDiasLocal = dias;
   
   nombreIngresado: string = '';
@@ -29,7 +32,18 @@ export class NuevoProfesionalComponent {
   disponibilidadesCreadas: Disponibilidad[] = [];
 
   @Output() datosGenerados = new EventEmitter<any>();
-  
+
+  constructor(private baseDeDatos: BasededatosService) {}
+
+  ngOnInit(): void {
+    this.baseDeDatos.buscarEspecialidades(() => {
+      this.listaEspecialidadesLocal = especialidades.slice(1);
+    });
+    this.baseDeDatos.buscarSeccionales(() => {
+      this.listaSeccionalesLocal = seccionales.slice(1);
+    });
+  }
+
   emitirDatos() {
     const soloLetrasRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
     const soloNumerosRegex = /^[0-9]+$/;

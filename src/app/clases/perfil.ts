@@ -8,7 +8,7 @@ export class Perfil<T = Perfil<any>> {
     categoria: string;
     alias: string;
     rol: 'paciente' | 'profesional' | 'administrador' | null | undefined = null;
-    imagen: string;
+    imagen: string = 'https://res.cloudinary.com/daot4w6wn/image/upload/v1756774763/perfiles/cthtfwco3ir2bwwpbyih.png';
 
     //desde tabla usuariosRol [común a todos]
     nombre: string;
@@ -25,7 +25,6 @@ export class Perfil<T = Perfil<any>> {
         this.idUsuario = 0;
         this.categoria = '';
         this.alias = '';
-        this.imagen = 'https://res.cloudinary.com/daot4w6wn/image/upload/v1756689218/perfiles/s5gvajgadqovcyole97s.jpg';
 
         this.nombre = '';
         this.apellido = '';

@@ -6,8 +6,9 @@ import { UsuarioActivoService } from './usuario-activo.service';
 import { Perfil } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { Turno } from '../clases/turno';
-import { cargarEspecialidades } from '../funciones/listas';
+import { cargarEspecialidades, cargarSeccionales } from '../funciones/listas';
 import { Especialidad } from '../clases/especialidad';
+import { Seccional } from '../clases/seccional';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,8 @@ export class BasededatosService {
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
   registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil, imagen: File | null): Observable<any> {
-    console.log("llego a base de datos");
     const formData = new FormData();
 
-    // Convertimos los objetos en string para enviarlos como JSON dentro de formData
     formData.append('nuevoUsuario', JSON.stringify(nuevoUsuario));
     formData.append('nuevoPerfil', JSON.stringify(nuevoPerfil));
 
@@ -136,16 +135,51 @@ export class BasededatosService {
     );
   }
 
+  agregarEspecialidad(idUsuario: number, nuevaEspecialidad: Especialidad): Observable<any> {
+    const body = { idUsuario, nuevaEspecialidad };
+    return this.http.post(this.apiUrl + '/agregarEspecialidad', body);
+  }
+
   buscarEspecialidades(callback: () => void) {
-  this.http.post<Especialidad[]>(this.apiUrl +'/buscarEspecialidades','').subscribe({
-    next: (listaEspecialidades) => {
-      cargarEspecialidades(listaEspecialidades);
-      callback();
-    },
-    error: (err) => {
-      console.error('Error al cargar especialidades', err);
-    }
+    this.http.post<Especialidad[]>(this.apiUrl +'/buscarEspecialidades','').subscribe({
+      next: (listaEspecialidades) => {
+        cargarEspecialidades(listaEspecialidades);
+        callback();
+      },
+      error: (err) => {
+        console.error('Error al cargar especialidades', err);
+      }
     });
   }
+
+  /*
+  modificarEspecialidad(especialidad: Especialidad): Observable<any>{
+return true;
+  }
+*/
+
+  agregarSeccional(idUsuario: number, nuevaSeccional: Seccional): Observable<any>{
+    const body = { idUsuario, nuevaSeccional };
+    return this.http.post(this.apiUrl + '/agregarSeccional', body);
+  }
+
+  buscarSeccionales(callback: () => void) {
+    this.http.post<Seccional[]>(this.apiUrl +'/buscarSeccionales','').subscribe({
+      next: (listaSeccionales) => {
+        cargarSeccionales(listaSeccionales);
+        callback();
+      },
+      error: (err) => {
+        console.error('Error al cargar seccionales', err);
+      }
+    });
+  }
+
+  /*
+  modificarSeccional(seccional: Seccional): Observable<any>{
+return true;
+  }
+*/
+
 
 }
