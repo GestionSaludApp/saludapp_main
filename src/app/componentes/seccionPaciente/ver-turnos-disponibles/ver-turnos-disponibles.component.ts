@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Turno } from '../../../clases/turno';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 import { BasededatosService } from '../../../servicios/basededatos.service';
@@ -15,7 +15,7 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
   templateUrl: './ver-turnos-disponibles.component.html',
   styleUrl: './ver-turnos-disponibles.component.css'
 })
-export class VerTurnosDisponiblesComponent{
+export class VerTurnosDisponiblesComponent implements OnInit{
   diasLocal = dias;
   seccionalesLocal = seccionales;
   especialidadesLocal = especialidades;
@@ -30,6 +30,15 @@ export class VerTurnosDisponiblesComponent{
   filtroEspecialidad: number | null = null;
 
   constructor(private baseDeDatos: BasededatosService, private usuarioActual: UsuarioActivoService) {}
+  
+  ngOnInit(): void {
+    this.baseDeDatos.buscarEspecialidades(() => {
+      this.especialidadesLocal = especialidades.slice(1);
+    });
+    this.baseDeDatos.buscarSeccionales(() => {
+      this.seccionalesLocal = seccionales.slice(1);
+    });
+  }
   
   filtrar() {
     const filtros: any = {};
