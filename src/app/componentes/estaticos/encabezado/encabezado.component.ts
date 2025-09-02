@@ -37,6 +37,6 @@ export class EncabezadoComponent implements OnInit{
   irError(){this.navegar.irError();}
   irRegistro(){this.navegar.irRegistro();}
   irEspecialidades(){this.navegar.irEspecialidades();}
-
+  irSeccionales(){this.navegar.irSeccionales();}
 
 }

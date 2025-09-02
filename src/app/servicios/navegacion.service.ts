@@ -22,5 +22,6 @@ export class NavegacionService {
   irTurnosDisponibles(){this.router.navigate(['/turnosDisponibles']);}
 
   irEspecialidades(){this.router.navigate(['/especialidades']);}
+  irSeccionales(){this.router.navigate(['/seccionales']);}
 
 }

@@ -12,7 +12,7 @@ import { CalendarioComponent } from './componentes/usuario/calendario/calendario
 import { VerTurnosDisponiblesComponent } from './componentes/seccionPaciente/ver-turnos-disponibles/ver-turnos-disponibles.component';
 
 import { EspecialidadesComponent } from './componentes/seccionAdministrador/especialidades/especialidades.component';
-
+import { SeccionalesComponent } from './componentes/seccionAdministrador/seccionales/seccionales.component';
 
 
 export const routes: Routes = [
@@ -27,6 +27,7 @@ export const routes: Routes = [
     { path: 'ingreso', component: IngresoComponent },
 
     { path: 'especialidades', component: EspecialidadesComponent },
+    { path: 'seccionales', component: SeccionalesComponent },
 
     { path: 'ayuda', component: AyudaComponent },
     { path: 'error', component: ErrorComponent },

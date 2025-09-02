@@ -7,7 +7,7 @@
         {{seccional.telefono}} - {{seccional.email}}
         <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol==='administrador'">
-            {{seccional.nombre}} placeholder
+            {{seccional.nombre}} *placeholder*
             <button name="botonEditarSeccional" (click)="proxy()">Editar seccional</button>
             <button name="botonEliminarSeccional" (click)="proxy()">Eliminar seccional</button>
         </div>
