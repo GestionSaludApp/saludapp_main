@@ -7,11 +7,12 @@ import { Subscription } from 'rxjs';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { Perfil } from '../../../clases/perfil';
 import { NuevaEspecialidadComponent } from "../../nuevosElementos/nueva-especialidad/nueva-especialidad.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-especialidades',
   standalone: true,
-  imports: [NgFor, NgIf, NuevaEspecialidadComponent],
+  imports: [NgFor, NgIf, NuevaEspecialidadComponent, FormsModule],
   templateUrl: './especialidades.component.html',
   styleUrl: './especialidades.component.css'
 })
@@ -19,8 +20,11 @@ export class EspecialidadesComponent implements OnInit{
   especialidadesLocal: Especialidad[] = [];
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
-  mostrarPanelNueva: boolean = false;
   
+  mostrarPanelNueva: boolean = false;
+  especialidadEditada: Especialidad = new Especialidad();
+  mostrarPanelEditar: boolean[] = [];
+
   constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   ngOnInit(): void {
@@ -29,6 +33,7 @@ export class EspecialidadesComponent implements OnInit{
     });
     this.baseDeDatos.buscarEspecialidades(() => {
       this.especialidadesLocal = especialidades.slice(1);
+      this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
   }
 
@@ -40,6 +45,16 @@ export class EspecialidadesComponent implements OnInit{
 
   mostrarPanelNuevaEspecialidad(){
     this.mostrarPanelNueva = !this.mostrarPanelNueva;
+  }
+
+  mostrarPanelEditarEspecialidad(index: number) {
+    this.especialidadEditada = this.especialidadesLocal[index];
+    var estabaAbierto = this.mostrarPanelEditar[index];
+    if (estabaAbierto) {
+      this.mostrarPanelEditar[index] = false;
+    } else {
+      this.mostrarPanelEditar = this.mostrarPanelEditar.map((_, i) => i === index);
+    }
   }
 
   exportarCSV() {
@@ -54,7 +69,7 @@ export class EspecialidadesComponent implements OnInit{
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
+  }
 
   generarCSV(especialidades: Especialidad[]): string {
     const headers = 'Especialidad; Duracion\n';
@@ -97,6 +112,28 @@ export class EspecialidadesComponent implements OnInit{
     });      
   }
 
-  proxy(){}
+  editarEspecialidad() {
+    this.baseDeDatos.editarEspecialidad(this.usuarioActivo.idUsuario, this.especialidadEditada).subscribe({
+      next: (resp) => {
+        console.log('Especialidad actualizada', resp);
+        this.cerrarPaneles();
+      },
+      error: (err) => {
+        console.error('Error al actualizar', err);
+      },
+    });
+  }
+
+  cerrarPaneles(){
+    this.mostrarPanelNueva = false;
+    for (let i = 0; i < this.mostrarPanelEditar.length; i++){
+      this.mostrarPanelEditar[i] = false;
+    }
+  }
+
+
+
+
+
 
 }

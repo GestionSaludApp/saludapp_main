@@ -3,7 +3,6 @@
 
   <form #formEspecialidad="ngForm" (ngSubmit)="guardarEspecialidad()">
     
-    <!-- Campo Nombre -->
     <div class="form-group">
       <label for="nombre">Nombre:</label>
       <input
@@ -16,7 +15,6 @@
       />
     </div>
 
-    <!-- Campo Duración -->
     <div class="form-group">
       <label for="duracion">Duración (minutos):</label>
       <input
@@ -30,7 +28,6 @@
       />
     </div>
 
-    <!-- Botón -->
     <button type="submit" class="btn btn-primary" [disabled]="formEspecialidad.invalid">
       Guardar
     </button>

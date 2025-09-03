@@ -152,11 +152,10 @@ export class BasededatosService {
     });
   }
 
-  /*
-  modificarEspecialidad(especialidad: Especialidad): Observable<any>{
-return true;
+  editarEspecialidad(idUsuario: number, datosEspecialidad: Especialidad): Observable<any>{
+    const body = { idUsuario, datosEspecialidad };
+    return this.http.post(this.apiUrl + '/editarEspecialidad', body);
   }
-*/
 
   eliminarEspecialidad(idUsuario: number, datosEspecialidad: Especialidad): Observable<any>{
     const body = { idUsuario, datosEspecialidad };

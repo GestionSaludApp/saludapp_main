@@ -1,30 +1,74 @@
 <div class="VentanaNivel0">
+  <p>Lista de especialidades</p>
 
-    <p>Lista de especialidades</p>
-
-    <div *ngFor="let especialidad of especialidadesLocal" class="VentanaNivel1">
-        {{especialidad.nombre}}
-        <ng-container *ngIf="perfilActivo">
-            <div *ngIf="perfilActivo.rol==='administrador'">
-                {{especialidad.duracion}} minutos
-                <button name="botonEditarEspecialidad" (click)="proxy()">Editar especialidad</button>
-                <button name="botonEliminarEspecialidad" (click)="eliminarEspecialidad(especialidad)">Eliminar especialidad</button>
-            </div>
-        </ng-container>
-    </div>
-
+  <div *ngFor="let especialidad of especialidadesLocal, let i = index" class="VentanaNivel1">
+    {{ especialidad.nombre }}
     <ng-container *ngIf="perfilActivo">
-        <div *ngIf="perfilActivo.rol==='administrador'">
-            <button name="botonAgregarEspecialidad" (click)="mostrarPanelNuevaEspecialidad()">Agregar especialidad</button>
-            <div *ngIf="mostrarPanelNueva">
-                <app-nueva-especialidad></app-nueva-especialidad>
+      <div *ngIf="perfilActivo.rol === 'administrador'">
+        {{ especialidad.duracion }} minutos
+
+        <ng-container *ngIf="perfilActivo">
+          <div *ngIf="perfilActivo.rol === 'administrador'">
+
+            <button name="botonEditarEspecialidad" (click)="mostrarPanelEditarEspecialidad(i)">
+              Editar especialidad
+            </button>
+
+            <div *ngIf="mostrarPanelEditar[i]" class="VentanaNivel1">
+
+              <label for="nombre">Nombre:</label>
+              <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              default= "especialidad.nombre"
+              [(ngModel)]="especialidadEditada.nombre"
+              required
+              />
+
+              <label for="duracion">Duración (minutos):</label>
+              <input
+              type="number"
+              id="duracion"
+              name="duracion"
+              default= "especialidad.duracion"
+              [(ngModel)]="especialidadEditada.duracion"
+              required
+              min="1"
+              />
+
+              <button (click)="editarEspecialidad()">
+                Guardar cambios
+              </button>
+              <button (click)="cerrarPaneles()">
+                Cancelar
+              </button>
+
             </div>
-        </div>
+
+          </div>
+        </ng-container>
+
+        <button name="botonEliminarEspecialidad" (click)="eliminarEspecialidad(especialidad)">
+          Eliminar especialidad
+        </button>
+
+      </div>
     </ng-container>
+  </div>
 
-    <div class="VentanaNivel0">
-        <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
+  <ng-container *ngIf="perfilActivo">
+    <div *ngIf="perfilActivo.rol === 'administrador'">
+      <button name="botonAgregarEspecialidad" (click)="mostrarPanelNuevaEspecialidad()">
+        Agregar especialidad
+      </button>
+      <div *ngIf="mostrarPanelNueva">
+        <app-nueva-especialidad></app-nueva-especialidad>
+      </div>
     </div>
+  </ng-container>
+
+  <div class="VentanaNivel0">
+    <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
+  </div>
 </div>
-
-
