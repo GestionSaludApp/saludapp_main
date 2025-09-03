@@ -158,6 +158,11 @@ return true;
   }
 */
 
+  eliminarEspecialidad(idUsuario: number, datosEspecialidad: Especialidad): Observable<any>{
+    const body = { idUsuario, datosEspecialidad };
+    return this.http.post(this.apiUrl + '/eliminarEspecialidad', body);
+  }
+
   agregarSeccional(idUsuario: number, nuevaSeccional: Seccional): Observable<any>{
     const body = { idUsuario, nuevaSeccional };
     return this.http.post(this.apiUrl + '/agregarSeccional', body);
@@ -180,6 +185,11 @@ return true;
 return true;
   }
 */
+
+  eliminarSeccional(idUsuario: number, datosSeccional: Seccional): Observable<any>{
+    const body = { idUsuario, datosSeccional };
+    return this.http.post(this.apiUrl + '/eliminarSeccional', body);
+  }
 
 
 }

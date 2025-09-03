@@ -21,10 +21,10 @@ export class SeccionalesComponent implements OnInit{
   perfilActivo: Perfil | null = null;
   mostrarPanelNueva: boolean = false;
   
-  constructor(private usuarioActual: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
+  constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   ngOnInit(): void {
-    this.perfilSubscripcion = this.usuarioActual.perfilObservable$.subscribe(perfil => {
+    this.perfilSubscripcion = this.usuarioActivo.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
     });
     this.baseDeDatos.buscarSeccionales(() => {
@@ -90,6 +90,17 @@ export class SeccionalesComponent implements OnInit{
         }
     }
     return nuevaPalabra;
+  }
+
+  eliminarSeccional(seccional: Seccional){
+    this.baseDeDatos.eliminarSeccional(this.usuarioActivo.idUsuario, seccional).subscribe({
+      next: (res) => {
+        console.log('Seccional eliminada:', res);
+      },
+      error: (err) => {
+        console.error('Error al eliminar:', err);
+      }
+    });      
   }
 
   proxy(){}

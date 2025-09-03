@@ -5,12 +5,12 @@
     <div *ngFor="let especialidad of especialidadesLocal" class="VentanaNivel1">
         {{especialidad.nombre}}
         <ng-container *ngIf="perfilActivo">
-        <div *ngIf="perfilActivo.rol==='administrador'">
-            {{especialidad.duracion}} minutos
-            <button name="botonEditarEspecialidad" (click)="proxy()">Editar especialidad</button>
-            <button name="botonEliminarEspecialidad" (click)="proxy()">Eliminar especialidad</button>
-        </div>
-    </ng-container>
+            <div *ngIf="perfilActivo.rol==='administrador'">
+                {{especialidad.duracion}} minutos
+                <button name="botonEditarEspecialidad" (click)="proxy()">Editar especialidad</button>
+                <button name="botonEliminarEspecialidad" (click)="eliminarEspecialidad(especialidad)">Eliminar especialidad</button>
+            </div>
+        </ng-container>
     </div>
 
     <ng-container *ngIf="perfilActivo">

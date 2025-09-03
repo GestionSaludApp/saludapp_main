@@ -21,10 +21,10 @@ export class EspecialidadesComponent implements OnInit{
   perfilActivo: Perfil | null = null;
   mostrarPanelNueva: boolean = false;
   
-  constructor(private usuarioActual: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
+  constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   ngOnInit(): void {
-    this.perfilSubscripcion = this.usuarioActual.perfilObservable$.subscribe(perfil => {
+    this.perfilSubscripcion = this.usuarioActivo.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
     });
     this.baseDeDatos.buscarEspecialidades(() => {
@@ -84,6 +84,17 @@ export class EspecialidadesComponent implements OnInit{
         }
     }
     return nuevaPalabra;
+  }
+
+  eliminarEspecialidad(especialidad: Especialidad){
+    this.baseDeDatos.eliminarEspecialidad(this.usuarioActivo.idUsuario, especialidad).subscribe({
+      next: (res) => {
+        console.log('Especialidad eliminada:', res);
+      },
+      error: (err) => {
+        console.error('Error al eliminar:', err);
+      }
+    });      
   }
 
   proxy(){}
