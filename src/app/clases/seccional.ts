@@ -6,6 +6,7 @@ export class Seccional {
     provincia: string;
     telefono: string;
     email: string;
+    imagen: string = '';
 
     constructor(){
         this.idSeccional = 0;

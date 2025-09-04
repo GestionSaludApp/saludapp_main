@@ -1,5 +1,3 @@
-<!-- MUESTRA OPCIONES PARA CREAR UN NUEVO PERFIL -->
-<!-- Seleccionar tipo de perfil -->
 <div class="VentanaNivel1">
   
   <label for="nuevo-perfil">Crear nuevo perfil</label>
@@ -10,7 +8,7 @@
     </option>
   </select>
   
-  <!-- Seleccionar la categoría del nuevo perfil -->
+  <!-- Categoría -->
   <div *ngIf="perfilNuevoSeleccionado">
     <label for="nueva-categoria">Concepto de perfil</label>
     <select id="nueva-categoria" [(ngModel)]="categoriaNuevoPerfil" (ngModelChange)="reiniciarFormulario()">
@@ -20,7 +18,7 @@
       </option>
     </select>
 
-    <!-- Completar datos del nuevo perfil -->
+    <!-- Datos -->
     <ng-container *ngIf="mostrarFormularioNuevoPerfil">
       <app-nuevo-paciente *ngIf="perfilNuevoSeleccionado === 'paciente'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
       <app-nuevo-profesional *ngIf="perfilNuevoSeleccionado === 'profesional'" [categoria]="categoriaNuevoPerfil" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>

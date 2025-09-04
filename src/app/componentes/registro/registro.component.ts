@@ -41,31 +41,6 @@ export class RegistroComponent {
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
   
-  /*
-  registrarUsuario() {
-    if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {
-      let nuevoUsuario = new Usuario();
-        nuevoUsuario.email = this.emailIngresado,
-        nuevoUsuario.password = this.passwordIngresado,
-        nuevoUsuario.fechaCreacion = fechaAhora,
-        nuevoUsuario.ultimoIngreso = fechaAhora,
-      //SIN PERFILES DURANTE CREACION - LUEGO DEL REGISTRO SE AÑADE EL PROPIO;
-
-      this.baseDeDatos.registrarUsuario(nuevoUsuario, this.datosUsuario).subscribe({
-        next: () => {
-          alert('Usuario registrado con éxito.');
-          this.limpiarCampos();
-          this.navegar.irInicio();
-        },
-        error: () => {
-          alert('No se pudo completar el registro. Verifique los datos e intente nuevamente.');
-          this.limpiarCampos();
-        }
-      });
-    }
-  }
-  */
-
   registrarUsuario() {
     console.log("llego a registro de usuario");
     if (this.verificarDatosIngresados() && this.verificarDatosUsuarioEmitidos(this.rolSeleccionado, this.datosUsuario)) {

@@ -5,6 +5,11 @@
     <div *ngFor="let seccional of seccionalesLocal" class="VentanaNivel1">
         {{seccional.nombre}} - {{seccional.direccion}} - {{seccional.ciudad}} - {{seccional.provincia}}
         {{seccional.telefono}} - {{seccional.email}}
+
+        <div class="VentanaNivel1">
+            <img [src]="seccional.imagen" alt="Logo de seccional" width="150" height="150">
+        </div>
+
         <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol==='administrador'">
             {{seccional.nombre}} *placeholder*

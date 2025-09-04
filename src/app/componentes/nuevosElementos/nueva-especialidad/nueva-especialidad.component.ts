@@ -13,11 +13,12 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 })
 export class NuevaEspecialidadComponent {
 especialidad: Especialidad = new Especialidad();
+imagenSeleccionada: File | null = null;
 
   constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   guardarEspecialidad() {
-    this.baseDeDatos.agregarEspecialidad(this.usuarioActivo.idUsuario, this.especialidad).subscribe({
+    this.baseDeDatos.agregarEspecialidad(this.usuarioActivo.idUsuario, this.especialidad, this.imagenSeleccionada).subscribe({
       next: (res) => {
         console.log('Especialidad guardada:', res);
         this.especialidad = new Especialidad();
@@ -26,6 +27,12 @@ especialidad: Especialidad = new Especialidad();
         console.error('Error al guardar:', err);
       }
     });
+  }
+
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.imagenSeleccionada = event.target.files[0];
+    }
   }
 
 }

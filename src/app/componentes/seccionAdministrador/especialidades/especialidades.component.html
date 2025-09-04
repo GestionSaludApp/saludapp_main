@@ -3,6 +3,11 @@
 
   <div *ngFor="let especialidad of especialidadesLocal, let i = index" class="VentanaNivel1">
     {{ especialidad.nombre }}
+
+    <div class="VentanaNivel1">
+      <img [src]="especialidad.imagen" alt="Logo de especialidad" width="150" height="150">
+    </div>
+
     <ng-container *ngIf="perfilActivo">
       <div *ngIf="perfilActivo.rol === 'administrador'">
         {{ especialidad.duracion }} minutos

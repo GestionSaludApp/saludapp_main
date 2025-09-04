@@ -13,11 +13,12 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 })
 export class NuevaSeccionalComponent {
   seccional: Seccional = new Seccional();
-  
+  imagenSeleccionada: File | null = null;
+
   constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   guardarSeccional() {
-    this.baseDeDatos.agregarSeccional(this.usuarioActivo.idUsuario, this.seccional).subscribe({
+    this.baseDeDatos.agregarSeccional(this.usuarioActivo.idUsuario, this.seccional, this.imagenSeleccionada).subscribe({
       next: (res) => {
         console.log('Seccional guardada:', res);
         this.seccional = new Seccional();
@@ -27,4 +28,11 @@ export class NuevaSeccionalComponent {
       }
     });
   }
+
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.imagenSeleccionada = event.target.files[0];
+    }
+  }
+
 }

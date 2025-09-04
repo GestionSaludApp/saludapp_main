@@ -20,16 +20,16 @@ export class BasededatosService {
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
   registrarUsuario(nuevoUsuario: Usuario, nuevoPerfil: Perfil, imagen: File | null): Observable<any> {
-    const formData = new FormData();
+    const body = new FormData();
 
-    formData.append('nuevoUsuario', JSON.stringify(nuevoUsuario));
-    formData.append('nuevoPerfil', JSON.stringify(nuevoPerfil));
+    body.append('nuevoUsuario', JSON.stringify(nuevoUsuario));
+    body.append('nuevoPerfil', JSON.stringify(nuevoPerfil));
 
     if (imagen) {
-      formData.append('imagen', imagen);
+      body.append('imagen', imagen);
     }
 
-    return this.http.post(this.apiUrl + '/registrarUsuario', formData)
+    return this.http.post(this.apiUrl + '/registrarUsuario', body)
       .pipe(
         catchError(error => {
           console.error('Error al registrar usuario:', error);
@@ -135,8 +135,13 @@ export class BasededatosService {
     );
   }
 
-  agregarEspecialidad(idUsuario: number, nuevaEspecialidad: Especialidad): Observable<any> {
-    const body = { idUsuario, nuevaEspecialidad };
+  agregarEspecialidad(idUsuario: number, nuevaEspecialidad: Especialidad, imagen: File | null): Observable<any> {
+    const body = new FormData();
+
+    body.append('idUsuario', JSON.stringify(idUsuario));
+    body.append('nuevaEspecialidad', JSON.stringify(nuevaEspecialidad));
+    if (imagen) {body.append('imagen', imagen);}
+
     return this.http.post(this.apiUrl + '/agregarEspecialidad', body);
   }
 
@@ -162,8 +167,13 @@ export class BasededatosService {
     return this.http.post(this.apiUrl + '/eliminarEspecialidad', body);
   }
 
-  agregarSeccional(idUsuario: number, nuevaSeccional: Seccional): Observable<any>{
-    const body = { idUsuario, nuevaSeccional };
+  agregarSeccional(idUsuario: number, nuevaSeccional: Seccional, imagen: File | null): Observable<any>{
+    const body = new FormData();
+
+    body.append('idUsuario', JSON.stringify(idUsuario));
+    body.append('nuevaSeccional', JSON.stringify(nuevaSeccional));
+    if (imagen) {body.append('imagen', imagen);}
+
     return this.http.post(this.apiUrl + '/agregarSeccional', body);
   }
 
@@ -179,11 +189,10 @@ export class BasededatosService {
     });
   }
 
-  /*
-  modificarSeccional(seccional: Seccional): Observable<any>{
-return true;
+  editarSeccional(idUsuario: number, datosSeccional: Especialidad): Observable<any>{
+    const body = { idUsuario, datosSeccional };
+    return this.http.post(this.apiUrl + '/editarSeccional', body);
   }
-*/
 
   eliminarSeccional(idUsuario: number, datosSeccional: Seccional): Observable<any>{
     const body = { idUsuario, datosSeccional };
