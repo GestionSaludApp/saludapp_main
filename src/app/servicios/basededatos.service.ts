@@ -199,5 +199,14 @@ export class BasededatosService {
     return this.http.post(this.apiUrl + '/eliminarSeccional', body);
   }
 
+  guardarImagen(directorio: string, imagen: File | null): Observable<any>{
+    const body = new FormData();
+
+    body.append('directorio', JSON.stringify(directorio));
+    if (imagen) {body.append('imagen', imagen);}
+
+    return this.http.post(this.apiUrl + '/guardarImagen', body);
+  }
+
 
 }

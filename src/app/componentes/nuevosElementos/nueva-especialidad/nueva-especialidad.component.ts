@@ -18,6 +18,16 @@ imagenSeleccionada: File | null = null;
   constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   guardarEspecialidad() {
+    this.baseDeDatos.guardarImagen('logos', this.imagenSeleccionada).subscribe({
+      next: (res) => {
+        console.log(res);
+        //this.especialidad.imagen = res;
+      },
+      error: (err) => {
+        console.error('Error al guardar:', err);
+      }
+    });
+    
     this.baseDeDatos.agregarEspecialidad(this.usuarioActivo.idUsuario, this.especialidad, this.imagenSeleccionada).subscribe({
       next: (res) => {
         console.log('Especialidad guardada:', res);
