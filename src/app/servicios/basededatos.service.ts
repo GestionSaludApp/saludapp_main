@@ -124,7 +124,7 @@ export class BasededatosService {
   }
 
   buscarTurnosActivos(filtros: any): Observable<Turno[]> {
-    return this.http.post<any[]>(this.apiUrl + '/buscarTurnosActivos', filtros).pipe(
+    return this.http.post<any[]>(this.apiUrl + '/buscarTurnosPorUsuario', filtros).pipe(
       map(respuesta => {
         return respuesta.map(datos => {
           const turno = new Turno();

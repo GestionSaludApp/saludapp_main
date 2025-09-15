@@ -66,7 +66,9 @@ export class VerTurnosDisponiblesComponent implements OnInit{
   }
 
   solicitarTurno(turno: Turno) {
+    console.log(turno);
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
+    console.log(idPerfil);
     if (idPerfil) {
       turno.idPaciente = idPerfil;
     } else {return}

@@ -1,19 +1,23 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Turno } from '../../../clases/turno';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
+import { dias, leerMinutos } from '../../../funciones/fechas';
+import { especialidades, seccionales } from '../../../funciones/listas';
 
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, CommonModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.css'
 })
 export class CalendarioComponent implements OnInit{
-
   turnosActivos: Turno[] = [];
+  diasLocal = dias;
+  seccionalesLocal = seccionales;
+  especialidadesLocal = especialidades;
 
   constructor(private usuarioActual: UsuarioActivoService, private baseDeDatos: BasededatosService){}
 
@@ -21,6 +25,12 @@ export class CalendarioComponent implements OnInit{
     if (this.usuarioActual.perfil) {
       this.buscarTurnos();
     }
+    this.baseDeDatos.buscarEspecialidades(() => {
+      this.especialidadesLocal = especialidades.slice(1);
+    });
+    this.baseDeDatos.buscarSeccionales(() => {
+      this.seccionalesLocal = seccionales.slice(1);
+    });    
   }
 
   buscarTurnos(){
@@ -39,5 +49,8 @@ export class CalendarioComponent implements OnInit{
     }
   }
 
+  leerMinutos(minutos: number){
+    return leerMinutos(minutos);
+  }
 
 }
