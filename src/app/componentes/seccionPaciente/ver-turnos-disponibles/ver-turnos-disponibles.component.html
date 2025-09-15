@@ -12,14 +12,14 @@
 <label>Seccional:
     <select [(ngModel)]="filtroSeccional" (change)="filtrar()">
       <option [ngValue]="null">-- Todas --</option>
-      <option *ngFor="let seccional of seccionalesLocal; let i = index" [ngValue]="i">{{ seccional.nombre }}</option>
+      <option *ngFor="let seccional of seccionalesLocal" [ngValue]="seccional.idSeccional">{{ seccional.nombre }}</option>
     </select>
   </label>
 
   <label>Especialidad:
     <select [(ngModel)]="filtroEspecialidad" (change)="filtrar()">
       <option [ngValue]="null">-- Todas --</option>
-      <option *ngFor="let especialidad of especialidadesLocal; let i = index" [ngValue]="i">{{ especialidad.nombre }}</option>
+      <option *ngFor="let especialidad of especialidadesLocal" [ngValue]="especialidad.idEspecialidad">{{ especialidad.nombre }}</option>
     </select>
   </label>
 
