@@ -18,7 +18,7 @@
       Perfil: {{ perfilActivo.alias }}
 
         <div class="VentanaNivel1">
-          <img [src]="perfilActivo.imagen" alt="Foto de perfil" width="150" height="150">
+          <img [src]="this.prefijoImagen+perfilActivo.imagen" alt="Foto de perfil" width="150" height="150">
         </div>
         
         <p>Nombre: {{ perfilActivo.nombre }}</p>

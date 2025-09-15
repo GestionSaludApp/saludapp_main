@@ -26,7 +26,7 @@
     <div>
         <label for="especialidad">Especialidad: </label>
         <select id="especialidad" [(ngModel)]="especialidadSeleccionada" (ngModelChange)="emitirDatos()">
-          <option *ngFor="let esp of listaEspecialidadesLocal; let i = index" [value]="i">{{ esp.nombre }}</option>
+          <option *ngFor="let esp of listaEspecialidadesLocal" [value]="esp.idEspecialidad">{{ esp.nombre }}</option>
         </select>
     </div>
 
@@ -39,7 +39,7 @@
             <div>
                 <label for="seccional">Seccional: </label>
                 <select id="seccional" [(ngModel)]="disp.idSeccional" (ngModelChange)="emitirDatos()">
-                  <option *ngFor="let sec of listaSeccionalesLocal; let i = index" [value]="i">{{ sec }}</option>
+                  <option *ngFor="let sec of listaSeccionalesLocal" [value]="sec.idSeccional">{{ sec.nombre }}</option>
                 </select>
             </div>
 

@@ -7,6 +7,7 @@ import { Perfil } from '../../../clases/perfil';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { seccionales } from '../../../funciones/listas';
+import { prefijoImagen } from '../../../credenciales/datos';
 
 @Component({
   selector: 'app-seccionales',
@@ -17,6 +18,7 @@ import { seccionales } from '../../../funciones/listas';
 })
 export class SeccionalesComponent implements OnInit{
   seccionalesLocal: Seccional[] = [];
+  prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
   mostrarPanelNueva: boolean = false;

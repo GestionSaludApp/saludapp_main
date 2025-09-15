@@ -7,7 +7,7 @@
         {{seccional.telefono}} - {{seccional.email}}
 
         <div class="VentanaNivel1">
-            <img [src]="seccional.imagen" alt="Logo de seccional" width="150" height="150">
+            <img [src]="this.prefijoImagen+seccional.imagen" alt="Logo de seccional" width="150" height="150">
         </div>
 
         <ng-container *ngIf="perfilActivo">

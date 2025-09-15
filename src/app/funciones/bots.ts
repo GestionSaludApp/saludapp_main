@@ -4,14 +4,6 @@ import { BasededatosService } from "../servicios/basededatos.service";
 import { fechaAhora } from "./fechas";
 import { categoriasPerfil } from "./listas";
 
-/*
-DELETE FROM auditoria;
-DELETE FROM disponibilidades;
-DELETE FROM perfilesProfesional;
-DELETE FROM usuarioPerfiles;
-DELETE FROM usuarios;
-*/
-
 export function generarProfesionales(minimo: number, maximo: number, baseDeDatos: BasededatosService) {
   const nombres = ['Ana', 'Bruno', 'Carla', 'Diego', 'Elena', 'Fernando', 'Gabriela', 'Hugo', 'Isabel', 'Juan'];
   const apellidos = ['Pérez', 'Gómez', 'Fernández', 'López', 'Martínez', 'Sánchez', 'Ramírez', 'Torres', 'Flores', 'Acosta'];

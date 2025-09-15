@@ -8,6 +8,7 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 import { Perfil } from '../../../clases/perfil';
 import { NuevaEspecialidadComponent } from "../../nuevosElementos/nueva-especialidad/nueva-especialidad.component";
 import { FormsModule } from '@angular/forms';
+import { prefijoImagen } from '../../../credenciales/datos';
 
 @Component({
   selector: 'app-especialidades',
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EspecialidadesComponent implements OnInit{
   especialidadesLocal: Especialidad[] = [];
+  prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
   

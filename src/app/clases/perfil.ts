@@ -1,3 +1,4 @@
+import { prefijoImagen } from "../credenciales/datos";
 import { especialidades } from "../funciones/listas";
 import { Disponibilidad } from "./disponibilidad";
 
@@ -8,7 +9,7 @@ export class Perfil<T = Perfil<any>> {
     categoria: string;
     alias: string;
     rol: 'paciente' | 'profesional' | 'administrador' | null | undefined = null;
-    imagen: string = 'https://res.cloudinary.com/daot4w6wn/image/upload/v1756774763/perfiles/cthtfwco3ir2bwwpbyih.png';
+    imagen: string = prefijoImagen + 'v1756774763/perfilesUsuarios/cthtfwco3ir2bwwpbyih.png';
 
     //desde tabla usuariosRol [común a todos]
     nombre: string;

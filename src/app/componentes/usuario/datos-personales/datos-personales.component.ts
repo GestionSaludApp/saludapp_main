@@ -7,6 +7,7 @@ import { dias } from '../../../funciones/fechas';
 import { Perfil } from '../../../clases/perfil';
 import { FormsModule } from '@angular/forms';
 import { NuevoPerfilComponent } from "../../nuevosElementos/nuevo-perfil/nuevo-perfil.component";
+import { prefijoImagen } from '../../../credenciales/datos';
 
 @Component({
   selector: 'app-datos-personales',
@@ -23,6 +24,7 @@ export class DatosPersonalesComponent implements OnInit{
   perfilActivo: Perfil | null = null;
   perfilesUsuario: Perfil[] = [];
   perfilSeleccionado: Perfil = new Perfil();
+  prefijoImagen = prefijoImagen;
   
   constructor(private usuarioActual: UsuarioActivoService) {}
 
