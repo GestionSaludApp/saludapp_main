@@ -13,6 +13,7 @@ import { VerTurnosDisponiblesComponent } from './componentes/seccionPaciente/ver
 
 import { EspecialidadesComponent } from './componentes/seccionAdministrador/especialidades/especialidades.component';
 import { SeccionalesComponent } from './componentes/seccionAdministrador/seccionales/seccionales.component';
+import { AtencionComponent } from './componentes/seccionProfesional/atencion/atencion.component';
 
 
 export const routes: Routes = [
@@ -33,6 +34,7 @@ export const routes: Routes = [
     { path: 'error', component: ErrorComponent },
 
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
+    { path: 'turnosAtencion', component: AtencionComponent },
     
 
 

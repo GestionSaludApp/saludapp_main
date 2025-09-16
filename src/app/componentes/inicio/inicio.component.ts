@@ -33,4 +33,5 @@ export class InicioComponent implements OnInit{
   irDatosPersonales(){this.navegar.irDatosPersonales();}
   irTurnosDisponibles(){this.navegar.irTurnosDisponibles();}
   irCalendario(){this.navegar.irCalendario();}
+  irTurnosAtencion(){this.navegar.irTurnosAtencion();}
 }

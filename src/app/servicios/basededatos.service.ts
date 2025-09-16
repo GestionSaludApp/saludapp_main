@@ -10,6 +10,7 @@ import { cargarEspecialidades, cargarSeccionales } from '../funciones/listas';
 import { Especialidad } from '../clases/especialidad';
 import { Seccional } from '../clases/seccional';
 import { bddURL } from '../credenciales/datos';
+import { Reporte } from '../clases/reporte';
 
 @Injectable({
   providedIn: 'root'
@@ -253,6 +254,37 @@ export class BasededatosService {
   eliminarSeccional(idUsuario: number, datosSeccional: Seccional): Observable<any>{
     const body = { idUsuario, datosSeccional };
     return this.http.post(this.apiUrl + '/eliminarSeccional', body);
+  }
+
+  agregarReporte(idUsuario: number, nuevoReporte: Reporte, imagen: File | null): Observable<any> {
+    const crearBody = () => {
+      const body = new FormData();
+      body.append('idUsuario', JSON.stringify(idUsuario));
+      body.append('nuevoReporte', JSON.stringify(nuevoReporte));
+      return body;
+    }
+
+    if (imagen) {
+      return this.guardarImagen('reportesMedicos', imagen).pipe(
+        switchMap((res: any) => {
+          nuevoReporte.imagen = res.resultado;
+
+          return this.http.post(this.apiUrl + '/agregarReporte', crearBody());
+        }),
+        catchError(error => {
+          console.error('Error al agregar el reporte:', error);
+          throw error;
+        })
+      );
+    } else {
+
+      return this.http.post(this.apiUrl + '/agregarReporte', crearBody()).pipe(
+        catchError(error => {
+          console.error('Error al agregar el reporte:', error);
+          throw error;
+        })
+      );
+    }
   }
 
   guardarImagen(directorio: string, imagen: File | null): Observable<any>{

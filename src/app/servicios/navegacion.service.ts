@@ -20,6 +20,7 @@ export class NavegacionService {
   irError(){this.router.navigate(['/error']);}
 
   irTurnosDisponibles(){this.router.navigate(['/turnosDisponibles']);}
+  irTurnosAtencion(){this.router.navigate(['/turnosAtencion']);}
 
   irEspecialidades(){this.router.navigate(['/especialidades']);}
   irSeccionales(){this.router.navigate(['/seccionales']);}

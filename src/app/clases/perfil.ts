@@ -1,6 +1,7 @@
 import { prefijoImagen } from "../credenciales/datos";
 import { especialidades } from "../funciones/listas";
 import { Disponibilidad } from "./disponibilidad";
+import { Reporte } from "./reporte";
 
 export class Perfil<T = Perfil<any>> {
     //desde tabla usuarioPerfiles
@@ -40,7 +41,8 @@ export class Perfil<T = Perfil<any>> {
 }
 
 export class Paciente extends Perfil<Paciente>{
-
+  historiaClinica: Reporte[] = [];
+  
   constructor(){
     super();
     this.rol = 'paciente';

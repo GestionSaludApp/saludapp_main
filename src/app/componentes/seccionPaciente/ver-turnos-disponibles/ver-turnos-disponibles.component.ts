@@ -70,7 +70,7 @@ export class VerTurnosDisponiblesComponent implements OnInit{
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
     console.log(idPerfil);
     if (idPerfil) {
-      turno.idPaciente = idPerfil;
+      turno.idPerfilPaciente = idPerfil;
     } else {return}
     
     this.baseDeDatos.solicitarTurno(turno).subscribe({
