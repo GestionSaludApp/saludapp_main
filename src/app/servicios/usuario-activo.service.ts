@@ -14,14 +14,13 @@ export class UsuarioActivoService {
 
   constructor() { }
 
-  // CARGAR DATOS DEL USUARIO EN EL SERVICIO
+  //CARGAR DATOS DEL USUARIO
   setUsuario(datosUsuario: any, datosPerfilActivo: any): void {
     const usuario = datosUsuario;
     const perfilActivo = datosPerfilActivo;
 
     let usuarioInstanciado = new Usuario();
 
-    // Dependiendo del rol de usuario, se instancia la clase correspondiente
     if (perfilActivo.rol === 'paciente') {
       usuarioInstanciado.perfilActivo = new Paciente();
     } else if (perfilActivo.rol === 'profesional') {
@@ -33,7 +32,6 @@ export class UsuarioActivoService {
       return;
     }
 
-    // Guarda la instancia del usuario en el servicio
     usuarioInstanciado.cargarDatos(usuario);
     usuarioInstanciado.perfilActivo.cargarDatos(perfilActivo);
 
@@ -53,10 +51,10 @@ export class UsuarioActivoService {
   setPerfil(datosPerfilActivo: any): void {
     const perfilActivo = datosPerfilActivo;
 
+
     let usuarioInstanciado = this.usuarioSubject.getValue();
     if (!usuarioInstanciado) return;
 
-    // Dependiendo del rol de usuario, se instancia la clase correspondiente
     if (perfilActivo.rol === 'paciente') {
       usuarioInstanciado.perfilActivo = new Paciente();
     } else if (perfilActivo.rol === 'profesional') {
@@ -68,7 +66,6 @@ export class UsuarioActivoService {
       return;
     }
 
-    // Guarda la instancia del perfil en el servicio
     usuarioInstanciado.perfilActivo.cargarDatos(perfilActivo);
     if (usuarioInstanciado.perfilActivo instanceof Profesional) {
       usuarioInstanciado.perfilActivo.disponibilidad = [];
@@ -83,7 +80,10 @@ export class UsuarioActivoService {
   }
 
   //ELIMINAR DATOS DEL USUARIO
-  limpiarUsuario(): void {this.usuarioSubject.next(null);}
+  limpiarUsuario(): void {
+    this.perfilSubject.next(null);
+    this.usuarioSubject.next(null);
+  }
 
   //ENVIA TODOS LOS PERFILES EN UN ARRAY
   obtenerPerfiles(): Perfil[] {

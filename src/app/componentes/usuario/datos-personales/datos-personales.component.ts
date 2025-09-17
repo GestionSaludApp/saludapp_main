@@ -8,6 +8,7 @@ import { Perfil } from '../../../clases/perfil';
 import { FormsModule } from '@angular/forms';
 import { NuevoPerfilComponent } from "../../nuevosElementos/nuevo-perfil/nuevo-perfil.component";
 import { prefijoImagen } from '../../../credenciales/datos';
+import { BasededatosService } from '../../../servicios/basededatos.service';
 
 @Component({
   selector: 'app-datos-personales',
@@ -26,7 +27,7 @@ export class DatosPersonalesComponent implements OnInit{
   perfilSeleccionado: Perfil = new Perfil();
   prefijoImagen = prefijoImagen;
   
-  constructor(private usuarioActual: UsuarioActivoService) {}
+  constructor(private usuarioActual: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
 
   ngOnInit(): void {
     this.perfilSubscripcion = this.usuarioActual.perfilObservable$.subscribe(perfil => {
@@ -42,8 +43,7 @@ export class DatosPersonalesComponent implements OnInit{
   }
 
   cambiarPerfil(){
-    console.log(this.perfilSeleccionado);
-    this.usuarioActual.setPerfil(this.perfilSeleccionado);
+    this.baseDeDatos.ingresarPerfil(this.usuarioActual.idUsuario,this.perfilSeleccionado.idPerfil).subscribe();
   }
 
 }
