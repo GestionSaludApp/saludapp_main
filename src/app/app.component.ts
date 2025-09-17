@@ -11,5 +11,5 @@ import { PieComponent } from "./componentes/estaticos/pie/pie.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'saludapp';
+  
 }

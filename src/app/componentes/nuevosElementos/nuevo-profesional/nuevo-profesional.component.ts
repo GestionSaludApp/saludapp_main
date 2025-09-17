@@ -15,7 +15,7 @@ import { Seccional } from '../../../clases/seccional';
   templateUrl: './nuevo-profesional.component.html',
   styleUrl: './nuevo-profesional.component.css'
 })
-export class NuevoProfesionalComponent implements OnInit{
+export class NuevoProfesionalComponent{
   @Input() categoria: string = categoriasPerfil[0];
   listaEspecialidadesLocal: Especialidad[] = [];
   listaSeccionalesLocal: Seccional[] = [];

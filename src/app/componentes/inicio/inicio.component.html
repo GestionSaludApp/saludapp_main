@@ -12,4 +12,12 @@
         <button name="botonTurnosAtencion" (click)="irTurnosAtencion()">Ver turnos</button>
     </div>
 
+    <div *ngIf="perfilActivo.rol==='administrador'">
+        <button name="botonEspecialidades" (click)="irEspecialidades()">Especialidades</button>
+        <button name="botonSeccionales" (click)="irSeccionales()">Seccionales</button>
+        <button name="botonPersonal" (click)="irPersonal()">Personal</button>
+        <button name="botonClientes" (click)="irClientes()">Clientes</button>
+        <button name="botonHabilitaciones" (click)="irHabilitaciones()">Gestion Habilitaciones</button>
+    </div>
+
 </div>

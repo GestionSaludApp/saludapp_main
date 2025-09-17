@@ -14,27 +14,40 @@ import { VerTurnosDisponiblesComponent } from './componentes/seccionPaciente/ver
 import { EspecialidadesComponent } from './componentes/seccionAdministrador/especialidades/especialidades.component';
 import { SeccionalesComponent } from './componentes/seccionAdministrador/seccionales/seccionales.component';
 import { AtencionComponent } from './componentes/seccionProfesional/atencion/atencion.component';
+import { HabilitacionesComponent } from './componentes/seccionAdministrador/habilitaciones/habilitaciones.component';
+import { PersonalComponent } from './componentes/seccionAdministrador/personal/personal.component';
+import { ClientesComponent } from './componentes/seccionAdministrador/clientes/clientes.component';
+import { OfertaComponent } from './componentes/estaticos/oferta/oferta.component';
 
 
 export const routes: Routes = [
 
     { path: '', redirectTo: 'inicio', pathMatch: 'full' }, //Redirección DEFAULT
 
+    //TODOS (incluso sin usuario)
     { path: 'inicio', component: InicioComponent },
-    { path: 'datosPersonales', component: DatosPersonalesComponent },
-    { path: 'calendario', component: CalendarioComponent },
-
     { path: 'registro', component: RegistroComponent },
     { path: 'ingreso', component: IngresoComponent },
-
-    { path: 'especialidades', component: EspecialidadesComponent },
-    { path: 'seccionales', component: SeccionalesComponent },
-
     { path: 'ayuda', component: AyudaComponent },
     { path: 'error', component: ErrorComponent },
+    { path: 'oferta', component: OfertaComponent },
 
+    //TODOS LOS USUARIOS
+    { path: 'datosPersonales', component: DatosPersonalesComponent },
+
+    //SECCION PACIENTE
+    { path: 'calendario', component: CalendarioComponent },
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
+
+    //SECCION PROFESIONAL
     { path: 'turnosAtencion', component: AtencionComponent },
+
+    //SECCION ADMINISTRADOR
+    { path: 'especialidades', component: EspecialidadesComponent },
+    { path: 'seccionales', component: SeccionalesComponent },
+    { path: 'personal', component: PersonalComponent },
+    { path: 'clientes', component: ClientesComponent },
+    { path: 'habilitaciones', component: HabilitacionesComponent },
     
 
 

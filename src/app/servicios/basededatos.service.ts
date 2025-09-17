@@ -246,7 +246,7 @@ export class BasededatosService {
     });
   }
 
-  editarSeccional(idUsuario: number, datosSeccional: Especialidad): Observable<any>{
+  editarSeccional(idUsuario: number, datosSeccional: Seccional): Observable<any>{
     const body = { idUsuario, datosSeccional };
     return this.http.post(this.apiUrl + '/editarSeccional', body);
   }

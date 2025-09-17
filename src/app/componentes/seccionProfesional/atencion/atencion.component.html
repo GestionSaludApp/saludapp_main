@@ -1,17 +1,3 @@
-<!--
-<p>Turnos Activos</p>
-
-<div *ngFor="let turno of turnosActivos" class="VentanaNivel0">
-    {{turno.especialidad()}}
-    {{turno.seccional()}}
-    {{this.diasLocal[turno.diaSemana] | titlecase }}
-    {{leerMinutos(turno.horaInicio)}}
-    <button>Terminar Turno</button>
-</div>
-
-<app-nuevo-reporte></app-nuevo-reporte>
--->
-
 <p>Turnos Activos</p>
 
 <div *ngFor="let turno of turnosActivos" class="VentanaNivel0">
@@ -22,10 +8,10 @@
   <button (click)="terminarTurno(turno)">Terminar Turno</button>
 </div>
 
-<!-- Si hay un turno seleccionado -->
 <app-nuevo-reporte
   *ngIf="turnoSeleccionado"
   [idPerfilPaciente]="turnoSeleccionado.idPerfilPaciente"
   [idPerfilProfesional]="turnoSeleccionado.idPerfilProfesional"
+  [idTurno]="turnoSeleccionado.idTurno"
   (cerrar)="cerrarReporte()">
 </app-nuevo-reporte>

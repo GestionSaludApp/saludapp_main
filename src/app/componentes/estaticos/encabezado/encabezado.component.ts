@@ -36,7 +36,10 @@ export class EncabezadoComponent implements OnInit{
   irIngreso(){this.navegar.irIngreso();}
   irError(){this.navegar.irError();}
   irRegistro(){this.navegar.irRegistro();}
-  irEspecialidades(){this.navegar.irEspecialidades();}
-  irSeccionales(){this.navegar.irSeccionales();}
+  irOferta(){this.navegar.irOferta();}
+
+  cerrarSesion(){
+    this.usuarioActual.limpiarUsuario();
+  }
 
 }

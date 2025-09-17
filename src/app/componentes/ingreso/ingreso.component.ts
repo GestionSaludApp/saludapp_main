@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
-import { generarProfesionales } from '../../funciones/bots';
 
 @Component({
   selector: 'app-ingreso',
@@ -52,10 +51,6 @@ export class IngresoComponent {
       });
     }
   }
-
-
-
-  crearBots(){generarProfesionales(0, 50, this.baseDeDatos);}
 
 
 

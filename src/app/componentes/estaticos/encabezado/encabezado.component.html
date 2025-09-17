@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <button name="botonError" (click)="irError()">Ups, algo salió mal.</button>
+        <button name="botonOferta" (click)="irOferta()">Oferta</button>  
     </div>
 </div>
 
@@ -26,10 +26,13 @@
     </div>
 </div>
 
+<div *ngIf="perfilActivo">
+    <div>
+        <button name="botonSalir" (click)="cerrarSesion()">Salir</button>
+    </div>
+</div>
+
 <!-- TESTEO -->
-<div>
-    <button name="irEspecialidades" (click)="irEspecialidades()">Especialidades</button>
-</div>
-<div>
-    <button name="irSeccionales" (click)="irSeccionales()">Seccionales</button>
-</div>
+    <div>
+        <button name="botonError" (click)="irError()">Ups, algo salió mal.</button>
+    </div>
