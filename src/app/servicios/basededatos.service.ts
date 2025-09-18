@@ -53,6 +53,10 @@ export class BasededatosService {
     }
   }
 
+  activarUsuario(email: string, password: string, codigo: string): Observable<any> {
+    return this.http.post(this.apiUrl + '/activarMiUsuario', { email, password, codigo });
+  }
+
   ingresarUsuario(email: string, password: string): Observable<Usuario> {
     const body = { email, password };
 

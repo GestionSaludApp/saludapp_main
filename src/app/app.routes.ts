@@ -18,6 +18,7 @@ import { HabilitacionesComponent } from './componentes/seccionAdministrador/habi
 import { PersonalComponent } from './componentes/seccionAdministrador/personal/personal.component';
 import { ClientesComponent } from './componentes/seccionAdministrador/clientes/clientes.component';
 import { OfertaComponent } from './componentes/estaticos/oferta/oferta.component';
+import { ActivacionComponent } from './componentes/estaticos/activacion/activacion.component';
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
 
     //TODOS LOS USUARIOS
     { path: 'datosPersonales', component: DatosPersonalesComponent },
+    { path: 'activarMiUsuario', component: ActivacionComponent },
 
     //SECCION PACIENTE
     { path: 'calendario', component: CalendarioComponent },
