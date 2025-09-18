@@ -51,7 +51,6 @@ export class UsuarioActivoService {
   setPerfil(datosPerfilActivo: any): void {
     const perfilActivo = datosPerfilActivo;
 
-
     let usuarioInstanciado = this.usuarioSubject.getValue();
     if (!usuarioInstanciado) return;
 
