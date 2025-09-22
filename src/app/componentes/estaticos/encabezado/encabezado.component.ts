@@ -40,6 +40,7 @@ export class EncabezadoComponent implements OnInit{
 
   cerrarSesion(){
     this.usuarioActual.limpiarUsuario();
+    this.irInicio();
   }
 
 }

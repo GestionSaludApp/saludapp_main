@@ -66,17 +66,16 @@ export class VerTurnosDisponiblesComponent implements OnInit{
   }
 
   solicitarTurno(turno: Turno) {
-    console.log(turno);
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
-    console.log(idPerfil);
     if (idPerfil) {
-      turno.idPerfilPaciente = idPerfil;
+      turno.idPaciente = idPerfil;
     } else {return}
     
+    console.log(turno);
     this.baseDeDatos.solicitarTurno(turno).subscribe({
-      error: (error) => {
+      /*error: (error) => {
         console.error('Error al solicitar turno:', error.message);
-      }
+      }*/
     });
   }
 

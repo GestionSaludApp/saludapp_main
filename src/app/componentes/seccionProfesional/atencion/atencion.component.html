@@ -10,8 +10,8 @@
 
 <app-nuevo-reporte
   *ngIf="turnoSeleccionado"
-  [idPerfilPaciente]="turnoSeleccionado.idPerfilPaciente"
-  [idPerfilProfesional]="turnoSeleccionado.idPerfilProfesional"
+  [idPerfilPaciente]="turnoSeleccionado.idPaciente"
+  [idPerfilProfesional]="turnoSeleccionado.idProfesional"
   [idTurno]="turnoSeleccionado.idTurno"
   (cerrar)="cerrarReporte()">
 </app-nuevo-reporte>

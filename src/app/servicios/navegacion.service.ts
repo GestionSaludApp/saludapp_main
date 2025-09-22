@@ -21,7 +21,7 @@ export class NavegacionService {
 
   //SECCION PACIENTE
   irTurnosDisponibles(){this.router.navigate(['/turnosDisponibles']);}
-  irCalendario(){this.router.navigate(['/calendario']);}
+  irTurnosActivos(){this.router.navigate(['/turnosActivos']);}
 
   //SECCION PROFESIONAL
   irTurnosAtencion(){this.router.navigate(['/turnosAtencion']);}

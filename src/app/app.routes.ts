@@ -8,8 +8,8 @@ import { ErrorComponent } from './componentes/estaticos/error/error.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { DatosPersonalesComponent } from './componentes/usuario/datos-personales/datos-personales.component';
-import { CalendarioComponent } from './componentes/usuario/calendario/calendario.component';
 import { VerTurnosDisponiblesComponent } from './componentes/seccionPaciente/ver-turnos-disponibles/ver-turnos-disponibles.component';
+import { VerTurnosActivosComponent } from './componentes/seccionPaciente/ver-turnos-activos/ver-turnos-activos.component';
 
 import { EspecialidadesComponent } from './componentes/seccionAdministrador/especialidades/especialidades.component';
 import { SeccionalesComponent } from './componentes/seccionAdministrador/seccionales/seccionales.component';
@@ -19,7 +19,6 @@ import { PersonalComponent } from './componentes/seccionAdministrador/personal/p
 import { ClientesComponent } from './componentes/seccionAdministrador/clientes/clientes.component';
 import { OfertaComponent } from './componentes/estaticos/oferta/oferta.component';
 import { ActivacionComponent } from './componentes/estaticos/activacion/activacion.component';
-
 
 export const routes: Routes = [
 
@@ -38,7 +37,7 @@ export const routes: Routes = [
     { path: 'activarMiUsuario', component: ActivacionComponent },
 
     //SECCION PACIENTE
-    { path: 'calendario', component: CalendarioComponent },
+    { path: 'turnosActivos', component: VerTurnosActivosComponent },
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
 
     //SECCION PROFESIONAL
