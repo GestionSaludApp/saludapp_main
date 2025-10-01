@@ -17,7 +17,7 @@ import { Reporte } from '../clases/reporte';
 })
 
 export class BasededatosService {
-  private apiUrl = 'https://saludapp-saludapp.mdbgo.io';
+  private apiUrl = 'https://saludapp-saludapp.mdbgo.ios';
 
   constructor(private http: HttpClient, private usuarioActivo: UsuarioActivoService) {}
 
